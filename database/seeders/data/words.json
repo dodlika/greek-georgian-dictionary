@@ -1,0 +1,233 @@
+[
+  {
+    "greek_word": "μπάλα",
+    "greek_present": null,
+    "greek_past": null,
+    "greek_future": null,
+    "georgian_translation": "ბურთი",
+    "word_type": "noun"
+  },
+  {
+    "greek_word": "ντεκόρ",
+    "greek_present": null,
+    "greek_past": null,
+    "greek_future": null,
+    "georgian_translation": "დეკორი",
+    "word_type": "noun"
+  },
+  {
+    "greek_word": "δουλεύω",
+    "greek_present": "δουλεύω",
+    "greek_past": "δούλεψα",
+    "greek_future": "θα δουλέψω",
+    "georgian_translation": "ვმუშაობ",
+    "word_type": "verb"
+  },
+  {
+    "greek_word": "γκάζι",
+    "greek_present": null,
+    "greek_past": null,
+    "greek_future": null,
+    "georgian_translation": "გაზი",
+    "word_type": "noun"
+  },
+  {
+    "greek_word": "τσάντα",
+    "greek_present": null,
+    "greek_past": null,
+    "greek_future": null,
+    "georgian_translation": "ჩანთა",
+    "word_type": "noun"
+  },
+  {
+    "greek_word": "εμπρός",
+    "greek_present": null,
+    "greek_past": null,
+    "greek_future": null,
+    "georgian_translation": "წინ",
+    "word_type": "adverb"
+  },
+  {
+    "greek_word": "παντελόνι",
+    "greek_present": null,
+    "greek_past": null,
+    "greek_future": null,
+    "georgian_translation": "შარვალი",
+    "word_type": "noun"
+  },
+  {
+    "greek_word": "άγγελος",
+    "greek_present": null,
+    "greek_past": null,
+    "greek_future": null,
+    "georgian_translation": "ანგელოზი",
+    "word_type": "noun"
+  },
+  {
+    "greek_word": "τζάκι",
+    "greek_present": null,
+    "greek_past": null,
+    "greek_future": null,
+    "georgian_translation": "ბუხარი, ღუმელი",
+    "word_type": "noun"
+  },
+  {
+    "greek_word": "αυλή",
+    "greek_present": null,
+    "greek_past": null,
+    "greek_future": null,
+    "georgian_translation": "ეზო",
+    "word_type": "noun"
+  },{
+    "greek_word": "αύριο",
+    "greek_present": null,
+    "greek_past": null,
+    "greek_future": null,
+    "georgian_translation": "ხვალ",
+    "word_type": "adverb"
+  },
+  {
+    "greek_word": "Αύγουστος",
+    "greek_present": null,
+    "greek_past": null,
+    "greek_future": null,
+    "georgian_translation": "აგვისტო",
+    "word_type": "noun"
+  },
+  {
+    "greek_word": "αυτός",
+    "greek_present": null,
+    "greek_past": null,
+    "greek_future": null,
+    "georgian_translation": "ის",
+    "word_type": "pronoun"
+  },
+  {
+    "greek_word": "αυτοκίνητο",
+    "greek_present": null,
+    "greek_past": null,
+    "greek_future": null,
+    "georgian_translation": "მანქანა",
+    "word_type": "noun"
+  },
+  {
+    "greek_word": "Ευρώπη",
+    "greek_present": null,
+    "greek_past": null,
+    "greek_future": null,
+    "georgian_translation": "ევროპა",
+    "word_type": "proper noun"
+  },
+  {
+    "greek_word": "δουλεύω",
+    "greek_present": "δουλεύω",
+    "greek_past": "δούλεψα",
+    "greek_future": "θα δουλέψω",
+    "georgian_translation": "ვმუშაობ",
+    "word_type": "verb"
+  },
+  {
+    "greek_word": "ευτυχία",
+    "greek_present": null,
+    "greek_past": null,
+    "greek_future": null,
+    "georgian_translation": "ბედნიერება",
+    "word_type": "noun"
+  },
+  {
+    "greek_word": "ευχαριστώ",
+    "greek_present": "ευχαριστώ",
+    "greek_past": "ευχαρίστησα",
+    "greek_future": "θα ευχαριστήσω",
+    "georgian_translation": "გმადლობთ",
+    "word_type": "verb"
+  },
+  {
+    "greek_word": "εύκολος",
+    "greek_present": null,
+    "greek_past": null,
+    "greek_future": null,
+    "georgian_translation": "ადვილი",
+    "word_type": "adjective"
+  },
+  {
+    "greek_word": "Καύκασος",
+    "greek_present": null,
+    "greek_past": null,
+    "greek_future": null,
+    "georgian_translation": "კავკასია",
+    "word_type": "proper noun"
+  },
+  {
+    "greek_word": "Γεια σου",
+    "greek_present": null,
+    "greek_past": null,
+    "greek_future": null,
+    "georgian_translation": "გამარჯობა",
+    "word_type": "interjection"
+  },
+  {
+    "greek_word": "Με λένε",
+    "greek_present": null,
+    "greek_past": null,
+    "greek_future": null,
+    "georgian_translation": "მე მქვია",
+    "word_type": "expression"
+  },
+  {
+    "greek_word": "Χαίρω πολύ",
+    "greek_present": "χαίρω",
+    "greek_past": "χάρηκα",
+    "greek_future": "θα χαρώ",
+    "georgian_translation": "ძალიან მიხარია",
+    "word_type": "expression"
+  },
+  {
+    "greek_word": "κι εγώ",
+    "greek_present": null,
+    "greek_past": null,
+    "greek_future": null,
+    "georgian_translation": "მეც",
+    "word_type": "phrase"
+  },
+  {
+    "greek_word": "ωραία",
+    "greek_present": null,
+    "greek_past": null,
+    "greek_future": null,
+    "georgian_translation": "მშვენიერი",
+    "word_type": "adjective"
+  },
+  {
+    "greek_word": "μάθημα",
+    "greek_present": null,
+    "greek_past": null,
+    "greek_future": null,
+    "georgian_translation": "გაკვეთილი",
+    "word_type": "noun"
+  },
+  {
+    "greek_word": "δεν ξέρω",
+    "greek_present": "ξέρω",
+    "greek_past": "ήξερα",
+    "greek_future": "θα ξέρω",
+    "georgian_translation": "არ ვიცი",
+    "word_type": "verb phrase"
+  },
+  {
+    "greek_word": "εντάξει",
+    "greek_present": null,
+    "greek_past": null,
+    "greek_future": null,
+    "georgian_translation": "კარგი, მშვენიერია",
+    "word_type": "interjection"
+  },
+  {
+    "greek_word": "λοιπόν",
+    "greek_present": null,
+    "greek_past": null,
+    "greek_future": null,
+    "georgian_translation": "მაშინ, მაშასადამე",
+    "word_type": "adverb"
+  }
+]
