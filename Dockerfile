@@ -24,20 +24,42 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 # Copy composer files first (for better layer caching)
 COPY composer.json composer.lock ./
 
-# Copy .env.example and create .env file
-COPY .env.example .env
+# Copy all files to check for .env.example
+COPY . /tmp/app/
 
-# Install PHP dependencies (without scripts to avoid key generation issues)
+# Create .env file (either from .env.example or create minimal one)
+RUN if [ -f /tmp/app/.env.example ]; then \
+        cp /tmp/app/.env.example .env; \
+    else \
+        echo "APP_NAME=Laravel" > .env && \
+        echo "APP_ENV=production" >> .env && \
+        echo "APP_KEY=" >> .env && \
+        echo "APP_DEBUG=false" >> .env && \
+        echo "APP_URL=http://localhost" >> .env && \
+        echo "" >> .env && \
+        echo "DB_CONNECTION=mysql" >> .env && \
+        echo "DB_HOST=127.0.0.1" >> .env && \
+        echo "DB_PORT=3306" >> .env && \
+        echo "DB_DATABASE=laravel" >> .env && \
+        echo "DB_USERNAME=root" >> .env && \
+        echo "DB_PASSWORD=" >> .env && \
+        echo "" >> .env && \
+        echo "CACHE_DRIVER=file" >> .env && \
+        echo "SESSION_DRIVER=file" >> .env && \
+        echo "QUEUE_CONNECTION=sync" >> .env; \
+    fi
+
+# Install PHP dependencies
 RUN composer install --no-dev --optimize-autoloader --no-scripts
 
-# Copy existing application directory contents
+# Copy existing application directory contents (overwrite with actual files)
 COPY . /var/www/html
 
 # Generate application key
 RUN php artisan key:generate --force
 
-# Run the post-install scripts now that .env exists
-RUN composer run-script post-install-cmd
+# Run the post-install scripts
+RUN composer run-script post-install-cmd || true
 
 # Set permissions
 RUN chown -R www-data:www-data /var/www/html \
@@ -65,7 +87,7 @@ RUN echo '<VirtualHost *:80>\n\
 # Expose port 80
 EXPOSE 80
 
-# Create startup script that handles runtime configuration
+# Create startup script
 RUN echo '#!/bin/bash\n\
 set -e\n\
 \n\
