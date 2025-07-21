@@ -35,7 +35,7 @@ class WordSeeder extends Seeder
                 'word_type' => 'noun',
             ],
             // --- Now adding 97 more words ---
-            ['greek_word' => 'τρέχω', 'greek_present' => 'τρέχω', 'greek_past' => 'έτρεχα', 'greek_future' => 'θα τρέχω', 'georgian_translation' => 'ვრბივარ', 'word_type' => 'verb'],
+            ['greek_word' => 'τρέχω', 'greek_present' => 'τρέχω', 'greek_past' => 'έτρεχα', 'greek_future' => 'θα τρέχω', 'georgian_translation' => 'დავრბივარ', 'word_type' => 'verb'],
             ['greek_word' => 'γράφω', 'greek_present' => 'γράφω', 'greek_past' => 'έγραφα', 'greek_future' => 'θα γράφω', 'georgian_translation' => 'ვწერ', 'word_type' => 'verb'],
             ['greek_word' => 'διαβάζω', 'greek_present' => 'διαβάζω', 'greek_past' => 'διάβαζα', 'greek_future' => 'θα διαβάζω', 'georgian_translation' => 'ვკითხულობ', 'word_type' => 'verb'],
             ['greek_word' => 'καθηγητής', 'greek_present' => null, 'greek_past' => null, 'greek_future' => null, 'georgian_translation' => 'მასწავლებელი', 'word_type' => 'noun'],
