@@ -14,16 +14,30 @@ RUN apt-get update && apt-get install -y \
     zip \
     unzip \
     libpq-dev \
-    && docker-php-ext-install pdo pdo_mysql pdo_pgsql mbstring exif pcntl bcmath gd
+    && docker-php-ext-install pdo pdo_mysql pdo_pgsql mbstring exif pcntl bcmath gd \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
 # Install Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
+# Copy composer files first (for better layer caching)
+COPY composer.json composer.lock ./
+
+# Copy .env.example and create .env file
+COPY .env.example .env
+
+# Install PHP dependencies (without scripts to avoid key generation issues)
+RUN composer install --no-dev --optimize-autoloader --no-scripts
+
 # Copy existing application directory contents
 COPY . /var/www/html
 
-# Install PHP dependencies
-RUN composer install --no-dev --optimize-autoloader
+# Generate application key
+RUN php artisan key:generate --force
+
+# Run the post-install scripts now that .env exists
+RUN composer run-script post-install-cmd
 
 # Set permissions
 RUN chown -R www-data:www-data /var/www/html \
@@ -51,12 +65,17 @@ RUN echo '<VirtualHost *:80>\n\
 # Expose port 80
 EXPOSE 80
 
-# Create startup script
+# Create startup script that handles runtime configuration
 RUN echo '#!/bin/bash\n\
+set -e\n\
+\n\
+# Run Laravel optimization commands\n\
 php artisan config:cache\n\
 php artisan route:cache\n\
 php artisan view:cache\n\
-apache2-foreground' > /start.sh && chmod +x /start.sh
+\n\
+# Start Apache\n\
+exec apache2-foreground' > /start.sh && chmod +x /start.sh
 
 # Start Apache
 CMD ["/start.sh"]
