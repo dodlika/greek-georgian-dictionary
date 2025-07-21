@@ -10,7 +10,6 @@ use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 
 
-Auth::routes();
 // Public routes
 Route::get('/', [WordController::class, 'index'])->name('words.index');
 Route::get('/words', [WordController::class, 'index'])->name('words.show');
