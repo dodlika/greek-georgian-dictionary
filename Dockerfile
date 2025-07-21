@@ -33,15 +33,16 @@ RUN chown -R www-data:www-data /var/www/html \
 # Enable Apache mod_rewrite
 RUN a2enmod rewrite
 
-# Copy Apache configuration
-COPY docker/apache.conf /etc/apache2/sites-available/000-default.conf
-
-# Create Apache config if not exists
+# Create Apache config for Laravel
 RUN echo '<VirtualHost *:80>\n\
     DocumentRoot /var/www/html/public\n\
     <Directory /var/www/html/public>\n\
         AllowOverride All\n\
         Require all granted\n\
+        Options Indexes FollowSymLinks\n\
+    </Directory>\n\
+    <Directory /var/www/html>\n\
+        AllowOverride All\n\
     </Directory>\n\
     ErrorLog ${APACHE_LOG_DIR}/error.log\n\
     CustomLog ${APACHE_LOG_DIR}/access.log combined\n\
