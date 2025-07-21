@@ -95,89 +95,12 @@ RUN echo "display_errors = On" >> /usr/local/etc/php/conf.d/error_reporting.ini 
     echo "log_errors = On" >> /usr/local/etc/php/conf.d/error_reporting.ini && \
     echo "error_reporting = E_ALL" >> /usr/local/etc/php/conf.d/error_reporting.ini
 
+# Copy the startup script and make it executable
+COPY start.sh /start.sh
+RUN chmod +x /start.sh
+
 # Expose port 80
 EXPOSE 80
-
-# Create comprehensive startup script with error checking and logging
-RUN echo '#!/bin/bash\n\
-set -e\n\
-\n\
-echo "=== Laravel Application Startup ===\"\n\
-echo "Timestamp: $(date)"\n\
-echo "Working directory: $(pwd)"\n\
-echo "User: $(whoami)"\n\
-echo\n\
-\n\
-# Function to log errors\n\
-log_error() {\n\
-    echo "ERROR: $1" >&2\n\
-    if [ -f storage/logs/laravel.log ]; then\n\
-        echo "=== Recent Laravel logs ==="\n\
-        tail -20 storage/logs/laravel.log\n\
-    fi\n\
-    if [ -f /var/log/apache2/error.log ]; then\n\
-        echo "=== Recent Apache error logs ==="\n\
-        tail -20 /var/log/apache2/error.log\n\
-    fi\n\
-}\n\
-\n\
-# Check basic Laravel functionality\n\
-echo "Testing Laravel installation..."\n\
-if ! php artisan --version; then\n\
-    log_error "Laravel artisan command failed"\n\
-    exit 1\n\
-fi\n\
-\n\
-# Check .env file\n\
-echo "Checking .env file..."\n\
-if [ ! -f .env ]; then\n\
-    log_error ".env file not found"\n\
-    exit 1\n\
-fi\n\
-\n\
-echo "APP_KEY value: $(grep APP_KEY .env || echo \"Not found\")"\n\
-\n\
-# Check storage permissions\n\
-echo "Checking storage permissions..."\n\
-if [ ! -w storage/logs ]; then\n\
-    log_error "storage/logs is not writable"\n\
-    exit 1\n\
-fi\n\
-\n\
-# Clear caches with error handling\n\
-echo "Clearing caches..."\n\
-php artisan config:clear 2>&1 || log_error "Config clear failed"\n\
-php artisan route:clear 2>&1 || log_error "Route clear failed"\n\
-php artisan view:clear 2>&1 || log_error "View clear failed"\n\
-php artisan cache:clear 2>&1 || log_error "Cache clear failed"\n\
-\n\
-# Set final permissions\n\
-echo "Setting final permissions..."\n\
-chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache\n\
-chmod -R 777 /var/www/html/storage /var/www/html/bootstrap/cache\n\
-\n\
-# Test basic route\n\
-echo "Testing basic Laravel routes..."\n\
-php artisan route:list --compact 2>&1 || log_error "Route list failed"\n\
-\n\
-# Check for common issues\n\
-echo "=== Environment Check ==="\n\
-echo "PHP Version: $(php -v | head -1)"\n\
-echo "Laravel Version: $(php artisan --version)"\n\
-echo "Current directory contents:"\n\
-ls -la | head -10\n\
-echo "Storage directory:"\n\
-ls -la storage/\n\
-echo "Bootstrap cache directory:"\n\
-ls -la bootstrap/cache/\n\
-\n\
-echo "=== Starting Apache ==="\n\
-echo "If you see a 500 error, check the logs with:"\n\
-echo "docker exec -it <container-name> tail -f storage/logs/laravel.log"\n\
-echo "docker exec -it <container-name> tail -f /var/log/apache2/error.log"\n\
-\n\
-# Start Apache with error output\n\
-exec apache2-foreground' > /start.sh && chmod +x /start.sh
 
 # Start Apache
 CMD ["/start.sh"]
