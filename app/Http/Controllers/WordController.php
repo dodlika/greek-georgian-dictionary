@@ -60,7 +60,7 @@ class WordController extends Controller
     }
 
     $words = $query->paginate(20);
-
+$query->orderBy('greek_word', 'asc');
     return view('words.index', compact(
         'words',
         'greekAlphabetUpper',
