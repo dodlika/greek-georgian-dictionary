@@ -7,6 +7,32 @@ echo "Working directory: $(pwd)"
 echo "User: $(whoami)"
 echo
 
+
+#!/bin/bash
+set -e
+
+echo "=== Configuring Apache for Laravel ==="
+
+cat << EOF > /etc/apache2/sites-available/000-default.conf
+<VirtualHost *:80>
+    DocumentRoot /var/www/html/public
+
+    <Directory /var/www/html/public>
+        AllowOverride All
+        Require all granted
+    </Directory>
+
+    ErrorLog \${APACHE_LOG_DIR}/error.log
+    CustomLog \${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+EOF
+
+echo "=== Apache config updated ==="
+
+# Then start Apache
+exec apache2-foreground
+
+
 # Error logging function
 log_error() {
     echo "ERROR: $1" >&2
