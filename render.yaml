@@ -1,3 +1,7 @@
+databases:
+  - name: greek-georgian-dictionary-db
+    plan: free
+
 services:
   - type: web
     name: greek-georgian-dictionary
@@ -5,13 +9,11 @@ services:
     plan: free
     buildCommand: |
       composer install --no-dev --optimize-autoloader
-      php artisan config:cache
-      php artisan route:cache
-      php artisan view:cache
+      php artisan config:clear
+      php artisan route:clear
+      php artisan view:clear
     startCommand: |
       php artisan migrate --force
-      echo "Running seeder without condition..."
-      php artisan db:seed --force
       php artisan serve --host=0.0.0.0 --port=$PORT
     envVars:
       - key: APP_ENV
@@ -24,3 +26,35 @@ services:
         value: stderr
       - key: SESSION_DRIVER
         value: cookie
+      - key: SESSION_LIFETIME
+        value: 120
+      - key: SESSION_ENCRYPT
+        value: false
+      - key: SESSION_PATH
+        value: /
+      - key: SESSION_DOMAIN
+        value: 
+      - key: SESSION_SAME_SITE
+        value: lax
+      - key: DB_CONNECTION
+        value: pgsql
+      - key: DB_HOST
+        fromDatabase:
+          name: greek-georgian-dictionary-db
+          property: host
+      - key: DB_PORT
+        fromDatabase:
+          name: greek-georgian-dictionary-db
+          property: port
+      - key: DB_DATABASE
+        fromDatabase:
+          name: greek-georgian-dictionary-db
+          property: database
+      - key: DB_USERNAME
+        fromDatabase:
+          name: greek-georgian-dictionary-db
+          property: user
+      - key: DB_PASSWORD
+        fromDatabase:
+          name: greek-georgian-dictionary-db
+          property: password
