@@ -20,6 +20,42 @@ log_error() {
     fi
 }
 
+# Configure Apache for Laravel (redundant safety check)
+echo "=== Configuring Apache for Laravel ==="
+cat << EOF > /etc/apache2/sites-available/000-default.conf
+<VirtualHost *:80>
+    DocumentRoot /var/www/html/public
+    
+    <Directory /var/www/html/public>
+        AllowOverride All
+        Require all granted
+        DirectoryIndex index.php
+        Options -Indexes +FollowSymLinks
+    </Directory>
+    
+    <Directory /var/www/html>
+        Options -Indexes
+        AllowOverride None
+        Require all denied
+    </Directory>
+    
+    ErrorLog \${APACHE_LOG_DIR}/error.log
+    CustomLog \${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+EOF
+
+echo "=== Apache config updated ==="
+
+# Verify public directory exists and has index.php
+if [ ! -f "public/index.php" ]; then
+    log_error "Laravel public/index.php not found!"
+    echo "Directory contents:"
+    ls -la
+    echo "Public directory contents:"
+    ls -la public/ 2>/dev/null || echo "Public directory doesn't exist"
+    exit 1
+fi
+
 # Test Artisan
 echo "Checking Laravel..."
 if ! php artisan --version; then
@@ -56,6 +92,8 @@ php artisan cache:clear || log_error "Cache clear failed"
 echo "Fixing permissions..."
 chown -R www-data:www-data storage bootstrap/cache
 chmod -R 775 storage bootstrap/cache
+chown -R www-data:www-data public
+chmod -R 755 public
 
 # Run migrations with verbose output
 echo "Running database migrations..."
@@ -76,6 +114,12 @@ if [ "$WORD_COUNT" = "0" ]; then
 else
     echo "Words already exist, skipping seeder"
 fi
+
+echo "=== Final checks ==="
+echo "Apache document root check:"
+grep -n "DocumentRoot" /etc/apache2/sites-available/000-default.conf
+echo "Laravel public directory:"
+ls -la public/
 
 echo "Starting Apache..."
 exec apache2-foreground

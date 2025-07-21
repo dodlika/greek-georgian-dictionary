@@ -38,14 +38,25 @@ RUN mkdir -p storage/logs storage/framework/cache storage/framework/sessions sto
 # Enable Apache mod_rewrite
 RUN a2enmod rewrite
 
-# Configure Apache for Laravel
-RUN echo '<Directory /var/www/html/public>\n\
-    AllowOverride All\n\
-    Require all granted\n\
-</Directory>\n\
-\n\
-ErrorLog ${APACHE_LOG_DIR}/error.log\n\
-CustomLog ${APACHE_LOG_DIR}/access.log combined\n' > /etc/apache2/sites-available/000-default.conf
+# Configure Apache for Laravel - Point DocumentRoot to public directory
+RUN echo '<VirtualHost *:80>\n\
+    DocumentRoot /var/www/html/public\n\
+    \n\
+    <Directory /var/www/html/public>\n\
+        AllowOverride All\n\
+        Require all granted\n\
+        DirectoryIndex index.php\n\
+    </Directory>\n\
+    \n\
+    <Directory /var/www/html>\n\
+        Options -Indexes\n\
+        AllowOverride None\n\
+        Require all denied\n\
+    </Directory>\n\
+    \n\
+    ErrorLog ${APACHE_LOG_DIR}/error.log\n\
+    CustomLog ${APACHE_LOG_DIR}/access.log combined\n\
+</VirtualHost>' > /etc/apache2/sites-available/000-default.conf
 
 # Enable PHP error reporting (optional for dev/debug)
 RUN echo "display_errors = On" >> /usr/local/etc/php/conf.d/error_reporting.ini \
