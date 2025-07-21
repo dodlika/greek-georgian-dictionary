@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\WordController;
+use App\Http\Controllers\GrammarController;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Artisan;
@@ -9,6 +10,11 @@ use Illuminate\Support\Facades\Artisan;
 Route::get('/', [WordController::class, 'index'])->name('words.index');
 Route::get('/words/create', [WordController::class, 'create'])->name('words.create');
 Route::post('/words', [WordController::class, 'store'])->name('words.store');
+
+// Grammar routes
+Route::get('/grammar', [GrammarController::class, 'index'])->name('grammar.index');
+Route::get('/grammar/{section}', [GrammarController::class, 'show'])->name('grammar.show');
+
 Route::get('/debug', function () {
     $debug = [];
     
