@@ -8,9 +8,10 @@ services:
       php artisan config:cache
       php artisan route:cache
       php artisan view:cache
+    startCommand: |
       php artisan migrate --force
       php artisan db:seed --force
-    startCommand: php artisan serve --host=0.0.0.0 --port=$PORT
+      php artisan serve --host=0.0.0.0 --port=$PORT
     envVars:
       - key: APP_ENV
         value: production
