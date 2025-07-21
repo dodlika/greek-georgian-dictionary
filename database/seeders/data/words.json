@@ -630,14 +630,7 @@
     "georgian_translation": "ვსწავლობ",
     "word_type": "verb"
   },
-  {
-    "greek_word": "διαβάζω",
-    "greek_present": "διαβάζω",
-    "greek_past": "διάβασα",
-    "greek_future": "θα διαβάσω",
-    "georgian_translation": "ვკითხულობ",
-    "word_type": "verb"
-  },
+
   {
     "greek_word": "θέλω",
     "greek_present": "θέλω",
@@ -782,14 +775,7 @@
     "georgian_translation": "ვისმენ",
     "word_type": "verb"
   },
-  {
-    "greek_word": "ακούω",
-    "greek_present": "ακούω",
-    "greek_past": "άκουσα",
-    "greek_future": "θα ακούσω",
-    "georgian_translation": "ვიგონებ",
-    "word_type": "verb"
-  },
+ 
   {
     "greek_word": "λέω",
     "greek_present": "λέω",
@@ -1190,14 +1176,7 @@
     "georgian_translation": "ვსვამ",
     "word_type": "verb"
   },
-  {
-    "greek_word": "βλέπω",
-    "greek_present": "βλέπω",
-    "greek_past": "είδα",
-    "greek_future": "θα δω",
-    "georgian_translation": "ვხედავ, ვუყურებ",
-    "word_type": "verb"
-  },
+ 
   {
     "greek_word": "τηλεόραση",
     "greek_present": null,
@@ -2904,14 +2883,7 @@
     "georgian_translation": "ხშირად",
     "word_type": "adverb"
   },
-  {
-    "greek_word": "βρέχει",
-    "greek_present": "βρέχει",
-    "greek_past": "έβρεξε",
-    "greek_future": "θα βρέξει",
-    "georgian_translation": "წვიმს",
-    "word_type": "verb"
-  },
+ 
   {
     "greek_word": "τα γέλια",
     "greek_present": null,
@@ -3368,14 +3340,7 @@
     "georgian_translation": "ზღვის თევზი",
     "word_type": "noun"
   },
-  {
-    "greek_word": "αγοράζω",
-    "greek_present": "αγοράζω",
-    "greek_past": "αγόρασα",
-    "greek_future": "θα αγοράσω",
-    "georgian_translation": "ვყიდულობ",
-    "word_type": "verb"
-  },
+
   {
     "greek_word": "έξω",
     "greek_present": null,
@@ -4089,14 +4054,6 @@
   "word_type": "adjective"
 },
 {
-  "greek_word": "αφηρημένος",
-  "greek_present": null,
-  "greek_past": null,
-  "greek_future": null,
-  "georgian_translation": "დაფიქრებული",
-  "word_type": "adjective"
-},
-{
   "greek_word": "ανόητος",
   "greek_present": null,
   "greek_past": null,
@@ -4736,14 +4693,7 @@
   "georgian_translation": "ძველი",
   "word_type": "adjective"
 },
-{
-  "greek_word": "γεμάτος",
-  "greek_present": null,
-  "greek_past": null,
-  "greek_future": null,
-  "georgian_translation": "სავსე",
-  "word_type": "adjective"
-},
+
 {
   "greek_word": "σε συναντάω",
   "greek_present": "συναντώ",
@@ -4759,14 +4709,6 @@
   "greek_future": null,
   "georgian_translation": "გესალმები",
   "word_type": "phrase"
-},
-{
-  "greek_word": "γελάω",
-  "greek_present": "γελάω",
-  "greek_past": null,
-  "greek_future": null,
-  "georgian_translation": "იცინი",
-  "word_type": "verb"
 },
 {
   "greek_word": "βοήθεια",
@@ -5026,14 +4968,6 @@
   "word_type": "verb"
 },
 {
-  "greek_word": "σβήνω",
-  "greek_present": "σβήνω",
-  "greek_past": "έσβησα",
-  "greek_future": "θα σβήσω",
-  "georgian_translation": "ჩაქრობა",
-  "word_type": "verb"
-},
-{
   "greek_word": "γυρίζω",
   "greek_present": "γυρίζω",
   "greek_past": "γύρισα",
@@ -5113,14 +5047,7 @@
   "georgian_translation": "იხდის",
   "word_type": "verb"
 },
-{
-  "greek_word": "γεμάτος",
-  "greek_present": null,
-  "greek_past": null,
-  "greek_future": null,
-  "georgian_translation": "სავსე",
-  "word_type": "adjective"
-},
+
 {
   "greek_word": "άδειος",
   "greek_present": null,
@@ -5257,22 +5184,7 @@
   "georgian_translation": "ჩააქრო სინათლე",
   "word_type": "phrase"
 },
-{
-  "greek_word": "ανάβω",
-  "greek_present": "ανάβω",
-  "greek_past": null,
-  "greek_future": null,
-  "georgian_translation": "ვანთებ",
-  "word_type": "verb"
-},
-{
-  "greek_word": "σβήνω",
-  "greek_present": "σβήνω",
-  "greek_past": null,
-  "greek_future": null,
-  "georgian_translation": "ვაქრობ",
-  "word_type": "verb"
-},
+
 {
   "greek_word": "βρίσκεται",
   "greek_present": "βρίσκεται",
@@ -5897,14 +5809,7 @@
   "georgian_translation": "ტირი",
   "word_type": "verb"
 },
-{
-  "greek_word": "δίνω",
-  "greek_present": "δίνω",
-  "greek_past": null,
-  "greek_future": null,
-  "georgian_translation": "ვაძლევ",
-  "word_type": "verb"
-},
+
 {
   "greek_word": "παίρνω",
   "greek_present": "παίρνω",
@@ -6977,14 +6882,7 @@
     "georgian_translation": "მივდივარ",
     "word_type": "verb"
   },
-  {
-    "greek_word": "βγαίνω",
-    "greek_present": "βγαίνω",
-    "greek_past": null,
-    "greek_future": null,
-    "georgian_translation": "გამოვდივარ",
-    "word_type": "verb"
-  },
+
   {
     "greek_word": "ανοιχτό",
     "greek_present": null,
@@ -7401,14 +7299,7 @@
     "georgian_translation": "დავლევ",
     "word_type": "verb-future"
   },
-  {
-    "greek_word": "βλέπω",
-    "greek_present": "βλέπω",
-    "greek_past": null,
-    "greek_future": null,
-    "georgian_translation": "ვუყურებ, ვხედავ",
-    "word_type": "verb"
-  },
+ 
   {
     "greek_word": "θα δω",
     "greek_present": null,
@@ -7416,14 +7307,6 @@
     "greek_future": "θα δω",
     "georgian_translation": "დავინახავ",
     "word_type": "verb-future"
-  },
-  {
-    "greek_word": "βρίσκω",
-    "greek_present": "βρίσκω",
-    "greek_past": null,
-    "greek_future": null,
-    "georgian_translation": "ვპოულობ",
-    "word_type": "verb"
   },
   {
     "greek_word": "θα βρω",
@@ -8122,14 +8005,7 @@
     "georgian_translation": "ჩავაქრე",
     "word_type": "verb"
   },
-  {
-    "greek_word": "διαβάζω",
-    "greek_present": "διαβάζω",
-    "greek_past": "διάβασα",
-    "greek_future": "θα διαβάσω",
-    "georgian_translation": "ვკითხულობ",
-    "word_type": "verb"
-  },
+
   {
     "greek_word": "διάβασα",
     "greek_present": "διαβάζω",
