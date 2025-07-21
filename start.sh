@@ -75,5 +75,9 @@ chmod -R 775 storage bootstrap/cache
 echo "Running database migrations..."
 php artisan migrate --force || log_error "Migrations failed"
 
+echo "Running WordSeeder..."
+php artisan db:seed --class=WordSeeder --force || log_error "Seeder failed"
+
+
 echo "Starting Apache..."
 exec apache2-foreground
