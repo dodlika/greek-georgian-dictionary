@@ -10,7 +10,13 @@ services:
       php artisan view:cache
     startCommand: |
       php artisan migrate --force
-      php artisan db:seed --force
+      # Only seed if database is empty
+      if [ $(php artisan tinker --execute="echo App\\Models\\Word::count();") -eq 0 ]; then
+        echo "Database empty, seeding..."
+        php artisan db:seed --force
+      else
+        echo "Database has data, skipping seeder"
+      fi
       php artisan serve --host=0.0.0.0 --port=$PORT
     envVars:
       - key: APP_ENV

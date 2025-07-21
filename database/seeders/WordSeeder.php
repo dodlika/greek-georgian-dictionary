@@ -4,90 +4,37 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\Word;
-use Illuminate\Support\Facades\DB;
-use Exception;
 
 class WordSeeder extends Seeder
 {
-    public function run()
+    public function run(): void
     {
-        try {
-            // Check if table exists
-            if (!DB::getSchemaBuilder()->hasTable('words')) {
-                throw new Exception('Words table does not exist');
-            }
+        $words = [
+            ['greek_word' => 'καλημέρα', 'georgian_translation' => 'დილა მშვიდობისა', 'pronunciation' => 'kalimera'],
+            ['greek_word' => 'καλησπέρα', 'georgian_translation' => 'საღამო მშვიდობისა', 'pronunciation' => 'kalispera'],
+            ['greek_word' => 'γεια σας', 'georgian_translation' => 'გამარჯობა', 'pronunciation' => 'yia sas'],
+            ['greek_word' => 'αντίο', 'georgian_translation' => 'ნახვამდის', 'pronunciation' => 'adio'],
+            ['greek_word' => 'ευχαριστώ', 'georgian_translation' => 'მადლობა', 'pronunciation' => 'efcharisto'],
+            ['greek_word' => 'παρακαλώ', 'georgian_translation' => 'თუ შეიძლება', 'pronunciation' => 'parakalo'],
+            ['greek_word' => 'συγγνώμη', 'georgian_translation' => 'უკაცრავად', 'pronunciation' => 'signomi'],
+            ['greek_word' => 'ναι', 'georgian_translation' => 'დიახ', 'pronunciation' => 'ne'],
+            ['greek_word' => 'όχι', 'georgian_translation' => 'არა', 'pronunciation' => 'ochi'],
+            ['greek_word' => 'νερό', 'georgian_translation' => 'წყალი', 'pronunciation' => 'nero'],
+            ['greek_word' => 'φαγητό', 'georgian_translation' => 'საჭმელი', 'pronunciation' => 'fagito'],
+            ['greek_word' => 'σπίτι', 'georgian_translation' => 'სახლი', 'pronunciation' => 'spiti'],
+            ['greek_word' => 'δρόμος', 'georgian_translation' => 'ქუჩა', 'pronunciation' => 'dromos'],
+            ['greek_word' => 'αυτοκίνητο', 'georgian_translation' => 'მანქანა', 'pronunciation' => 'aftokinito'],
+            ['greek_word' => 'λεωφορείο', 'georgian_translation' => 'ავტობუსი', 'pronunciation' => 'leoforeio'],
+        ];
 
-            // Check if data already exists
-            $existingCount = Word::count();
-            if ($existingCount > 0) {
-                $this->command->info("Words table already has {$existingCount} records. Skipping seeding.");
-                return;
-            }
-
-            $this->command->info('Starting to seed words...');
-
-            $words = [
-                [
-                    'greek_word' => 'είμαι',
-                    'greek_present' => 'είμαι',
-                    'greek_past' => 'ήμουν',
-                    'greek_future' => 'θα είμαι',
-                    'georgian_translation' => 'ვარ',
-                    'word_type' => 'verb',
-                ],
-                [
-                    'greek_word' => 'έχω',
-                    'greek_present' => 'έχω',
-                    'greek_past' => 'είχα',
-                    'greek_future' => 'θα έχω',
-                    'georgian_translation' => 'მაქვს',
-                    'word_type' => 'verb',
-                ],
-                [
-                    'greek_word' => 'σπίτι',
-                    'greek_present' => null,
-                    'greek_past' => null,
-                    'greek_future' => null,
-                    'georgian_translation' => 'სახლი',
-                    'word_type' => 'noun',
-                ],
-                ['greek_word' => 'τρέχω', 'greek_present' => 'τρέχω', 'greek_past' => 'έτρεχα', 'greek_future' => 'θα τρέχω', 'georgian_translation' => 'დავრბივარ', 'word_type' => 'verb'],
-                ['greek_word' => 'γράφω', 'greek_present' => 'γράφω', 'greek_past' => 'έγραφα', 'greek_future' => 'θα γράφω', 'georgian_translation' => 'ვწერ', 'word_type' => 'verb'],
-                ['greek_word' => 'διαβάζω', 'greek_present' => 'διαβάζω', 'greek_past' => 'διάβαζα', 'greek_future' => 'θα διαβάζω', 'georgian_translation' => 'ვკითხულობ', 'word_type' => 'verb'],
-                ['greek_word' => 'καθηγητής', 'greek_present' => null, 'greek_past' => null, 'greek_future' => null, 'georgian_translation' => 'მასწავლებელი', 'word_type' => 'noun'],
-                ['greek_word' => 'μαθητής', 'greek_present' => null, 'greek_past' => null, 'greek_future' => null, 'georgian_translation' => 'სტუდენტი', 'word_type' => 'noun'],
-                ['greek_word' => 'δρόμος', 'greek_present' => null, 'greek_past' => null, 'greek_future' => null, 'georgian_translation' => 'ქუჩა', 'word_type' => 'noun'],
-                ['greek_word' => 'τρέφω', 'greek_present' => 'τρέφω', 'greek_past' => 'έτρεφα', 'greek_future' => 'θα τρέφω', 'georgian_translation' => 'ვკვებავ', 'word_type' => 'verb'],
-                ['greek_word' => 'λέω', 'greek_present' => 'λέω', 'greek_past' => 'είπα', 'greek_future' => 'θα πω', 'georgian_translation' => 'ვამბობ', 'word_type' => 'verb'],
-                ['greek_word' => 'βλέπω', 'greek_present' => 'βλέπω', 'greek_past' => 'είδα', 'greek_future' => 'θα δω', 'georgian_translation' => 'ვხედავ', 'word_type' => 'verb'],
-                ['greek_word' => 'άνθρωπος', 'greek_present' => null, 'greek_past' => null, 'greek_future' => null, 'georgian_translation' => 'ადამიანი', 'word_type' => 'noun'],
-                // Add more words here...
-            ];
-
-            DB::beginTransaction();
-            
-            $count = 0;
-            foreach ($words as $wordData) {
-                // Use updateOrCreate to prevent duplicates
-                Word::updateOrCreate(
-                    ['greek_word' => $wordData['greek_word']], // Find by greek_word
-                    $wordData // Update or create with this data
-                );
-                $count++;
-                
-                if ($count % 5 == 0) {
-                    $this->command->info("Processed {$count} words so far...");
-                }
-            }
-            
-            DB::commit();
-            
-            $this->command->info("Successfully seeded {$count} words!");
-            
-        } catch (Exception $e) {
-            DB::rollBack();
-            $this->command->error('Seeding failed: ' . $e->getMessage());
-            throw $e;
+        foreach ($words as $wordData) {
+            // Only create if this Greek word doesn't already exist
+            Word::firstOrCreate(
+                ['greek_word' => $wordData['greek_word']], // Search criteria
+                $wordData // Data to insert if not found
+            );
         }
+
+        $this->command->info('Word seeding completed. Preserved existing user words.');
     }
 }
