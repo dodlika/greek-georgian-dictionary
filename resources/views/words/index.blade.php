@@ -31,6 +31,9 @@
     <a href="{{ route('words.create') }}" class="btn btn-success">
         ➕ Add New Word
     </a>
+    <a href="{{ route('grammar.index') }}" class="btn btn-outline-primary">
+        📚 Grammar Guide
+    </a>
 </div>
 
 <div class="mb-3">
