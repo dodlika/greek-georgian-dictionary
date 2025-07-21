@@ -58,9 +58,9 @@ class WordController extends Controller
     if ($request->filled('type')) {
         $query->where('word_type', $request->get('type'));
     }
+$query->orderBy('greek_word', 'asc');
 
     $words = $query->paginate(20);
-$query->orderBy('greek_word', 'asc');
     return view('words.index', compact(
         'words',
         'greekAlphabetUpper',
