@@ -2,46 +2,49 @@
 
 @section('content')
 
-
-<div class="row my-4">
-   <select name="word_type" class="form-select me-2" style="max-width: 180px;">
-    <option value="">ყველა ტიპი</option>
-    <option value="noun" {{ request('word_type') == 'noun' ? 'selected' : '' }}>ზმნა</option>
-    <option value="verb" {{ request('word_type') == 'verb' ? 'selected' : '' }}>საკითხავი</option>
-    <option value="adjective" {{ request('word_type') == 'adjective' ? 'selected' : '' }}>სახელობითი</option>
-</select>
-</div>
-
 <div class="row mb-4">
-    <div class="col-md-8">
-        <form method="GET" action="{{ route('words.index') }}" class="d-flex">
+    <div class="col-md-12">
+        <form method="GET" action="{{ route('words.index') }}" class="d-flex flex-wrap align-items-center gap-2">
+
             <input type="text" name="search" class="form-control me-2 georgian-text" 
-                   placeholder="ძიება ქართულად..." value="{{ request('search') }}">
-            <button class="btn btn-primary" type="submit">ძიება</button>
-            @if(request('search'))
-                <a href="{{ route('words.index') }}" class="btn btn-secondary ms-2">გასუფთავება</a>
+                   placeholder="ძიება ქართულად..." value="{{ request('search') }}" style="max-width: 250px;">
+
+            <select name="type" class="form-select me-2" style="max-width: 180px;">
+                <option value="">ყველა ტიპი</option>
+                @foreach($types as $type)
+                    <option value="{{ $type }}" {{ request('type') == $type ? 'selected' : '' }}>
+                        {{ ucfirst($type) }}
+                    </option>
+                @endforeach
+            </select>
+
+            <button type="submit" class="btn btn-primary me-2">ძიება</button>
+
+            @if(request()->hasAny(['search', 'type', 'starts_with']))
+                <a href="{{ route('words.index') }}" class="btn btn-secondary">გასუფთავება</a>
             @endif
         </form>
     </div>
-    <div class="col-md-4">
-        <a href="{{ route('words.create') }}" class="btn btn-success">Add New Word</a>
-    </div>
 </div>
-
-@if(session('success'))
-    <div class="alert alert-success">{{ session('success') }}</div>
-@endif
 
 <div class="mb-3">
     <strong>Filter by Greek letter:</strong>
-    @foreach($greekLetters as $letter)
-        <a href="{{ route('words.index', ['starts_with' => $letter]) }}" class="btn btn-outline-primary btn-sm">
+    @foreach($greekAlphabetUpper as $letter)
+        @php
+            // Preserve current search and type, but replace starts_with with this letter
+            $queryParams = request()->except('starts_with');
+            $queryParams['starts_with'] = $letter;
+        @endphp
+        <a href="{{ route('words.index', $queryParams) }}" 
+           class="btn btn-outline-primary btn-sm {{ request('starts_with') === $letter ? 'active' : '' }}">
             {{ $letter }}
         </a>
     @endforeach
 </div>
 
-
+@if(session('success'))
+    <div class="alert alert-success">{{ session('success') }}</div>
+@endif
 
 <div class="table-responsive">
     <table class="table table-striped">
@@ -75,4 +78,5 @@
 </div>
 
 {{ $words->withQueryString()->links() }}
+
 @endsection
