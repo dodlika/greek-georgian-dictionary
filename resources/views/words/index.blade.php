@@ -1,6 +1,17 @@
 @extends('layouts.app')
 
 @section('content')
+
+
+<div class="row my-4">
+   <select name="word_type" class="form-select me-2" style="max-width: 180px;">
+    <option value="">ყველა ტიპი</option>
+    <option value="noun" {{ request('word_type') == 'noun' ? 'selected' : '' }}>ზმნა</option>
+    <option value="verb" {{ request('word_type') == 'verb' ? 'selected' : '' }}>საკითხავი</option>
+    <option value="adjective" {{ request('word_type') == 'adjective' ? 'selected' : '' }}>სახელობითი</option>
+</select>
+</div>
+
 <div class="row mb-4">
     <div class="col-md-8">
         <form method="GET" action="{{ route('words.index') }}" class="d-flex">
@@ -20,6 +31,17 @@
 @if(session('success'))
     <div class="alert alert-success">{{ session('success') }}</div>
 @endif
+
+<div class="mb-3">
+    <strong>Filter by Greek letter:</strong>
+    @foreach(range('Α', 'Ω') as $letter)
+        <a href="{{ route('words.index', ['starts_with' => $letter] + request()->except('page')) }}"
+           class="btn btn-outline-secondary btn-sm {{ request('starts_with') == $letter ? 'active' : '' }}">
+            {{ $letter }}
+        </a>
+    @endforeach
+</div>
+
 
 <div class="table-responsive">
     <table class="table table-striped">

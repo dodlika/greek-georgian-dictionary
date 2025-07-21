@@ -8,18 +8,29 @@ use Illuminate\Http\Request;
 class WordController extends Controller
 {
     public function index(Request $request)
-    {
-        $query = Word::query();
-        
-        if ($request->filled('search')) {
-            $search = $request->get('search');
-            $query->searchGeorgian($search);
-        }
-        
-        $words = $query->paginate(20);
-        
-        return view('words.index', compact('words'));
+{
+    $query = Word::query();
+
+    // Filter by Georgian search term
+    if ($request->filled('search')) {
+        $query->searchGeorgian($request->get('search'));
     }
+
+    // Filter by word type
+    if ($request->filled('word_type')) {
+        $query->where('word_type', $request->get('word_type'));
+    }
+
+    // Filter by Greek first letter
+    if ($request->filled('starts_with')) {
+        $query->where('greek_word', 'LIKE', $request->get('starts_with') . '%');
+    }
+
+    $words = $query->paginate(20);
+
+    return view('words.index', compact('words'));
+}
+
 
     public function create()
     {
