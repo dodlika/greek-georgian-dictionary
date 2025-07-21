@@ -51,7 +51,6 @@ class WordSeeder extends Seeder
 
         foreach ($words as $word) {
             Word::create($word);
-            \Log::info("Seeding word: {$word['greek_word']}");
 
         }
     }
