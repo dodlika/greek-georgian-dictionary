@@ -27,8 +27,18 @@ COPY composer.json composer.lock* ./
 # Install PHP dependencies
 RUN composer install --no-dev --optimize-autoloader --no-scripts
 
+# Install Node.js for building assets
+RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - \
+    && apt-get install -y nodejs
+
 # Copy full application source
 COPY . .
+
+# Install and build frontend assets
+RUN if [ -f package.json ]; then \
+        npm install && \
+        npm run build; \
+    fi
 
 # Set permissions for Laravel directories
 RUN mkdir -p storage/logs storage/framework/cache storage/framework/sessions storage/framework/views bootstrap/cache \
