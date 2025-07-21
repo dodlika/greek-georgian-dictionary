@@ -71,6 +71,35 @@ $query->orderBy('greek_word', 'asc');
 }
 
 
+public function edit(Word $word)
+{
+    // Pass word and types for select dropdown
+    $types = Word::select('word_type')->distinct()->orderBy('word_type')->pluck('word_type')->toArray();
+    return view('words.edit', compact('word', 'types'));
+}
+
+public function update(Request $request, Word $word)
+{
+    $request->validate([
+        'greek_word' => 'required|string|max:255',
+        'greek_present' => 'nullable|string|max:255',
+        'greek_past' => 'nullable|string|max:255',
+        'greek_future' => 'nullable|string|max:255',
+        'georgian_translation' => 'required|string|max:255',
+        'word_type' => 'required|string|max:255',
+    ]);
+
+    $word->update($request->all());
+
+    return redirect()->route('words.index')->with('success', 'Word updated successfully!');
+}
+
+public function destroy(Word $word)
+{
+    $word->delete();
+
+    return redirect()->route('words.index')->with('success', 'Word deleted successfully!');
+}
 
 
     public function create()

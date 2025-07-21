@@ -8,8 +8,8 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Artisan;
 
 Route::get('/', [WordController::class, 'index'])->name('words.index');
-Route::get('/words/create', [WordController::class, 'create'])->name('words.create');
-Route::post('/words', [WordController::class, 'store'])->name('words.store');
+Route::resource('words', WordController::class);
+
 
 // Grammar routes
 Route::get('/grammar', [GrammarController::class, 'index'])->name('grammar.index');

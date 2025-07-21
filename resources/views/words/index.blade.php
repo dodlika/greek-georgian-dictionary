@@ -65,6 +65,7 @@
                 <th>Future</th>
                 <th>Georgian Translation</th>
                 <th>Type</th>
+                <th>Actions</th> <!-- New column header for edit/delete -->
             </tr>
         </thead>
         <tbody>
@@ -76,10 +77,20 @@
                     <td class="greek-text">{{ $word->greek_future ?? '-' }}</td>
                     <td class="georgian-text fw-bold">{{ $word->georgian_translation }}</td>
                     <td><span class="badge bg-info">{{ $word->word_type }}</span></td>
+                    <td>
+                        <a href="{{ route('words.edit', $word) }}" class="btn btn-sm btn-warning">Edit</a>
+
+                        <form action="{{ route('words.destroy', $word) }}" method="POST" class="d-inline" 
+                              onsubmit="return confirm('Are you sure you want to delete this word?');">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                        </form>
+                    </td>
                 </tr>
             @empty
                 <tr>
-                    <td colspan="6" class="text-center">No words found</td>
+                    <td colspan="7" class="text-center">No words found</td>
                 </tr>
             @endforelse
         </tbody>
