@@ -47,9 +47,12 @@ class WordSeeder extends Seeder
             ['greek_word' => 'άνθρωπος', 'greek_present' => null, 'greek_past' => null, 'greek_future' => null, 'georgian_translation' => 'ადამიანი', 'word_type' => 'noun'],
             // (Continue similarly to reach 100 words)
         ];
+        
 
         foreach ($words as $word) {
             Word::create($word);
+            \Log::info("Seeding word: {$word['greek_word']}");
+
         }
     }
 }
