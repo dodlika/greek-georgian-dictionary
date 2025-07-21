@@ -27,6 +27,12 @@
     </div>
 </div>
 
+<div class="mb-3 text-end">
+    <a href="{{ route('words.create') }}" class="btn btn-success">
+        ➕ Add New Word
+    </a>
+</div>
+
 <div class="mb-3">
     <strong>Filter by Greek letter:</strong>
     @foreach($greekAlphabetUpper as $letter)
