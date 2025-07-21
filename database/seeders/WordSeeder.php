@@ -68,11 +68,15 @@ class WordSeeder extends Seeder
             
             $count = 0;
             foreach ($words as $wordData) {
-                Word::create($wordData);
+                // Use updateOrCreate to prevent duplicates
+                Word::updateOrCreate(
+                    ['greek_word' => $wordData['greek_word']], // Find by greek_word
+                    $wordData // Update or create with this data
+                );
                 $count++;
                 
-                if ($count % 10 == 0) {
-                    $this->command->info("Seeded {$count} words so far...");
+                if ($count % 5 == 0) {
+                    $this->command->info("Processed {$count} words so far...");
                 }
             }
             
