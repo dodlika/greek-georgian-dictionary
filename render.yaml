@@ -1,27 +1,8 @@
 services:
   - type: web
     name: greek-georgian-dictionary
-    env: docker
-    plan: free
-    buildCommand: ./render-build.sh
-    startCommand: php artisan serve --host=0.0.0.0 --port=$PORT
-    envVars:
-      - key: APP_ENV
-        value: production
-      - key: APP_DEBUG
-        value: false
-      - key: SEED_DATABASE
-        value: true
-
-databases:
-  - name: greek-georgian-db
-    databaseName: greek_georgian_dictionary
-    user: app_user
-    plan: free
-services:
-  - type: web
-    name: greek-georgian-dictionary
     env: php
+    plan: free
     buildCommand: composer install --no-dev --optimize-autoloader && php artisan config:cache && php artisan route:cache && php artisan view:cache
     startCommand: php artisan serve --host=0.0.0.0 --port=$PORT
     envVars:
@@ -35,7 +16,3 @@ services:
         value: stderr
       - key: SESSION_DRIVER
         value: cookie
-
-databases:
-  - name: greek-vocab-db
-    databaseName: greek_vocabulary
