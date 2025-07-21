@@ -34,13 +34,13 @@
 
 <div class="mb-3">
     <strong>Filter by Greek letter:</strong>
-    @foreach(range('Α', 'Ω') as $letter)
-        <a href="{{ route('words.index', ['starts_with' => $letter] + request()->except('page')) }}"
-           class="btn btn-outline-secondary btn-sm {{ request('starts_with') == $letter ? 'active' : '' }}">
+    @foreach($greekLetters as $letter)
+        <a href="{{ route('words.index', ['starts_with' => $letter]) }}" class="btn btn-outline-primary btn-sm">
             {{ $letter }}
         </a>
     @endforeach
 </div>
+
 
 
 <div class="table-responsive">

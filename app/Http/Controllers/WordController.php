@@ -11,25 +11,32 @@ class WordController extends Controller
 {
     $query = Word::query();
 
-    // Filter by Georgian search term
+    // Apply search filter
     if ($request->filled('search')) {
         $query->searchGeorgian($request->get('search'));
     }
 
-    // Filter by word type
-    if ($request->filled('word_type')) {
-        $query->where('word_type', $request->get('word_type'));
-    }
-
-    // Filter by Greek first letter
+    // Apply "starts with" Greek letter filter
     if ($request->filled('starts_with')) {
         $query->where('greek_word', 'LIKE', $request->get('starts_with') . '%');
     }
 
+    // Apply "word_type" filter
+    if ($request->filled('word_type')) {
+        $query->where('word_type', $request->get('word_type'));
+    }
+
     $words = $query->paginate(20);
 
-    return view('words.index', compact('words'));
+    // Define Greek alphabet for filtering UI
+    $greekLetters = ['Α','Β','Γ','Δ','Ε','Ζ','Η','Θ','Ι','Κ','Λ','Μ','Ν','Ξ','Ο','Π','Ρ','Σ','Τ','Υ','Φ','Χ','Ψ','Ω'];
+
+    // Optional: If you want to include Georgian letters too
+    $georgianLetters = ['ა','ბ','გ','დ','ე','ვ','ზ','თ','ი','კ','ლ','მ','ნ','ო','პ','ჟ','რ','ს','ტ','უ','ფ','ქ','ღ','ყ','შ','ჩ','ც','ძ','წ','ჭ','ხ','ჯ','ჰ'];
+
+    return view('words.index', compact('words', 'greekLetters', 'georgianLetters'));
 }
+
 
 
     public function create()
