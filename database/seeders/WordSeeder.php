@@ -56,4 +56,4 @@ class WordSeeder extends Seeder
     }
 }
 
-}
+} 
