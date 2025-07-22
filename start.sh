@@ -68,14 +68,15 @@ if (Schema::hasTable('users')) {
 # Run seeders
 echo "Checking and running seeders..."
 
-# Check if users exist
-USER_COUNT=$(php artisan tinker --execute="echo App\Models\User::count();" 2>/dev/null || echo "0")
-WORD_COUNT=$(php artisan tinker --execute="echo App\Models\Word::count();" 2>/dev/null || echo "0")
+COLUMN_EXISTS=$(php artisan tinker --execute="echo Schema::hasColumn('words', 'is_seeded') ? 'yes' : 'no';" 2>/dev/null || echo "no")
 
-if [ "$USER_COUNT" -lt "1" ] || [ "$WORD_COUNT" -lt "10" ]; then
-    echo "Running database seeders..."
-    php artisan db:seed --force
+if [ "$COLUMN_EXISTS" = "yes" ]; then
+    echo "'is_seeded' column exists. Running WordSeeder..."
+    php artisan db:seed --class=WordSeeder --force
+else
+    echo "Skipping WordSeeder: 'is_seeded' column not found!"
 fi
+
 
 # Show created users for reference
 echo "=== Available Users ==="

@@ -36,7 +36,7 @@ public function run()
 
         $count = 0;
         foreach ($words as $wordData) {
-            $wordData['is_seeded'] = true; // ✅ Tag the word as seeded
+            $wordData['is_seeded'] = true;
             Word::create($wordData);
             $count++;
 
