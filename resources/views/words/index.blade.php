@@ -27,8 +27,8 @@
     </div>
 </div>
 
-<div class="mb-3 d-flex justify-content-between align-items-center">
-    <div>
+<div class="mb-3 d-flex flex-md-row flex-column justify-content-between align-items-center w-100">
+    <div class="d-flex gap-3">
         @if(Auth::check() && Auth::user()->can_manage_words)
             <a href="{{ route('words.create') }}" class="btn btn-success">
                 ➕ Add New Word
@@ -37,10 +37,16 @@
         <a href="{{ route('grammar.index') }}" class="btn btn-outline-primary">
             📚 Grammar Guide
         </a>
+         @auth
+        <a href="{{ route('quiz.index') }}" class="btn btn-success">Quiz</a>
+        @endauth
     </div>
+
+    
     
     <div class="d-flex align-items-center gap-3">
         @if(Auth::check())
+        
             <div class="d-flex align-items-center gap-2">
                 @if(Auth::user()->can_manage_words)
                     <span class="text-muted small">
@@ -67,6 +73,8 @@
                 <a href="{{ route('register') }}" class="btn btn-primary btn-sm">
                     <i class="fas fa-user-plus"></i> Register
                 </a>
+
+                
             </div>
         @endif
     </div>

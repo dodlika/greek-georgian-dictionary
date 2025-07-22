@@ -17,7 +17,7 @@ class WordSeeder extends Seeder
             }
 
             $this->command->info('Clearing all words from words table...');
-            DB::table('words')->truncate(); // truncate all rows, resets auto-increment
+            DB::table('words')->truncate(); 
 
             $this->command->info('Starting to seed words from JSON...');
 

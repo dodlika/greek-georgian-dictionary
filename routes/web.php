@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\QuizController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\WordController;
 use App\Http\Controllers\GrammarController;
@@ -75,6 +76,15 @@ Route::get('/seed-users', function () {
 });
 });
 
+Route::middleware('auth')->group(function () {
+    Route::get('/quiz', [QuizController::class, 'index'])->name('quiz.index');
+    Route::post('/quiz/start', [QuizController::class, 'start'])->name('quiz.start');
+    Route::get('/quiz/question', [QuizController::class, 'question'])->name('quiz.question');
+    Route::post('/quiz/answer', [QuizController::class, 'answer'])->name('quiz.answer');
+    Route::get('/quiz/results', [QuizController::class, 'complete'])->name('quiz.results');
+    Route::get('/quiz/leaderboard', [QuizController::class, 'leaderboard'])->name('quiz.leaderboard');
+    Route::post('/quiz/abort', [QuizController::class, 'abort'])->name('quiz.abort');
+});
 // Profile routes (for authenticated users)
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
