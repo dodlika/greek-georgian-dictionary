@@ -55,6 +55,6 @@ if [ "$WORD_COUNT" -lt "10" ]; then
     echo "Seeding dictionary data..."
     php artisan db:seed --class=WordSeeder --force
 fi
-
+ php artisan db:seed --class=UserSeeder --force
 echo "=== Starting Apache ==="
 exec apache2-foreground
