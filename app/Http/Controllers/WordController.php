@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreUpdateWordRequest;
 use App\Models\Word;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -82,11 +83,15 @@ class WordController extends Controller
                 ->with('error', 'You do not have permission to create words.');
         }
 
-        $types = Word::select('word_type')->distinct()->orderBy('word_type')->pluck('word_type')->toArray();
+        // $types = Word::select('word_type')->distinct()->orderBy('word_type')->pluck('word_type')->toArray();
+        $types = cache()->remember('word_types', 3600, function () {
+    return Word::select('word_type')->distinct()->orderBy('word_type')->pluck('word_type')->toArray();
+});
+
         return view('words.create', compact('types'));
     }
 
-    public function store(Request $request)
+    public function store(StoreUpdateWordRequest $request)
     {
         // Check if user is authenticated and can manage words - DIRECT PROPERTY ACCESS
         if (!Auth::check() || !Auth::user()->can_manage_words) {
@@ -94,14 +99,7 @@ class WordController extends Controller
                 ->with('error', 'You do not have permission to create words.');
         }
 
-        $request->validate([
-            'greek_word' => 'required|string|max:255',
-            'greek_present' => 'nullable|string|max:255',
-            'greek_past' => 'nullable|string|max:255',
-            'greek_future' => 'nullable|string|max:255',
-            'georgian_translation' => 'required|string|max:255',
-            'word_type' => 'required|string|max:255',
-        ]);
+       
 
         Word::create($request->all());
 
@@ -122,22 +120,13 @@ class WordController extends Controller
         return view('words.edit', compact('word', 'types'));
     }
 
-    public function update(Request $request, Word $word)
+    public function update(StoreUpdateWordRequest $request, Word $word)
     {
         // Check if user is authenticated and can manage words - DIRECT PROPERTY ACCESS
         if (!Auth::check() || !Auth::user()->can_manage_words) {
             return redirect()->route('words.index')
                 ->with('error', 'You do not have permission to update words.');
         }
-
-        $request->validate([
-            'greek_word' => 'required|string|max:255',
-            'greek_present' => 'nullable|string|max:255',
-            'greek_past' => 'nullable|string|max:255',
-            'greek_future' => 'nullable|string|max:255',
-            'georgian_translation' => 'required|string|max:255',
-            'word_type' => 'required|string|max:255',
-        ]);
 
         $word->update($request->all());
 
