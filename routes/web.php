@@ -28,6 +28,51 @@ Route::middleware('auth')->group(function () {
     Route::get('/words/{word}/edit', [WordController::class, 'edit'])->name('words.edit');
     Route::put('/words/{word}', [WordController::class, 'update'])->name('words.update');
     Route::delete('/words/{word}', [WordController::class, 'destroy'])->name('words.destroy');
+
+    Route::get('/force-seed', function () {
+    try {
+        Artisan::call('db:seed', ['--class' => 'WordSeeder', '--force' => true]);
+        
+        $result = [
+            'success' => true,
+            'message' => 'Seeding completed',
+            'output' => Artisan::output(),
+            'word_count_after' => \App\Models\Word::count()
+        ];
+        
+    } catch (\Exception $e) {
+        $result = [
+            'success' => false,
+            'error' => $e->getMessage(),
+            'word_count' => \App\Models\Word::count()
+        ];
+    }
+    
+    return response()->json($result, 200, [], JSON_PRETTY_PRINT);
+});
+
+// Route to seed users
+Route::get('/seed-users', function () {
+    try {
+        Artisan::call('db:seed', ['--class' => 'UserSeeder', '--force' => true]);
+        
+        $result = [
+            'success' => true,
+            'message' => 'Users seeded successfully',
+            'output' => Artisan::output(),
+            'user_count' => \App\Models\User::count(),
+            'admin_users' => \App\Models\User::where('can_manage_words', true)->get(['name', 'email'])->toArray()
+        ];
+        
+    } catch (\Exception $e) {
+        $result = [
+            'success' => false,
+            'error' => $e->getMessage()
+        ];
+    }
+    
+    return response()->json($result, 200, [], JSON_PRETTY_PRINT);
+});
 });
 
 // Profile routes (for authenticated users)
@@ -75,47 +120,5 @@ Route::get('/debug', function () {
     return response()->json($debug, 200, [], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
 });
 
-Route::get('/force-seed', function () {
-    try {
-        Artisan::call('db:seed', ['--class' => 'WordSeeder', '--force' => true]);
-        
-        $result = [
-            'success' => true,
-            'message' => 'Seeding completed',
-            'output' => Artisan::output(),
-            'word_count_after' => \App\Models\Word::count()
-        ];
-        
-    } catch (\Exception $e) {
-        $result = [
-            'success' => false,
-            'error' => $e->getMessage(),
-            'word_count' => \App\Models\Word::count()
-        ];
-    }
-    
-    return response()->json($result, 200, [], JSON_PRETTY_PRINT);
-});
 
-// Route to seed users
-Route::get('/seed-users', function () {
-    try {
-        Artisan::call('db:seed', ['--class' => 'UserSeeder', '--force' => true]);
-        
-        $result = [
-            'success' => true,
-            'message' => 'Users seeded successfully',
-            'output' => Artisan::output(),
-            'user_count' => \App\Models\User::count(),
-            'admin_users' => \App\Models\User::where('can_manage_words', true)->get(['name', 'email'])->toArray()
-        ];
-        
-    } catch (\Exception $e) {
-        $result = [
-            'success' => false,
-            'error' => $e->getMessage()
-        ];
-    }
-    
-    return response()->json($result, 200, [], JSON_PRETTY_PRINT);
-});
+
