@@ -62,7 +62,8 @@ Route::get('/debug', function () {
         }
         
         $debug['migrations_count'] = DB::table('migrations')->count();
-        $debug['latest_migration'] = DB::table('migrations')->latest()->first();
+        $debug['latest_migration'] = DB::table('migrations')->orderByDesc('id')->first();
+
         
         $debug['app_env'] = config('app.env');
         $debug['app_debug'] = config('app.debug');

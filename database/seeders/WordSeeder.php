@@ -26,6 +26,8 @@ class WordSeeder extends Seeder
             throw new Exception("JSON file not found at: $jsonPath");
         }
 
+        @dd($jsonPath);
+
         $words = json_decode(file_get_contents($jsonPath), true);
 
         if (!is_array($words)) {
@@ -36,7 +38,7 @@ class WordSeeder extends Seeder
 
         $count = 0;
         foreach ($words as $wordData) {
-            Word::create($wordData); // assuming your fillable is set correctly
+            Word::create($wordData); 
             $count++;
 
             if ($count % 5 == 0) {
