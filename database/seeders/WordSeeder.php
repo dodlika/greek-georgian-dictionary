@@ -9,15 +9,15 @@ use Exception;
 
 class WordSeeder extends Seeder
 {
-    public function run()
+public function run()
 {
     try {
         if (!DB::getSchemaBuilder()->hasTable('words')) {
             throw new Exception('Words table does not exist');
         }
 
-        $this->command->info('Clearing existing words from table...');
-        DB::table('words')->truncate();  // Removes all rows and resets auto-increment
+        $this->command->info('Removing previously seeded words only...');
+        Word::where('is_seeded', true)->delete();
 
         $this->command->info('Starting to seed words from JSON...');
 
@@ -36,10 +36,11 @@ class WordSeeder extends Seeder
 
         $count = 0;
         foreach ($words as $wordData) {
-            Word::create($wordData); // assuming your fillable is set correctly
+            $wordData['is_seeded'] = true; // ✅ Tag the word as seeded
+            Word::create($wordData);
             $count++;
 
-            if ($count % 5 == 0) {
+            if ($count % 5 === 0) {
                 $this->command->info("Processed {$count} words so far...");
             }
         }
@@ -53,5 +54,6 @@ class WordSeeder extends Seeder
         throw $e;
     }
 }
+
 
 }
