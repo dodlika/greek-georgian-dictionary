@@ -38,23 +38,52 @@ fi
 echo "Running migrations..."
 php artisan migrate --force
 
-# Check for users table (needed for authentication)
+# Check for users table and create admin user
 echo "Checking authentication setup..."
 php artisan tinker --execute="
 if (Schema::hasTable('users')) {
-    echo 'Users table exists - authentication should work' . PHP_EOL;
+    echo 'Users table exists' . PHP_EOL;
+    
+    // Create admin user if it doesn't exist
+    \$adminEmail = 'admin@example.com';
+    \$user = App\Models\User::where('email', \$adminEmail)->first();
+    
+    if (!\$user) {
+        App\Models\User::create([
+            'name' => 'Admin',
+            'email' => \$adminEmail,
+            'password' => Hash::make('password123'),
+            'email_verified_at' => now(),
+        ]);
+        echo 'Created admin user: admin@example.com / password123' . PHP_EOL;
+    } else {
+        echo 'Admin user already exists' . PHP_EOL;
+    }
 } else {
     echo 'ERROR: Users table missing! Authentication will fail.' . PHP_EOL;
     exit(1);
 }
 "
 
-# Seed if needed (only for your words, not users)
+# Run seeders
+echo "Checking and running seeders..."
+
+# Check if users exist
+USER_COUNT=$(php artisan tinker --execute="echo App\Models\User::count();" 2>/dev/null || echo "0")
 WORD_COUNT=$(php artisan tinker --execute="echo App\Models\Word::count();" 2>/dev/null || echo "0")
-if [ "$WORD_COUNT" -lt "10" ]; then
-    echo "Seeding dictionary data..."
-    php artisan db:seed --class=WordSeeder --force
+
+if [ "$USER_COUNT" -lt "1" ] || [ "$WORD_COUNT" -lt "10" ]; then
+    echo "Running database seeders..."
+    php artisan db:seed --force
 fi
- php artisan db:seed --class=UserSeeder --force
+
+# Show created users for reference
+echo "=== Available Users ==="
+php artisan tinker --execute="
+App\Models\User::all(['name', 'email'])->each(function(\$user) {
+    echo 'User: ' . \$user->name . ' (' . \$user->email . ')' . PHP_EOL;
+});
+"
+
 echo "=== Starting Apache ==="
 exec apache2-foreground
