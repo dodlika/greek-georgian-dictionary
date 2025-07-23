@@ -16,6 +16,8 @@ Route::get('/', [WordController::class, 'index'])->name('words.index');
 Route::get('/words', [WordController::class, 'index'])->name('words.show');
 Route::get('/words/autocomplete', [WordController::class, 'autocomplete'])->name('words.autocomplete');
 Route::get('/words/check-duplicate', [WordController::class, 'checkDuplicate'])->name('words.checkDuplicate');
+Route::get('/quiz/word-count', [QuizController::class, 'wordCount'])->name('quiz.wordCount');
+
 
 
 // Grammar routes (public)

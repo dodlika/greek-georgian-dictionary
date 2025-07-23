@@ -43,22 +43,36 @@
                             <strong>Total words available: {{ $totalWords }}</strong>
                         </p>
 
-                        <form action="{{ route('quiz.start') }}" method="POST">
-                            @csrf
-                            <div class="mb-3">
-                                <label for="word_count" class="form-label">How many words do you want to be tested on?</label>
-                                <select name="word_count" id="word_count" class="form-select w-auto">
-                                    <option value="10">10 words</option>
-                                    <option value="20" selected>20 words</option>
-                                    <option value="30">30 words</option>
-                                    <option value="50">50 words</option>
-                                    <option value="100">100 words</option>
-                                </select>
-                            </div>
-                            <button type="submit" class="btn btn-primary">
-                                Start Quiz
-                            </button>
-                        </form>
+                        <form action="{{ route('quiz.start') }}" method="POST" id="quizForm">
+    @csrf
+    <div class="mb-3">
+        <label for="word_count" class="form-label">How many words do you want to be tested on?</label>
+        <select name="word_count" id="word_count" class="form-select w-auto">
+            <option value="10">10 words</option>
+            <option value="20" selected>20 words</option>
+            <option value="30">30 words</option>
+            <option value="50">50 words</option>
+            <option value="100">100 words</option>
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label for="added_after" class="form-label">Only include words added on or after:</label>
+        <input type="date" id="added_after" name="added_after" class="form-control w-auto">
+    </div>
+
+    @if(session('error'))
+    <div class="alert alert-danger">
+        {{ session('error') }}
+    </div>
+    @endif
+
+    <input type="hidden" name="force_start" id="force_start" value="0">
+
+    <button type="submit" class="btn btn-primary" onclick="handleQuizSubmit(event)">
+        Start Quiz
+    </button>
+</form>
                     </div>
 
                     {{-- Navigation Links --}}
@@ -75,4 +89,32 @@
         </div>
     </div>
 </div>
+
+<script>
+    function handleQuizSubmit(event) {
+        const addedAfter = document.getElementById('added_after').value;
+        const form = event.target.closest('form');
+
+        if (addedAfter) {
+            event.preventDefault();
+
+            fetch(`{{ route('quiz.wordCount') }}?added_after=${addedAfter}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.word_count < 5) {
+                        if (confirm(`Only ${data.word_count} word(s) found for the selected date. Do you want to continue?`)) {
+                            document.getElementById('force_start').value = 1;
+                            form.submit();
+                        }
+                    } else {
+                        form.submit();
+                    }
+                }).catch(err => {
+                    alert('Failed to check word count. Please try again.');
+                    console.error(err);
+                });
+        }
+    }
+</script>
+
 @endsection

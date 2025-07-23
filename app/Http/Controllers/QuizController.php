@@ -24,38 +24,60 @@ class QuizController extends Controller
         return view('quiz.index', compact('user', 'totalWords'));
     }
 
+    public function wordCount(Request $request)
+{
+    $addedAfter = $request->query('added_after');
+
+    if (!$addedAfter) {
+        return response()->json(['word_count' => Word::count()]);
+    }
+
+    $count = Word::whereDate('created_at', '>=', $addedAfter)->count();
+    return response()->json(['word_count' => $count]);
+}
+
+
     public function start(Request $request)
-    {
+{
+    $addedAfter = $request->input('added_after');
+    $forceStart = $request->boolean('force_start');
+
+    if ($addedAfter) {
+        $words = Word::whereDate('created_at', '>=', $addedAfter)->inRandomOrder()->get([
+            'id', 'greek_word', 'georgian_translation'
+        ]);
+
+        if ($words->count() < 5 && !$forceStart) {
+            return redirect()->route('quiz.index')
+                ->with('error', "Only {$words->count()} word(s) available after the selected date.");
+        }
+
+        $wordCount = $words->count();
+    } else {
         $request->validate([
             'word_count' => 'required|integer|min:5|max:100'
         ]);
 
         $wordCount = $request->input('word_count');
-        $totalAvailable = Word::count();
-
-        if ($wordCount > $totalAvailable) {
-            return redirect()->route('quiz.index')
-                ->with('error', "Only {$totalAvailable} words are available in the database.");
-        }
-
-        // Get random words for the quiz
-        $words = Word::inRandomOrder()
-            ->limit($wordCount)
-            ->get(['id', 'greek_word', 'georgian_translation'])
-            ->toArray();
-
-        // Store quiz data in session
-        Session::put('quiz_data', [
-            'words' => $words,
-            'current_question' => 0,
-            'score' => 0,
-            'total_questions' => $wordCount,
-            'user_answers' => [],
-            'start_time' => now()
+        $words = Word::inRandomOrder()->limit($wordCount)->get([
+            'id', 'greek_word', 'georgian_translation'
         ]);
-
-        return redirect()->route('quiz.question');
     }
+
+    Session::put('quiz_data', [
+        'words' => $words->toArray(),
+        'current_question' => 0,
+        'score' => 0,
+        'total_questions' => $wordCount,
+        'user_answers' => [],
+        'start_time' => now()
+    ]);
+
+    return redirect()->route('quiz.question');
+}
+
+
+
 
     public function question()
     {
