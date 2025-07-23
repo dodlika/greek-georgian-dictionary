@@ -5,6 +5,10 @@ namespace App\Livewire;
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\Word;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
+
+
 
 class WordList extends Component
 {
@@ -76,6 +80,35 @@ class WordList extends Component
         
         return $highlighted;
     }
+
+
+public function toggleFavorite($wordId)
+{
+    Log::info('Toggling favorite for word ID: ' . $wordId);
+
+    $user = auth()->user();
+    if (!$user) {
+        Log::error('No authenticated user');
+        return;
+    }
+
+    if ($user->favoriteWords()->where('word_id', $wordId)->exists()) {
+        Log::info('Detaching favorite');
+        $user->favoriteWords()->detach($wordId);
+    } else {
+        Log::info('Attaching favorite');
+        $user->favoriteWords()->attach($wordId);
+    }
+}
+
+public function isFavorited($wordId)
+{
+    if (!Auth::check()) {
+        return false;
+    }
+    return Auth::user()->favoriteWords()->where('word_id', $wordId)->exists();
+}
+
 
     public function render()
     {

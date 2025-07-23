@@ -5,18 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use App\Models\Word;
 
 class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
     /**
-     * Custom user attributes.
-     */
-   
-
-    /**
      * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
      */
     protected $fillable = [
         'name',
@@ -31,6 +29,8 @@ class User extends Authenticatable
 
     /**
      * The attributes that should be hidden for serialization.
+     *
+     * @var array<int, string>
      */
     protected $hidden = [
         'password',
@@ -39,6 +39,8 @@ class User extends Authenticatable
 
     /**
      * Get the attributes that should be cast.
+     *
+     * @return array<string, string>
      */
     protected function casts(): array
     {
@@ -49,6 +51,17 @@ class User extends Authenticatable
             'can_manage_words' => 'boolean',
         ];
     }
+
+    /**
+     * The user's favorite words relationship
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+ public function favoriteWords()
+{
+    return $this->belongsToMany(Word::class, 'favorites')->withTimestamps();
+}
+
 
     /**
      * Check if user has taken any quizzes

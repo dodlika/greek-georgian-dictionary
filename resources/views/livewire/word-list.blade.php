@@ -149,8 +149,14 @@
             <tbody>
                 @forelse($words as $word)
                     <tr>
-                        <td class="greek-text fw-bold">
+                        <td class="greek-text favorite-word fw-bold">
                             {!! $this->highlightText($word->greek_word, $search) !!}
+    <button wire:click="toggleFavorite({{ $word->id }})" 
+            class="bg-transparent border-0 p-0 fs-5" 
+            style="color: {{ $this->isFavorited($word->id) ? 'red' : 'gray' }};"
+            title="{{ $this->isFavorited($word->id) ? 'Unfavorite' : 'Favorite' }}">
+        {{ $this->isFavorited($word->id) ? '❤️' : '🤍' }}
+    </button>
                         </td>
                         <td class="greek-text">
                             {!! $word->greek_present ? $this->highlightText($word->greek_present, $search) : '-' !!}
@@ -164,6 +170,8 @@
                         <td class="georgian-text fw-bold">
                             {!! $this->highlightText($word->georgian_translation, $search) !!}
                         </td>
+ 
+
             
                         <td class="voice-wrap">
                             @if($word->word_type)
@@ -239,6 +247,13 @@
     </div>
 
     <style>
+        .favorite-word {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+        
+        }
+     
         .voice-wrap {
             display: flex;
             justify-content: space-between;

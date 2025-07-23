@@ -35,7 +35,12 @@
         </a>
          @auth
         <a href="{{ route('quiz.index') }}" class="btn btn-success">Quiz</a>
+      <a href="{{ route('favorites') }}" class="text-blue-500 hover:underline">
+        ★ Favorites
+      </a>
         @endauth
+
+
     </div>
 
     

@@ -18,6 +18,12 @@ class Word extends Model
         'word_type'
     ];
 
+    public function favoritedByUsers()
+{
+    return $this->belongsToMany(User::class, 'favorites')->withTimestamps();
+}
+
+
     public function scopeSearchGeorgian($query, $search)
     {
         return $query->where('georgian_translation', 'like', '%' . $search . '%');

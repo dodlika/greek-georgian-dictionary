@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
+use App\Livewire\FavoritesPage;
 
 
 // Public routes
@@ -18,7 +19,9 @@ Route::get('/words/autocomplete', [WordController::class, 'autocomplete'])->name
 Route::get('/words/check-duplicate', [WordController::class, 'checkDuplicate'])->name('words.checkDuplicate');
 Route::get('/quiz/word-count', [QuizController::class, 'wordCount'])->name('quiz.wordCount');
 
-
+Route::middleware(['auth'])->group(function () {
+    Route::get('/favorites', FavoritesPage::class)->name('favorites');
+});
 
 // Grammar routes (public)
 Route::get('/grammar', [GrammarController::class, 'index'])->name('grammar.index');
