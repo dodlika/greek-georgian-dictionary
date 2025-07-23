@@ -61,6 +61,8 @@ class QuizController extends Controller
     {
         $quizData = Session::get('quiz_data');
 
+        @dd($quizData);
+
         if (!$quizData) {
             return redirect()->route('quiz.index')
                 ->with('error', 'No active quiz found. Please start a new quiz.');
