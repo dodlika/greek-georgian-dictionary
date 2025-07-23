@@ -14,6 +14,9 @@ use Illuminate\Support\Facades\Auth;
 // Public routes
 Route::get('/', [WordController::class, 'index'])->name('words.index');
 Route::get('/words', [WordController::class, 'index'])->name('words.show');
+Route::get('/words/autocomplete', [WordController::class, 'autocomplete'])->name('words.autocomplete');
+Route::get('/words/check-duplicate', [WordController::class, 'checkDuplicate'])->name('words.checkDuplicate');
+
 
 // Grammar routes (public)
 Route::get('/grammar', [GrammarController::class, 'index'])->name('grammar.index');

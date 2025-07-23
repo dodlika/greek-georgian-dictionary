@@ -10,6 +10,39 @@ use Illuminate\Support\Facades\Auth;
 
 class WordController extends Controller
 {
+
+    public function checkDuplicate(Request $request)
+{
+    $greekWord = $request->input('greek_word');
+
+    if (!$greekWord) {
+        return response()->json(['exists' => false]);
+    }
+
+    $exists = Word::where('greek_word', $greekWord)->exists();
+
+    return response()->json(['exists' => $exists]);
+}
+
+
+    public function autocomplete(Request $request)
+{
+    $search = $request->input('query');
+
+    if (!$search || strlen($search) < 2) {
+        return response()->json([]);
+    }
+
+    // Basic autocomplete + fuzzy matching
+    $words = Word::where('greek_word', 'LIKE', "{$search}%")
+        ->orWhere('greek_word', 'LIKE', "%{$search}%")
+        ->orderBy('greek_word')
+        ->limit(10)
+        ->pluck('greek_word');
+
+    return response()->json($words);
+}
+
     public function index(Request $request)
     {
         // Greek uppercase letters

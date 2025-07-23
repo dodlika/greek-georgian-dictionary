@@ -10,8 +10,9 @@
 
         <div class="mb-3">
             <label for="greek_word" class="form-label">Greek Word</label>
-            <input type="text" name="greek_word" id="greek_word" class="form-control" 
-                   value="{{ old('greek_word', $word->greek_word) }}" required>
+           
+                   <input type="text" name="greek_word" id="greek_word" class="form-control" list="greekSuggestions" autocomplete="off" required>
+<datalist id="greekSuggestions"></datalist>
         </div>
 
         <div class="mb-3">
@@ -53,4 +54,34 @@
         <a href="{{ route('words.index') }}" class="btn btn-secondary ms-2">Cancel</a>
     </form>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const greekInput = document.getElementById('greek_word');
+    const datalist = document.getElementById('greekSuggestions');
+
+    greekInput.addEventListener('input', function () {
+        const query = greekInput.value;
+
+        if (query.length < 2) {
+            datalist.innerHTML = '';
+            return;
+        }
+
+        fetch(`/words/autocomplete?query=${encodeURIComponent(query)}`)
+            .then(response => response.json())
+            .then(data => {
+                datalist.innerHTML = '';
+                data.forEach(word => {
+                    const option = document.createElement('option');
+                    option.value = word;
+                    datalist.appendChild(option);
+                });
+            });
+    });
+});
+</script>
+
+
+
 @endsection
