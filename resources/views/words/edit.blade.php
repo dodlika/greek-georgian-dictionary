@@ -11,7 +11,7 @@
         <div class="mb-3">
             <label for="greek_word" class="form-label">Greek Word</label>
            
-                   <input type="text" name="greek_word" id="greek_word" class="form-control" list="greekSuggestions" autocomplete="off" required>
+                   <input type="text"  value="{{ old('greek_word', $word->greek_word) }} "name="greek_word" id="greek_word" class="form-control" list="greekSuggestions" autocomplete="off" required >
 <datalist id="greekSuggestions"></datalist>
         </div>
 
