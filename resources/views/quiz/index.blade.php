@@ -48,8 +48,8 @@
     <div class="mb-3">
         <label for="word_count" class="form-label">How many words do you want to be tested on?</label>
         <select name="word_count" id="word_count" class="form-select w-auto">
-            <option value="10">10 words</option>
-            <option value="20" selected>20 words</option>
+            <option value="10" selected>10 words</option>
+            <option value="20" >20 words</option>
             <option value="30">30 words</option>
             <option value="50">50 words</option>
             <option value="100">100 words</option>

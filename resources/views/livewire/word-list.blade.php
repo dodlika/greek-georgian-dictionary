@@ -219,9 +219,9 @@
 
     <!-- Pagination -->
     @if($words->hasPages())
-        <div class="d-flex justify-content-center mt-4">
-            {{ $words->links() }}
-        </div>
+<div class="d-flex justify-content-center mt-4">
+        {!! $words->links('pagination::bootstrap-5') !!}
+    </div>
     @endif
 
     <!-- Loading indicator -->
