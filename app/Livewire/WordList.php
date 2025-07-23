@@ -14,11 +14,11 @@ class WordList extends Component
     public $type = '';
     public $starts_with = '';
 
+    // Remove 'page' from queryString - WithPagination handles it automatically
     protected $queryString = [
         'search' => ['except' => ''],
         'type' => ['except' => ''],
         'starts_with' => ['except' => ''],
-        'page' => ['except' => 1]
     ];
 
     public function updatedSearch()

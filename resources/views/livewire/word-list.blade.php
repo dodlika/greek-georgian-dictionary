@@ -164,12 +164,16 @@
                         <td class="georgian-text fw-bold">
                             {!! $this->highlightText($word->georgian_translation, $search) !!}
                         </td>
-                        <td>
+            
+                        <td class="voice-wrap">
                             @if($word->word_type)
                                 <span class="badge bg-info">{{ $word->word_type }}</span>
                             @else
                                 <span class="text-muted">-</span>
                             @endif
+                              <button class="btn btn-sm btn-outline-primary" onclick="speak('{{ $word->greek_word }}')">
+                🔊
+            </button>
                         </td>
                         @if(auth()->check() && auth()->user()->can_manage_words)
                             <td>
@@ -220,7 +224,9 @@
     <!-- Pagination -->
     @if($words->hasPages())
 <div class="d-flex justify-content-center mt-4">
-        {!! $words->links('pagination::bootstrap-5') !!}
+       {{ $words->links('livewire::bootstrap') }}
+
+
     </div>
     @endif
 
@@ -233,6 +239,11 @@
     </div>
 
     <style>
+        .voice-wrap {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
     .search-highlight {
         background-color: #ffeb3b;
         color: #000;
@@ -288,4 +299,7 @@
         }
     }
     </style>
+
+  
+
 </div>

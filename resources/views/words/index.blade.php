@@ -160,5 +160,12 @@
 
   <livewire:word-list />
 
-
+  <script>
+function speak(text) {
+    const synth = window.speechSynthesis;
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = 'el-GR'; // Greek
+    synth.speak(utterance);
+}
+</script>
 @endsection
