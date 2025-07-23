@@ -5,6 +5,9 @@
             <a href="{{ route('words.index') }}" class="btn btn-primary">
                 Browse Words
             </a>
+             <a href="{{ route('favorites.flashcards') }}" class="btn btn-outline-primary">
+            Take Quiz
+        </a>
         </div>
 
         @if(session('success'))

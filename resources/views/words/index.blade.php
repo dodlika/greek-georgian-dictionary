@@ -35,7 +35,7 @@
         </a>
          @auth
         <a href="{{ route('quiz.index') }}" class="btn btn-success">Quiz</a>
-      <a href="{{ route('favorites') }}" class="text-blue-500 hover:underline">
+      <a href="{{ route('favorites') }}" class="btn btn-success">
         ★ Favorites
       </a>
         @endauth

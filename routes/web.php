@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 use App\Livewire\FavoritesPage;
+use App\Livewire\FavoriteFlashcards;
+
 
 
 // Public routes
@@ -26,6 +28,11 @@ Route::middleware(['auth'])->group(function () {
 // Grammar routes (public)
 Route::get('/grammar', [GrammarController::class, 'index'])->name('grammar.index');
 Route::get('/grammar/{section}', [GrammarController::class, 'show'])->name('grammar.show');
+
+Route::get('/favorites/flashcards', FavoriteFlashcards::class)
+    ->middleware('auth')
+    ->name('favorites.flashcards');
+
 
 // Authentication routes (Laravel Breeze adds these automatically)
 require __DIR__.'/auth.php';
