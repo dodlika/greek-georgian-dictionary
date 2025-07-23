@@ -30,7 +30,7 @@ class QuizController extends Controller
             'word_count' => 'required|integer|min:5|max:100'
         ]);
 
-        $wordCount = $request->word_count;
+        $wordCount = $request->input('word_count');
         $totalAvailable = Word::count();
 
         if ($wordCount > $totalAvailable) {
@@ -96,7 +96,7 @@ class QuizController extends Controller
 
         $currentQuestion = $quizData['current_question'];
         $currentWord = $quizData['words'][$currentQuestion];
-        $userAnswer = trim(strtolower($request->answer));
+        $userAnswer = trim(strtolower($request->input('answer')));
         $correctAnswer = trim(strtolower($currentWord['georgian_translation']));
 
         // Simple scoring - exact match or contains check
@@ -110,7 +110,7 @@ class QuizController extends Controller
 
         // Store the answer
         $quizData['user_answers'][$currentQuestion] = [
-            'user_answer' => $request->answer,
+            'user_answer' => $request->input('answer'),
             'correct_answer' => $currentWord['georgian_translation'],
             'is_correct' => $isCorrect,
             'greek_word' => $currentWord['greek_word']
@@ -127,13 +127,14 @@ class QuizController extends Controller
     public function complete()
     {
         $quizData = Session::get('quiz_data');
+
         
         if (!$quizData) {
             return redirect()->route('quiz.index')
                 ->with('error', 'No quiz data found.');
         }
 
-        $user = Auth::user();
+        $user = User::find(Auth::id());
         $score = $quizData['score'];
         $total = $quizData['total_questions'];
         $percentage = round(($score / $total) * 100, 2);
@@ -151,6 +152,7 @@ class QuizController extends Controller
                 'best_quiz_date' => now(),
             ]);
         }
+
 
         // Update total quizzes taken using increment
         $user->increment('total_quizzes_taken');
@@ -175,11 +177,16 @@ class QuizController extends Controller
         $users = User::where('best_quiz_total', '>', 0)
             ->get()
             ->map(function ($user) {
-                $user->best_percentage = round(($user->best_quiz_score / $user->best_quiz_total) * 100, 2);
+                $user->best_percentage = $user->best_quiz_total > 0
+                    ? round(($user->best_quiz_score / $user->best_quiz_total) * 100, 2)
+                    : 0;
                 return $user;
             })
+
             ->sortByDesc('best_percentage')
             ->take(10);
+
+            
 
         return view('quiz.leaderboard', compact('users'));
     }

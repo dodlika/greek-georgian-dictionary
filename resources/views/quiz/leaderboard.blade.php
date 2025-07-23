@@ -64,6 +64,7 @@
                                         </div>
                                     </div>
 
+
                                     {{-- User Info --}}
                                     <div class="flex-grow-1">
                                         <h5 class="mb-1 {{ $leaderUser->id == Auth::id() ? 'text-primary' : '' }}">
@@ -75,7 +76,11 @@
                                         <div class="small text-muted">
                                             {{ $leaderUser->total_quizzes_taken }} quizzes • 
                                             Best: {{ $leaderUser->best_quiz_score }}/{{ $leaderUser->best_quiz_total }} • 
-                                            {{ $leaderUser->best_quiz_date->format('M j, Y') }}
+                                            @if($leaderUser->best_quiz_date)
+                                                {{ $leaderUser->best_quiz_date->format('M j, Y') }}
+                                            @else
+                                                N/A
+                                            @endif
                                         </div>
                                     </div>
 
