@@ -183,3 +183,127 @@ Route::get('/debug', function () {
 
 
 
+
+
+
+// Add this route to your web.php temporarily for debugging
+Route::middleware('auth')->post('/debug-quiz-start', function (Request $request) {
+    try {
+        // Log everything about the request
+        \Log::info('Debug Quiz Start - Request received', [
+            'method' => $request->method(),
+            'url' => $request->url(),
+            'ip' => $request->ip(),
+            'user_agent' => $request->userAgent(),
+            'all_input' => $request->all(),
+            'headers' => $request->headers->all(),
+            'user_id' => Auth::id(),
+            'session_id' => session()->getId()
+        ]);
+        
+        // Validate the same way as original
+        $request->validate([
+            'word_count' => 'required|integer|min:5|max:100'
+        ]);
+
+        $wordCount = $request->word_count;
+        $totalAvailable = \App\Models\Word::count();
+
+        if ($wordCount > $totalAvailable) {
+            \Log::warning('Debug Quiz Start - Not enough words', [
+                'requested' => $wordCount,
+                'available' => $totalAvailable
+            ]);
+            
+            return redirect()->route('quiz.index')
+                ->with('error', "Only {$totalAvailable} words are available in the database.");
+        }
+
+        // Get random words for the quiz
+        $words = \App\Models\Word::inRandomOrder()
+            ->limit($wordCount)
+            ->get(['id', 'greek_word', 'georgian_translation'])
+            ->toArray();
+
+        \Log::info('Debug Quiz Start - Words retrieved', [
+            'word_count' => count($words),
+            'first_word' => $words[0] ?? null
+        ]);
+
+        // Store quiz data in session
+        $quizData = [
+            'words' => $words,
+            'current_question' => 0,
+            'score' => 0,
+            'total_questions' => $wordCount,
+            'user_answers' => [],
+            'start_time' => now()
+        ];
+        
+        Session::put('quiz_data', $quizData);
+        
+        \Log::info('Debug Quiz Start - Session data stored', [
+            'session_has_data' => Session::has('quiz_data'),
+            'quiz_data_count' => count(Session::get('quiz_data', []))
+        ]);
+
+        \Log::info('Debug Quiz Start - Redirecting to question');
+        
+        return redirect()->route('quiz.question');
+        
+    } catch (\Throwable $e) {
+        \Log::error('Debug Quiz Start - Exception occurred', [
+            'message' => $e->getMessage(),
+            'file' => $e->getFile(),
+            'line' => $e->getLine(),
+            'trace' => $e->getTraceAsString()
+        ]);
+        
+        return response()->json([
+            'error' => 'Exception in debug quiz start',
+            'message' => $e->getMessage(),
+            'file' => $e->getFile(),
+            'line' => $e->getLine()
+        ], 500);
+    }
+});
+
+// Also add a simple form to test this debug route
+Route::middleware('auth')->get('/debug-quiz-form', function() {
+    return '<html><body>
+        <h1>Debug Quiz Form</h1>
+        <form action="/debug-quiz-start" method="POST">
+            ' . csrf_field() . '
+            <label>Word Count: 
+                <select name="word_count">
+                    <option value="10">10</option>
+                    <option value="20" selected>20</option>
+                </select>
+            </label>
+            <button type="submit">Start Debug Quiz</button>
+        </form>
+        
+        <hr>
+        <h2>Original Form Test</h2>
+        <form action="' . route('quiz.start') . '" method="POST">
+            ' . csrf_field() . '
+            <label>Word Count: 
+                <select name="word_count">
+                    <option value="10">10</option>
+                    <option value="20" selected>20</option>
+                </select>
+            </label>
+            <button type="submit">Start Original Quiz</button>
+        </form>
+        
+        <script>
+            document.querySelectorAll("form").forEach(form => {
+                form.addEventListener("submit", function(e) {
+                    console.log("Submitting form to:", this.action);
+                    console.log("Method:", this.method);
+                    console.log("Data:", new FormData(this));
+                });
+            });
+        </script>
+    </body></html>';
+});
