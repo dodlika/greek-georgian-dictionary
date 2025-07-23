@@ -24,6 +24,57 @@ require __DIR__.'/auth.php';
 
 // Word management routes - using Laravel's built-in 'auth' middleware
 Route::middleware('auth')->group(function () {
+
+    // Add this route to your web.php for emergency cache clearing on production
+Route::get('/clear-all-cache', function() {
+    try {
+        // Clear all Laravel caches
+        Artisan::call('route:clear');
+        Artisan::call('config:clear');
+        Artisan::call('cache:clear');
+        Artisan::call('view:clear');
+        
+        // Try to clear compiled classes
+        if (function_exists('opcache_reset')) {
+            opcache_reset();
+        }
+        
+        return response()->json([
+            'message' => 'All caches cleared successfully',
+            'route_clear' => Artisan::output(),
+            'timestamp' => now()
+        ]);
+        
+    } catch (\Exception $e) {
+        return response()->json([
+            'error' => 'Failed to clear cache: ' . $e->getMessage(),
+            'timestamp' => now()
+        ], 500);
+    }
+});
+
+// Debug route to check current routes
+Route::get('/debug-routes', function() {
+    $routes = [];
+    foreach (Route::getRoutes() as $route) {
+        $routes[] = [
+            'uri' => $route->uri(),
+            'methods' => $route->methods(),
+            'name' => $route->getName(),
+            'action' => $route->getActionName()
+        ];
+    }
+    
+    return response()->json([
+        'total_routes' => count($routes),
+        'quiz_routes' => array_filter($routes, function($route) {
+            return str_contains($route['uri'], 'quiz');
+        }),
+        'post_routes' => array_filter($routes, function($route) {
+            return in_array('POST', $route['methods']);
+        })
+    ], 200, [], JSON_PRETTY_PRINT);
+});
     Route::get('/words/create', [WordController::class, 'create'])->name('words.create');
     Route::post('/words', [WordController::class, 'store'])->name('words.store');
     Route::get('/words/{word}/edit', [WordController::class, 'edit'])->name('words.edit');
