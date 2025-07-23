@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="row mb-4">
+{{-- <div class="row mb-4">
     <div class="col-md-12">
         <form method="GET" action="{{ route('words.index') }}" class="d-flex flex-wrap align-items-center gap-2">
             
@@ -23,17 +23,13 @@
             @if(request()->hasAny(['search', 'type', 'starts_with']))
                 <a href="{{ route('words.index') }}" class="btn btn-secondary">გასუფთავება</a>
             @endif
+
         </form>
     </div>
-</div>
+</div> --}}
 
 <div class="mb-3 d-flex flex-md-row flex-column justify-content-between align-items-center w-100">
     <div class="d-flex gap-3">
-        @if(Auth::check() && Auth::user()->can_manage_words)
-            <a href="{{ route('words.create') }}" class="btn btn-success">
-                ➕ Add New Word
-            </a>
-        @endif
         <a href="{{ route('grammar.index') }}" class="btn btn-outline-primary">
             📚 Grammar Guide
         </a>
@@ -80,7 +76,7 @@
     </div>
 </div>
 
-<div class="mb-3">
+{{-- <div class="mb-3">
     <strong>Filter by Greek letter:</strong>
     @foreach($greekAlphabetUpper as $letter)
         @php
@@ -93,7 +89,7 @@
             {{ $letter }}
         </a>
     @endforeach
-</div>
+</div> --}}
 
 @if(session('success'))
     <div class="alert alert-success">{{ session('success') }}</div>
@@ -103,7 +99,7 @@
     <div class="alert alert-danger">{{ session('error') }}</div>
 @endif
 
-<div class="table-responsive">
+{{-- <div class="table-responsive">
     <table class="table table-striped">
         <thead class="table-dark">
             <tr>
@@ -160,8 +156,9 @@
             @endforelse
         </tbody>
     </table>
-</div>
+</div> --}}
 
-{{ $words->withQueryString()->links() }}
+  <livewire:word-list />
+
 
 @endsection
