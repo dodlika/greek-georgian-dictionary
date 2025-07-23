@@ -6,12 +6,21 @@
         <div class="card">
             <div class="card-header">Add New Word</div>
             <div class="card-body">
+                @if (session('error'))
+    <div class="alert alert-danger">
+        {{ session('error') }}
+    </div>
+@endif
                 <form method="POST" action="{{ route('words.store') }}">
                     @csrf
-                    <div class="mb-3">
-                        <label class="form-label">Greek Word</label>
-                        <input type="text" name="greek_word" class="form-control greek-text" required>
-                    </div>
+                  <div class="mb-3">
+    <label class="form-label">Greek Word</label>
+    <input type="text" name="greek_word" class="form-control greek-text @error('greek_word') is-invalid @enderror" value="{{ old('greek_word') }}" required>
+    @error('greek_word')
+        <div class="invalid-feedback">{{ $message }}</div>
+    @enderror
+</div>
+
                     
                     <div class="mb-3">
                         <label class="form-label">Present Tense</label>
@@ -46,6 +55,7 @@
                     <button type="submit" class="btn btn-primary">Save Word</button>
                     <a href="{{ route('words.index') }}" class="btn btn-secondary">Cancel</a>
                 </form>
+                
             </div>
         </div>
     </div>

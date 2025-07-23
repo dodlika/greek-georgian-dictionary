@@ -24,4 +24,10 @@ class StoreUpdateWordRequest extends FormRequest
             'word_type' => 'required|string|max:255',
         ];
     }
+    public function messages()
+{
+    return [
+        'greek_word.unique' => 'This Greek word already exists.',
+    ];
+}
 }

@@ -28,7 +28,12 @@ class WordController extends Controller
         // Get distinct word types from DB for filter dropdown
         $types = Word::select('word_type')->distinct()->orderBy('word_type')->pluck('word_type')->toArray();
 
-        $query = Word::query();
+        $query = Word::select('words.*')
+    ->whereIn('id', function ($sub) {
+        $sub->selectRaw('MIN(id)')
+            ->from('words')
+            ->groupBy('greek_word');
+    });
 
         // Search by Georgian text (assuming you have a searchGeorgian scope)
         if ($request->filled('search')) {
@@ -99,7 +104,10 @@ class WordController extends Controller
                 ->with('error', 'You do not have permission to create words.');
         }
 
-       
+         $exists = Word::where('greek_word', $request->greek_word)->exists();
+    if ($exists) {
+        return redirect()->back()->withInput()->with('error', 'This Greek word already exists.');
+    }
 
         Word::create($request->all());
 
