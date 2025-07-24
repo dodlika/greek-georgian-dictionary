@@ -70,12 +70,6 @@ echo "Checking and running seeders..."
 
 COLUMN_EXISTS=$(php artisan tinker --execute="echo Schema::hasColumn('words', 'is_seeded') ? 'yes' : 'no';" 2>/dev/null || echo "no")
 
-if [ "$COLUMN_EXISTS" = "yes" ]; then
-    echo "'is_seeded' column exists. Running WordSeeder..."
-    php artisan db:seed --class=WordSeeder --force
-else
-    echo "Skipping WordSeeder: 'is_seeded' column not found!"
-fi
 
 
 # Show created users for reference

@@ -23,10 +23,6 @@ php artisan migrate --force
 
 echo "Database migrations completed"
 
-# Seed database (optional - only run on first deploy)
-if [ "$SEED_DATABASE" = "true" ]; then
-    php artisan db:seed --class=WordSeeder --force
-    echo "Database seeded"
-fi
+
 
 echo "Build process completed successfully!"
