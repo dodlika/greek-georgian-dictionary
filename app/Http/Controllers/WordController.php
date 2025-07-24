@@ -162,17 +162,36 @@ class WordController extends Controller
     }
 
     public function update(StoreUpdateWordRequest $request, Word $word)
-    {
-        // Check if user is authenticated and can manage words - DIRECT PROPERTY ACCESS
-        if (!Auth::check() || !Auth::user()->can_manage_words) {
-            return redirect()->route('words.index')
-                ->with('error', 'You do not have permission to update words.');
-        }
-
-        $word->update($request->all());
-
-        return redirect()->route('words.index')->with('success', 'Word updated successfully!');
+{
+    if (!Auth::check() || !Auth::user()->can_manage_words) {
+        return redirect()->route('words.index')
+            ->with('error', 'You do not have permission to update words.');
     }
+
+    // Check what changed
+    $originalWord = $word->getOriginal(); // old attributes before update
+    $newData = $request->only(['greek_word', 'georgian_translation', 'word_type']); // fields to check
+
+    $word->update($request->all());
+
+    // Determine if something important changed
+    $changed = false;
+    foreach ($newData as $field => $newValue) {
+        if ($originalWord[$field] != $newValue) {
+            $changed = true;
+            break;
+        }
+    }
+
+    if ($changed) {
+        // Notify user (assuming current user is owner of this favorite word)
+        $user = Auth::user();
+        $user->notify(new \App\Notifications\FavoriteWordChanged($word));
+    }
+
+    return redirect()->route('words.index')->with('success', 'Word updated successfully!');
+}
+
 
     public function destroy(Word $word)
     {

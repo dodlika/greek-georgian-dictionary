@@ -13,7 +13,6 @@ use App\Livewire\FavoritesPage;
 use App\Livewire\FavoriteFlashcards;
 
 
-
 // Public routes
 Route::get('/', [WordController::class, 'index'])->name('words.index');
 Route::get('/words', [WordController::class, 'index'])->name('words.show');
@@ -24,6 +23,13 @@ Route::get('/quiz/word-count', [QuizController::class, 'wordCount'])->name('quiz
 Route::middleware(['auth'])->group(function () {
     Route::get('/favorites', FavoritesPage::class)->name('favorites');
 });
+Route::post('/notifications/mark-read', function () {
+    auth()->user()->unreadNotifications->markAsRead();
+    return response()->json(['status' => 'success']);
+})->middleware('auth')->name('notifications.markRead');
+
+
+
 
 // Grammar routes (public)
 Route::get('/grammar', [GrammarController::class, 'index'])->name('grammar.index');

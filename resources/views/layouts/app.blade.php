@@ -12,8 +12,9 @@
     </style>
 </head>
 <body>
-    <div class="container mt-4">
-        <h1 class="text-center mb-4">Greek-Georgian Dictionary</h1>
+    <div class="container  mt-4" style="position: relative">
+   @include('includes.header')
+
         @yield('content')
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
