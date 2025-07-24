@@ -168,29 +168,34 @@ class WordController extends Controller
             ->with('error', 'You do not have permission to update words.');
     }
 
-    // Check what changed
-    $originalWord = $word->getOriginal(); // old attributes before update
-    $newData = $request->only(['greek_word', 'georgian_translation', 'word_type']); // fields to check
+    // Save original values before update
+    $originalWord = $word->getOriginal();
 
+    // Update the word with new data
     $word->update($request->all());
 
-    // Determine if something important changed
+    // Check if important fields changed
     $changed = false;
-    foreach ($newData as $field => $newValue) {
-        if ($originalWord[$field] != $newValue) {
+    $fieldsToCheck = ['greek_word', 'georgian_translation', 'word_type'];
+    foreach ($fieldsToCheck as $field) {
+        if ($originalWord[$field] != $word->$field) {
             $changed = true;
             break;
         }
     }
 
     if ($changed) {
-        // Notify user (assuming current user is owner of this favorite word)
-        $user = Auth::user();
-        $user->notify(new \App\Notifications\FavoriteWordChanged($word));
+        // Notify all users who have favorited this word, regardless of can_manage_words
+        $favoritingUsers = $word->favoritedByUsers; // we'll add this relation below
+
+        foreach ($favoritingUsers as $user) {
+            $user->notify(new \App\Notifications\FavoriteWordChanged($word));
+        }
     }
 
     return redirect()->route('words.index')->with('success', 'Word updated successfully!');
 }
+
 
 
     public function destroy(Word $word)
