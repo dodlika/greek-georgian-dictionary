@@ -81,10 +81,11 @@
                 @endforeach
             </div>
 
-            <!-- Pagination -->
-            <nav aria-label="Page navigation" class="d-flex justify-content-center">
-                {{ $favoriteWords->links() }}
-            </nav>
+<div class="d-flex justify-content-center mt-4">
+       {{ $favoriteWords->links('livewire::bootstrap') }}
+
+
+    </div>
 
         @else
             <div class="text-center py-5 bg-light rounded">

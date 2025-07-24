@@ -29,6 +29,9 @@ Route::post('/notifications/mark-read', function () {
 })->middleware('auth')->name('notifications.markRead');
 
 
+Route::post('/quiz/save-incorrect-to-favorites', [QuizController::class, 'saveIncorrectToFavorites'])->name('quiz.saveIncorrectToFavorites');
+
+
 
 
 // Grammar routes (public)

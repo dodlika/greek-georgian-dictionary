@@ -187,12 +187,44 @@ class QuizController extends Controller
             'time_taken' => now()->diffInMinutes($quizData['start_time']),
             'answers' => $quizData['user_answers']
         ];
+        $incorrectWords = collect($quizData['user_answers'])
+    ->filter(fn ($answer) => !$answer['is_correct'])
+    ->pluck('greek_word') // or 'id' if you want to use the word ID
+    ->values()
+    ->all();
+
+Session::put('quiz_incorrect_words', $incorrectWords); // Save to session for later
+
 
         // Clear quiz data from session
         Session::forget('quiz_data');
 
         return view('quiz.results', compact('results', 'user'));
     }
+    public function saveIncorrectToFavorites()
+{
+    $user = Auth::user();
+    $incorrectWords = Session::get('quiz_incorrect_words', []);
+
+    if (empty($incorrectWords)) {
+        return redirect()->route('quiz.index')->with('error', 'No incorrect words to save.');
+    }
+
+    $words = Word::whereIn('greek_word', $incorrectWords)->get();
+
+    foreach ($words as $word) {
+        // Attach if not already favorited
+        if (!$user->favoriteWords->contains($word->id)) {
+            $user->favoriteWords()->attach($word->id);
+        }
+    }
+
+    // Clear session after saving
+    Session::forget('quiz_incorrect_words');
+
+    return redirect()->route('words.index')->with('success', 'Incorrect words saved to your favorites!');
+}
+
 
     public function leaderboard()
     {

@@ -99,7 +99,17 @@
                         <a href="{{ route('words.index') }}" class="btn btn-secondary btn-lg">
                             Browse Words
                         </a>
+   @if(count(Session::get('quiz_incorrect_words', [])) > 0)
+    <form method="POST" action="{{ route('quiz.saveIncorrectToFavorites') }}">
+        @csrf
+        <button type="submit" class="btn btn-success btn-lg">
+            ⭐ Save Incorrect Words to Favorites
+        </button>
+    </form>
+@endif
+
                     </div>
+                                         
                 </div>
             </div>
         </div>
