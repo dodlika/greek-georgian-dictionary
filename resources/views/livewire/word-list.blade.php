@@ -248,8 +248,7 @@
 
     <style>
         .favorite-word {
-            display: flex;
-            justify-content: space-between;
+   margin-left: 10px;
             position: relative;
         
         }

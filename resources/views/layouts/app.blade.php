@@ -10,6 +10,7 @@
         .greek-text { font-family: 'Times New Roman', serif; }
         .georgian-text { font-family: 'BPG Nino Mtavruli', 'DejaVu Sans', sans-serif; }
     </style>
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 </head>
 <body>
     <div class="container  mt-4" style="position: relative">

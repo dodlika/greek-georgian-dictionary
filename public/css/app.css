@@ -1,0 +1,206 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* === Greek Modern Light Theme === */
+:root {
+    --greek-blue: #2a6f97;
+    --greek-light-blue: #61a5c2;
+    --greek-white: #f9f9f9;
+    --greek-light-gray: #e0e0e0;
+    --greek-seafoam: #b8dbd9;
+    --greek-gold: #f4a261;
+    --greek-highlight: #fff3cd;
+    --greek-danger: #e63946;
+    --greek-font: 'Segoe UI', 'Roboto', sans-serif;
+}
+
+body{
+    background-color: #dae9ef;
+}
+
+.word-list-component {
+    background-color: var(--greek-white);
+    color: #333;
+    font-family: var(--greek-font);
+    border-radius: 10px;
+    padding: 1rem;
+}
+
+.card {
+    background-color: #ffffff;
+    border: 1px solid var(--greek-light-gray);
+    box-shadow: 0 2px 6px rgba(42, 111, 151, 0.1);
+    border-radius: 12px;
+}
+
+.card-body {
+    padding: 1.5rem;
+}
+
+/* Search and Filter */
+.input-group .form-control {
+    border-radius: 8px 0 0 8px;
+    border-color: var(--greek-light-gray);
+}
+
+.input-group .btn {
+    border-radius: 0 8px 8px 0;
+}
+
+.form-select {
+    border-radius: 8px;
+    border-color: var(--greek-light-gray);
+}
+
+.btn-outline-secondary {
+    color: var(--greek-blue);
+    border-color: var(--greek-blue);
+}
+
+.btn-outline-secondary:hover {
+    background-color: var(--greek-light-blue);
+    color: white;
+}
+
+/* Greek Alphabet Filter */
+.greek-alphabet-filter button {
+    border-radius: 8px;
+    font-weight: bold;
+    transition: background-color 0.2s ease;
+}
+
+.greek-alphabet-filter .btn-outline-primary {
+    border-color: var(--greek-blue);
+    color: var(--greek-blue);
+}
+
+.greek-alphabet-filter .btn-outline-primary:hover {
+    background-color: var(--greek-light-blue);
+    color: white;
+}
+
+.greek-alphabet-filter .btn-primary {
+    background-color: var(--greek-blue);
+    border-color: var(--greek-blue);
+}
+
+.greek-alphabet-filter .btn-danger {
+    background-color: var(--greek-danger);
+    border-color: var(--greek-danger);
+}
+
+/* Results Count and Buttons */
+h5 small {
+    color: #6c757d;
+}
+
+.btn-success {
+    background-color: var(--greek-seafoam);
+    border: none;
+    color: #064663;
+    font-weight: 600;
+    border-radius: 10px;
+}
+
+.btn-success:hover {
+    background-color: #7ad1cd;
+    color: white;
+}
+
+.table {
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.table thead {
+    background-color: var(--greek-blue);
+    color: white;
+}
+
+.table tbody tr:hover {
+    background-color: #f0f8ff;
+}
+
+/* Highlights */
+.search-highlight {
+    background-color: var(--greek-highlight);
+    color: #000;
+    padding: 2px 5px;
+    border-radius: 4px;
+}
+
+
+.voice-wrap button {
+    font-size: 1rem;
+    background-color: var(--greek-seafoam);
+    border-color: var(--greek-seafoam);
+    color: #064663;
+}
+
+.voice-wrap button:hover {
+    background-color: #a8dadc;
+}
+
+/* Badges */
+.badge.bg-info {
+    background-color: var(--greek-light-blue);
+}
+
+.badge.bg-primary {
+    background-color: var(--greek-blue);
+}
+
+.badge.bg-secondary {
+    background-color: #adb5bd;
+}
+
+/* Active Filters */
+.active-filters {
+    background-color: var(--greek-light-gray);
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+/* Pagination */
+.page-link {
+    color: var(--greek-blue);
+}
+
+.page-item.active .page-link {
+    background-color: var(--greek-blue);
+    border-color: var(--greek-blue);
+}
+
+/* Spinner */
+.spinner-border {
+    color: var(--greek-blue);
+}
+
+/* Font Styling */
+.greek-text {
+    font-family: 'Times New Roman', serif;
+    font-size: 1.1rem;
+    color: #1a1a1a;
+}
+
+.georgian-text {
+    font-family: 'BPG Nino Mtavruli', 'Sylfaen', serif;
+    font-size: 1.1rem;
+    color: #222;
+}
+
+/* Mobile Friendly */
+@media (max-width: 768px) {
+    .greek-alphabet-filter {
+        max-height: 80px;
+        overflow-y: auto;
+    }
+
+    .btn-sm {
+        font-size: 0.7rem;
+        padding: 0.3rem 0.6rem;
+    }
+}

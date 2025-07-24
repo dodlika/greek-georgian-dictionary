@@ -108,6 +108,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/quiz/results', [QuizController::class, 'complete'])->name('quiz.results');
     Route::get('/quiz/leaderboard', [QuizController::class, 'leaderboard'])->name('quiz.leaderboard');
     Route::post('/quiz/abort', [QuizController::class, 'abort'])->name('quiz.abort');
+    
 });
 // Profile routes (for authenticated users)
 Route::middleware('auth')->group(function () {

@@ -21,69 +21,157 @@ class QuizController extends Controller
         $user = Auth::user();
         $totalWords = Word::count();
         
-        return view('quiz.index', compact('user', 'totalWords'));
+        // Count available verbs for verb tense quiz
+        $totalVerbs = Word::where('word_type', 'verb')
+            ->where(function($query) {
+                $query->where('greek_word', 'not like', 'θα%');
+            })
+            ->whereNotNull('greek_past')
+            ->whereNotNull('greek_future')
+            ->where('greek_past', '!=', '')
+            ->where('greek_future', '!=', '')
+            ->whereRaw('greek_word != greek_past')
+            ->whereRaw('greek_word != greek_future')
+            ->count();
+        
+        return view('quiz.index', compact('user', 'totalWords', 'totalVerbs'));
     }
 
     public function wordCount(Request $request)
-{
-    $addedAfter = $request->query('added_after');
+    {
+        $addedAfter = $request->query('added_after');
+        $quizType = $request->query('quiz_type', 'vocabulary');
 
-    if (!$addedAfter) {
-        return response()->json(['word_count' => Word::count()]);
-    }
+        if ($quizType === 'verb_tense') {
+            $query = Word::where('word_type', 'verb')
+                ->where(function($q) {
+                    $q->where('greek_word', 'not like', 'θα%');
+                })
+                ->whereNotNull('greek_past')
+                ->whereNotNull('greek_future')
+                ->where('greek_past', '!=', '')
+                ->where('greek_future', '!=', '')
+                ->whereRaw('greek_word != greek_past')
+                ->whereRaw('greek_word != greek_future');
 
-    $count = Word::whereDate('created_at', '>=', $addedAfter)->count();
-    return response()->json(['word_count' => $count]);
-}
+            if ($addedAfter) {
+                $query->whereDate('created_at', '>=', $addedAfter);
+            }
 
-
-    public function start(Request $request)
-{
-    $addedAfter = $request->input('added_after');
-    $forceStart = $request->boolean('force_start');
-
-    if ($addedAfter) {
-        $words = Word::whereDate('created_at', '>=', $addedAfter)->inRandomOrder()->get([
-            'id', 'greek_word', 'georgian_translation'
-        ]);
-
-        if ($words->count() < 5 && !$forceStart) {
-            return redirect()->route('quiz.index')
-                ->with('error', "Only {$words->count()} word(s) available after the selected date.");
+            return response()->json(['word_count' => $query->count()]);
         }
 
-        $wordCount = $words->count();
-    } else {
-        $request->validate([
-            'word_count' => 'required|integer|min:5|max:100'
-        ]);
+        if (!$addedAfter) {
+            return response()->json(['word_count' => Word::count()]);
+        }
 
-        $wordCount = $request->input('word_count');
-        $words = Word::inRandomOrder()->limit($wordCount)->get([
-            'id', 'greek_word', 'georgian_translation'
-        ]);
+        $count = Word::whereDate('created_at', '>=', $addedAfter)->count();
+        return response()->json(['word_count' => $count]);
     }
 
-    Session::put('quiz_data', [
-        'words' => $words->toArray(),
-        'current_question' => 0,
-        'score' => 0,
-        'total_questions' => $wordCount,
-        'user_answers' => [],
-        'start_time' => now()
-    ]);
+    public function start(Request $request)
+    {
+        $addedAfter = $request->input('added_after');
+        $forceStart = $request->boolean('force_start');
+        $quizDirection = $request->input('quiz_direction', 'greek_to_georgian');
+        $quizType = $request->input('quiz_type', 'vocabulary');
+        $verbTenseType = $request->input('verb_tense_type', 'mixed');
 
-    return redirect()->route('quiz.question');
-}
+        if ($quizType === 'verb_tense') {
+            $request->validate([
+                'verb_tense_type' => 'required|in:past,future,mixed'
+            ]);
 
+            $query = Word::where('word_type', 'verb')
+                ->where(function($q) {
+                    $q->where('greek_word', 'not like', 'θα%');
+                })
+                ->whereNotNull('greek_past')
+                ->whereNotNull('greek_future')
+                ->where('greek_past', '!=', '')
+                ->where('greek_future', '!=', '')
+                ->whereRaw('greek_word != greek_past')
+                ->whereRaw('greek_word != greek_future');
 
+            if ($addedAfter) {
+                $query->whereDate('created_at', '>=', $addedAfter);
+                $words = $query->inRandomOrder()->get([
+                    'id', 'greek_word', 'greek_past', 'greek_future', 'georgian_translation'
+                ]);
 
+                if ($words->count() < 5 && !$forceStart) {
+                    return redirect()->route('quiz.index')
+                        ->with('error', "Only {$words->count()} verb(s) available after the selected date.");
+                }
+
+                $wordCount = $words->count();
+            } else {
+                $request->validate([
+                    'word_count' => 'required|integer|min:5|max:100'
+                ]);
+
+                $wordCount = $request->input('word_count');
+                $words = $query->inRandomOrder()->limit($wordCount)->get([
+                    'id', 'greek_word', 'greek_past', 'greek_future', 'georgian_translation'
+                ]);
+            }
+
+            Session::put('quiz_data', [
+                'words' => $words->toArray(),
+                'current_question' => 0,
+                'score' => 0,
+                'total_questions' => $wordCount,
+                'user_answers' => [],
+                'start_time' => now(),
+                'quiz_type' => 'verb_tense',
+                'verb_tense_type' => $verbTenseType
+            ]);
+        } else {
+            // Original vocabulary quiz logic
+            $request->validate([
+                'quiz_direction' => 'required|in:greek_to_georgian,georgian_to_greek'
+            ]);
+
+            if ($addedAfter) {
+                $words = Word::whereDate('created_at', '>=', $addedAfter)->inRandomOrder()->get([
+                    'id', 'greek_word', 'georgian_translation'
+                ]);
+
+                if ($words->count() < 5 && !$forceStart) {
+                    return redirect()->route('quiz.index')
+                        ->with('error', "Only {$words->count()} word(s) available after the selected date.");
+                }
+
+                $wordCount = $words->count();
+            } else {
+                $request->validate([
+                    'word_count' => 'required|integer|min:5|max:100'
+                ]);
+
+                $wordCount = $request->input('word_count');
+                $words = Word::inRandomOrder()->limit($wordCount)->get([
+                    'id', 'greek_word', 'georgian_translation'
+                ]);
+            }
+
+            Session::put('quiz_data', [
+                'words' => $words->toArray(),
+                'current_question' => 0,
+                'score' => 0,
+                'total_questions' => $wordCount,
+                'user_answers' => [],
+                'start_time' => now(),
+                'quiz_type' => 'vocabulary',
+                'quiz_direction' => $quizDirection
+            ]);
+        }
+
+        return redirect()->route('quiz.question');
+    }
 
     public function question()
     {
         $quizData = Session::get('quiz_data');
-
-        
 
         if (!$quizData) {
             return redirect()->route('quiz.index')
@@ -119,24 +207,101 @@ class QuizController extends Controller
         $currentQuestion = $quizData['current_question'];
         $currentWord = $quizData['words'][$currentQuestion];
         $userAnswer = trim(strtolower($request->input('answer')));
-        $correctAnswer = trim(strtolower($currentWord['georgian_translation']));
+        $quizType = $quizData['quiz_type'] ?? 'vocabulary';
+        
+        $isCorrect = false;
 
-        // Simple scoring - exact match or contains check
-        $isCorrect = ($userAnswer === $correctAnswer) || 
-                    (str_contains($correctAnswer, $userAnswer) && strlen($userAnswer) > 2) ||
-                    (str_contains($userAnswer, $correctAnswer) && strlen($correctAnswer) > 2);
+        if ($quizType === 'verb_tense') {
+            // Handle verb tense quiz
+            $verbTenseType = $quizData['verb_tense_type'] ?? 'mixed';
+            
+            // Determine which tense to test for this question
+            if ($verbTenseType === 'mixed') {
+                $tenseToTest = rand(0, 1) ? 'past' : 'future';
+            } else {
+                $tenseToTest = $verbTenseType;
+            }
 
+            $correctAnswerField = $tenseToTest === 'past' ? $currentWord['greek_past'] : $currentWord['greek_future'];
+            $questionField = $currentWord['greek_word'];
+            
+            // Store which tense was tested for this question
+            $quizData['user_answers'][$currentQuestion] = [
+                'user_answer' => $request->input('answer'),
+                'correct_answer' => $correctAnswerField,
+                'is_correct' => false, // Will be updated below
+                'question_word' => $questionField,
+                'quiz_type' => 'verb_tense',
+                'tense_tested' => $tenseToTest,
+                'georgian_translation' => $currentWord['georgian_translation'] ?? ''
+            ];
+
+            // Check answer for verb tense
+            $correctAnswers = array_map('trim', explode(',', $correctAnswerField));
+            $correctAnswers = array_map('strtolower', $correctAnswers);
+
+            foreach ($correctAnswers as $correctAnswer) {
+                if ($userAnswer === $correctAnswer) {
+                    $isCorrect = true;
+                    break;
+                }
+            }
+        } else {
+            // Original vocabulary quiz logic
+            $quizDirection = $quizData['quiz_direction'] ?? 'greek_to_georgian';
+            
+            if ($quizDirection === 'greek_to_georgian') {
+                $correctAnswerField = $currentWord['georgian_translation'];
+                $questionField = $currentWord['greek_word'];
+            } else {
+                $correctAnswerField = $currentWord['greek_word'];
+                $questionField = $currentWord['georgian_translation'];
+            }
+
+            // Split correct answers by comma and trim each alternative
+            $correctAnswers = array_map('trim', explode(',', $correctAnswerField));
+            $correctAnswers = array_map('strtolower', $correctAnswers);
+
+            // Extract parenthetical alternatives
+            $parentheticalAnswers = [];
+            preg_match_all('/\(([^)]+)\)/', $correctAnswerField, $matches);
+            foreach ($matches[1] as $match) {
+                $parentheticalAnswers[] = trim(strtolower($match));
+            }
+
+            // Clean main answers by removing parentheses content
+            $cleanedAnswers = [];
+            foreach ($correctAnswers as $answer) {
+                $cleaned = preg_replace('/\s*\([^)]*\)/', '', $answer);
+                $cleanedAnswers[] = trim($cleaned);
+            }
+
+            // Combine all possible correct answers
+            $allCorrectAnswers = array_merge($cleanedAnswers, $parentheticalAnswers);
+            $allCorrectAnswers = array_filter($allCorrectAnswers);
+
+            foreach ($allCorrectAnswers as $correctAnswer) {
+                if ($userAnswer === $correctAnswer) {
+                    $isCorrect = true;
+                    break;
+                }
+            }
+
+            $quizData['user_answers'][$currentQuestion] = [
+                'user_answer' => $request->input('answer'),
+                'correct_answer' => $correctAnswerField,
+                'is_correct' => $isCorrect,
+                'question_word' => $questionField,
+                'quiz_direction' => $quizDirection,
+                'quiz_type' => 'vocabulary'
+            ];
+        }
+
+        // Update correctness and score
+        $quizData['user_answers'][$currentQuestion]['is_correct'] = $isCorrect;
         if ($isCorrect) {
             $quizData['score']++;
         }
-
-        // Store the answer
-        $quizData['user_answers'][$currentQuestion] = [
-            'user_answer' => $request->input('answer'),
-            'correct_answer' => $currentWord['georgian_translation'],
-            'is_correct' => $isCorrect,
-            'greek_word' => $currentWord['greek_word']
-        ];
 
         // Move to next question
         $quizData['current_question']++;
@@ -150,7 +315,6 @@ class QuizController extends Controller
     {
         $quizData = Session::get('quiz_data');
 
-        
         if (!$quizData) {
             return redirect()->route('quiz.index')
                 ->with('error', 'No quiz data found.');
@@ -167,14 +331,12 @@ class QuizController extends Controller
             : 0;
 
         if ($percentage > $currentBestPercentage) {
-            // Use update method correctly
             $user->update([
                 'best_quiz_score' => $score,
                 'best_quiz_total' => $total,
                 'best_quiz_date' => now(),
             ]);
         }
-
 
         // Update total quizzes taken using increment
         $user->increment('total_quizzes_taken');
@@ -185,46 +347,51 @@ class QuizController extends Controller
             'percentage' => $percentage,
             'is_new_best' => $percentage > $currentBestPercentage,
             'time_taken' => now()->diffInMinutes($quizData['start_time']),
-            'answers' => $quizData['user_answers']
+            'answers' => $quizData['user_answers'],
+            'quiz_type' => $quizData['quiz_type'] ?? 'vocabulary'
         ];
+        
         $incorrectWords = collect($quizData['user_answers'])
-    ->filter(fn ($answer) => !$answer['is_correct'])
-    ->pluck('greek_word') // or 'id' if you want to use the word ID
-    ->values()
-    ->all();
+            ->filter(fn ($answer) => !$answer['is_correct'])
+            ->pluck('question_word')
+            ->values()
+            ->all();
 
-Session::put('quiz_incorrect_words', $incorrectWords); // Save to session for later
-
+        Session::put('quiz_incorrect_words', $incorrectWords);
 
         // Clear quiz data from session
         Session::forget('quiz_data');
 
         return view('quiz.results', compact('results', 'user'));
     }
+
     public function saveIncorrectToFavorites()
-{
-    $user = Auth::user();
-    $incorrectWords = Session::get('quiz_incorrect_words', []);
+    {
+        $user = Auth::user();
+        $incorrectWords = Session::get('quiz_incorrect_words', []);
 
-    if (empty($incorrectWords)) {
-        return redirect()->route('quiz.index')->with('error', 'No incorrect words to save.');
-    }
-
-    $words = Word::whereIn('greek_word', $incorrectWords)->get();
-
-    foreach ($words as $word) {
-        // Attach if not already favorited
-        if (!$user->favoriteWords->contains($word->id)) {
-            $user->favoriteWords()->attach($word->id);
+        if (empty($incorrectWords)) {
+            return redirect()->route('quiz.index')->with('error', 'No incorrect words to save.');
         }
+
+        // Find words by either Greek or Georgian text since quiz can be bidirectional
+        $words = Word::where(function($query) use ($incorrectWords) {
+            $query->whereIn('greek_word', $incorrectWords)
+                  ->orWhereIn('georgian_translation', $incorrectWords);
+        })->get();
+
+        foreach ($words as $word) {
+            // Attach if not already favorited
+            if (!$user->favoriteWords->contains($word->id)) {
+                $user->favoriteWords()->attach($word->id);
+            }
+        }
+
+        // Clear session after saving
+        Session::forget('quiz_incorrect_words');
+
+        return redirect()->route('words.index')->with('success', 'Incorrect words saved to your favorites!');
     }
-
-    // Clear session after saving
-    Session::forget('quiz_incorrect_words');
-
-    return redirect()->route('words.index')->with('success', 'Incorrect words saved to your favorites!');
-}
-
 
     public function leaderboard()
     {
@@ -236,11 +403,8 @@ Session::put('quiz_incorrect_words', $incorrectWords); // Save to session for la
                     : 0;
                 return $user;
             })
-
             ->sortByDesc('best_percentage')
             ->take(10);
-
-            
 
         return view('quiz.leaderboard', compact('users'));
     }

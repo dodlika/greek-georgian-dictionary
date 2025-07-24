@@ -78,13 +78,6 @@
     "greek_future": null,
     "georgian_translation": "ეზო",
     "word_type": "noun"
-  },{
-    "greek_word": "αύριο",
-    "greek_present": null,
-    "greek_past": null,
-    "greek_future": null,
-    "georgian_translation": "ხვალ",
-    "word_type": "adverb"
   },
   {
     "greek_word": "Αύγουστος",
@@ -255,14 +248,7 @@
     "georgian_translation": "სად ხარ?",
     "word_type": "phrase"
   },
-  {
-    "greek_word": "εκεί",
-    "greek_present": null,
-    "greek_past": null,
-    "greek_future": null,
-    "georgian_translation": "იქ",
-    "word_type": "adverb"
-  },
+ 
   {
     "greek_word": "έξω/μος",
     "greek_present": null,
@@ -1178,7 +1164,7 @@
     "greek_present": null,
     "greek_past": null,
     "greek_future": null,
-    "georgian_translation": "ვინ? (კაცი)",
+    "georgian_translation": "ვინ? (მამ)",
     "word_type": "pronoun"
   },
   {
@@ -1202,7 +1188,7 @@
     "greek_present": null,
     "greek_past": null,
     "greek_future": null,
-    "georgian_translation": "ვის? (კაცი)",
+    "georgian_translation": "ვის? (მამ)",
     "word_type": "pronoun"
   },
  
@@ -1246,14 +1232,7 @@
     "georgian_translation": "ბლუზა",
     "word_type": "noun"
   },
-  {
-    "greek_word": "Διψάω",
-    "greek_present": "διψάω",
-    "greek_past": "δίψασα",
-    "greek_future": "θα διψάσω",
-    "georgian_translation": "მწყურია",
-    "word_type": "verb"
-  },
+
   {
     "greek_word": "πεινάω",
     "greek_present": "πεινάω",
@@ -1342,7 +1321,7 @@
     "greek_present": "εκείνη",
     "greek_past": "—",
     "greek_future": "—",
-    "georgian_translation": "ის (ქალი)",
+    "georgian_translation": "ის (მდ)",
     "word_type": "pronoun"
   },
   {
@@ -1366,7 +1345,7 @@
     "greek_present": "σε ποια",
     "greek_past": "—",
     "greek_future": "—",
-    "georgian_translation": "რომელ (ქა)",
+    "georgian_translation": "რომელ (მდ)",
     "word_type": "phrase"
   },
   {
@@ -1377,14 +1356,7 @@
     "georgian_translation": "უბანი",
     "word_type": "noun"
   },
-  {
-    "greek_word": "οδός",
-    "greek_present": "οδός",
-    "greek_past": "—",
-    "greek_future": "—",
-    "georgian_translation": "ქუჩა",
-    "word_type": "noun"
-  },
+ 
   {
     "greek_word": "Διψάω",
     "greek_present": "διψάω",
@@ -1615,14 +1587,7 @@
     "georgian_translation": "ჩვეულებისამებრ",
     "word_type": "adverb"
   },
-  {
-    "greek_word": "πεθερός",
-    "greek_present": "πεθερός",
-    "greek_past": "—",
-    "greek_future": "—",
-    "georgian_translation": "მამამთილი",
-    "word_type": "noun"
-  },
+ 
   {
     "greek_word": "λεπτό",
     "greek_present": "λεπτό",
@@ -1636,7 +1601,7 @@
     "greek_present": "ποιος",
     "greek_past": "—",
     "greek_future": "—",
-    "georgian_translation": "ვინ (კაცი)",
+    "georgian_translation": "ვინ (მამ)",
     "word_type": "pronoun"
   },
   {
@@ -1644,7 +1609,7 @@
     "greek_present": "ποια",
     "greek_past": "—",
     "greek_future": "—",
-    "georgian_translation": "ვინ (ქალი)",
+    "georgian_translation": "ვინ (მდ)",
     "word_type": "pronoun"
   },
   {
@@ -1668,7 +1633,7 @@
     "greek_present": "εκείνος",
     "greek_past": "—",
     "greek_future": "—",
-    "georgian_translation": "ის (კაცი)",
+    "georgian_translation": "ის (მამ)",
     "word_type": "pronoun"
   },
   {
@@ -1700,7 +1665,7 @@
     "greek_present": "Νατά",
     "greek_past": "—",
     "greek_future": "—",
-    "georgian_translation": "ნატა (ქალი)",
+    "georgian_translation": "ნატა (მდ)",
     "word_type": "proper noun"
   },
   {
@@ -1711,22 +1676,8 @@
     "georgian_translation": "ნატო (საშ.)",
     "word_type": "proper noun"
   },
-  {
-    "greek_word": "σε ποιο;",
-    "greek_present": "σε ποιο;",
-    "greek_past": "—",
-    "greek_future": "—",
-    "georgian_translation": "რომელში? (კაცი, საშ.)",
-    "word_type": "phrase"
-  },
-  {
-    "greek_word": "σε ποια;",
-    "greek_present": "σε ποια;",
-    "greek_past": "—",
-    "greek_future": "—",
-    "georgian_translation": "რომელში? (ქალი)",
-    "word_type": "phrase"
-  },
+ 
+ 
   {
     "greek_word": "οδός",
     "greek_present": "οδός",
@@ -1764,7 +1715,7 @@
     "greek_present": "την ανοίγω",
     "greek_past": "—",
     "greek_future": "—",
-    "georgian_translation": "ვხსნი (ქალი)",
+    "georgian_translation": "ვხსნი (მდ)",
     "word_type": "verb phrase"
   },
   {
@@ -1908,7 +1859,7 @@
   "greek_present": "ο δικηγόρος",
   "greek_past": "—",
   "greek_future": "—",
-  "georgian_translation": "ადვოკატი (კაცი)",
+  "georgian_translation": "ადვოკატი (მამ)",
   "word_type": "noun"
 },
 {
@@ -1916,7 +1867,7 @@
   "greek_present": "είμαι παντρεμένη",
   "greek_past": "ήμουν παντρεμένη",
   "greek_future": "θα είμαι παντρεμένη",
-  "georgian_translation": "დაქორწინებული (ქალი)",
+  "georgian_translation": "დაქორწინებული (მდ)",
   "word_type": "adjective"
 },
 {
@@ -1951,14 +1902,7 @@
   "georgian_translation": "მისაღები ოთახი",
   "word_type": "noun"
 },
-{
-  "greek_word": "εκείνη",
-  "greek_present": "εκείνη",
-  "greek_past": "—",
-  "greek_future": "—",
-  "georgian_translation": "ის, ის (ქალი)",
-  "word_type": "pronoun"
-},
+
 {
   "greek_word": "να",
   "greek_present": "να",
@@ -2028,7 +1972,7 @@
   "greek_present": "ποιες",
   "greek_past": "—",
   "greek_future": "—",
-  "georgian_translation": "რომლები? (ქალი)",
+  "georgian_translation": "რომლები? (მდ)",
   "word_type": "pronoun"
 },
 {
@@ -2260,7 +2204,7 @@
   "greek_present": "Ελληνίδα",
   "greek_past": "—",
   "greek_future": "—",
-  "georgian_translation": "ბერძენი (ქა)",
+  "georgian_translation": "ბერძენი (მდ)",
   "word_type": "general"
 },
 {
@@ -2268,7 +2212,7 @@
   "greek_present": "Έλληνας",
   "greek_past": "—",
   "greek_future": "—",
-  "georgian_translation": "ბერძენი (კაცი)",
+  "georgian_translation": "ბერძენი (მამ)",
   "word_type": "general"
 },
 {
@@ -2316,7 +2260,7 @@
   "greek_present": "πόσοι",
   "greek_past": "—",
   "greek_future": "—",
-  "georgian_translation": "რამდენი (კაცი)",
+  "georgian_translation": "რამდენი (მამ)",
   "word_type": "general"
 },
 {
@@ -2324,7 +2268,7 @@
   "greek_present": "πόση",
   "greek_past": "—",
   "greek_future": "—",
-  "georgian_translation": "რამდენი (ქალი)",
+  "georgian_translation": "რამდენი (მდ)",
   "word_type": "general"
 },
 {
@@ -2340,7 +2284,7 @@
   "greek_present": "μεσατο δωμάτιο",
   "greek_past": "—",
   "greek_future": "—",
-  "georgian_translation": "შიგნიტ ოთახში",
+  "georgian_translation": "შიგნით ოთახში",
   "word_type": "general"
 },
 {
@@ -2348,7 +2292,7 @@
   "greek_present": "στην",
   "greek_past": "—",
   "greek_future": "—",
-  "georgian_translation": "ში (ქალი)",
+  "georgian_translation": "ში (მდ)",
   "word_type": "general"
 },
 {
@@ -2356,7 +2300,7 @@
   "greek_present": "στον",
   "greek_past": "—",
   "greek_future": "—",
-  "georgian_translation": "ში (კაცი)",
+  "georgian_translation": "ში (მამ)",
   "word_type": "general"
 },
 {
@@ -2420,7 +2364,7 @@
   "greek_present": "πόσες",
   "greek_past": "—",
   "greek_future": "—",
-  "georgian_translation": "რამდენი (ქალი)",
+  "georgian_translation": "რამდენი (მდ)",
   "word_type": "general"
 },
 {
@@ -2444,7 +2388,7 @@
   "greek_present": "πόση",
   "greek_past": "—",
   "greek_future": "—",
-  "georgian_translation": "რამდენი (ქალი)",
+  "georgian_translation": "რამდენი (მდ)",
   "word_type": "general"
 },
 {
@@ -2455,20 +2399,13 @@
   "georgian_translation": "რამდენი (საშ.)",
   "word_type": "general"
 },
-{
-  "greek_word": "ποιος",
-  "greek_present": "ποιος",
-  "greek_past": "—",
-  "greek_future": "—",
-  "georgian_translation": "ვინ (კაცი)",
-  "word_type": "general"
-},
+
 {
   "greek_word": "ποια",
   "greek_present": "ποια",
   "greek_past": "—",
   "greek_future": "—",
-  "georgian_translation": "ვინ (ქალი)",
+  "georgian_translation": "ვინ (მდ)",
   "word_type": "general"
 },
 {
@@ -2508,7 +2445,7 @@
   "greek_present": "σε ποιον;",
   "greek_past": "—",
   "greek_future": "—",
-  "georgian_translation": "ვისთან? (კაცი)",
+  "georgian_translation": "ვისთან? (მამ)",
   "word_type": "general"
 },
 {
@@ -2516,7 +2453,7 @@
   "greek_present": "σε ποια;",
   "greek_past": "—",
   "greek_future": "—",
-  "georgian_translation": "ვისთან? (ქალი)",
+  "georgian_translation": "ვისთან? (მდ)",
   "word_type": "general"
 },
 {
@@ -2679,14 +2616,7 @@
   "georgian_translation": "ბერლინი",
   "word_type": "noun"
 },
-{
-  "greek_word": "με",
-  "greek_present": "με",
-  "greek_past": "—",
-  "greek_future": "—",
-  "georgian_translation": "ით თანდებული",
-  "word_type": "preposition"
-},
+
 {
   "greek_word": "αφηρημένη",
   "greek_present": "αφηρημένη",
@@ -2740,7 +2670,7 @@
   "greek_present": "γεννιέμαι",
   "greek_past": "γεννήθηκα",
   "greek_future": "θα γεννηθώ",
-  "georgian_translation": "ვიბადები",
+  "georgian_translation": "დავიბადე",
   "word_type": "verb"
 },
 {
@@ -2772,7 +2702,7 @@
   "greek_present": "κοιμάμαι",
   "greek_past": "κοιμήθηκα",
   "greek_future": "θα κοιμηθώ",
-  "georgian_translation": "დაძინება",
+  "georgian_translation": "მძინავს",
   "word_type": "verb"
 },
 {
@@ -2901,7 +2831,7 @@
     "greek_present": "είναι",
     "greek_past": "ήταν",
     "greek_future": "θα είναι",
-    "georgian_translation": "ჩემი ბიძაშვილია",
+    "georgian_translation": "ჩემი ბიძაშვილი არის",
     "word_type": "phrase"
   },
   {
@@ -2933,7 +2863,7 @@
     "greek_present": null,
     "greek_past": null,
     "greek_future": null,
-    "georgian_translation": "დაუქორწინებელი",
+    "georgian_translation": "თავისუფალი",
     "word_type": "adjective"
   },
   {
@@ -2985,20 +2915,13 @@
     "georgian_translation": "წინააღმდეგ",
     "word_type": "preposition"
   },
-  {
-    "greek_word": "κάτι",
-    "greek_present": null,
-    "greek_past": null,
-    "greek_future": null,
-    "georgian_translation": "რაღაცა",
-    "word_type": "pronoun"
-  },
+
   {
     "greek_word": "άλλη",
     "greek_present": null,
     "greek_past": null,
     "greek_future": null,
-    "georgian_translation": "სხვა ქალი",
+    "georgian_translation": "სხვა (მდ)",
     "word_type": "adjective"
   },
   {
@@ -3010,7 +2933,7 @@
     "word_type": "noun"
   },
   {
-    "greek_word": "εισιτήρια",
+    "greek_word": "τα εισιτήρια",
     "greek_present": null,
     "greek_past": null,
     "greek_future": null,
@@ -3030,7 +2953,7 @@
     "greek_present": null,
     "greek_past": null,
     "greek_future": null,
-    "georgian_translation": "ით თანდებული",
+    "georgian_translation": "ით (თანდებული)",
     "word_type": "preposition"
   },
   {
@@ -3094,7 +3017,7 @@
     "greek_present": null,
     "greek_past": null,
     "greek_future": null,
-    "georgian_translation": "დედიკო (თბილად დედა)",
+    "georgian_translation": "დედა",
     "word_type": "noun"
   },
   {
@@ -3102,7 +3025,7 @@
     "greek_present": null,
     "greek_past": null,
     "greek_future": null,
-    "georgian_translation": "მამიკო (თბილად მამა)",
+    "georgian_translation": "მამა",
     "word_type": "noun"
   },
   {
@@ -3209,14 +3132,7 @@
     "georgian_translation": "ხანდახან ხანდახან",
     "word_type": "adverb"
   },
-  {
-    "greek_word": "όταν",
-    "greek_present": null,
-    "greek_past": null,
-    "greek_future": null,
-    "georgian_translation": "როდესაც",
-    "word_type": "conjunction"
-  },
+ 
   {
     "greek_word": "διαβάζω",
     "greek_present": "διαβάζω",
@@ -3254,7 +3170,7 @@
     "greek_present": null,
     "greek_past": null,
     "greek_future": null,
-    "georgian_translation": "",
+    "georgian_translation": "ბუზუკი (საკრავი)",
     "word_type": "noun"
   },
   {
@@ -3351,7 +3267,7 @@
   "greek_present": "αργώ",
   "greek_past": "άργησα",
   "greek_future": "θα αργήσω",
-  "georgian_translation": "გვიანდები",
+  "georgian_translation": "ვაგვიანებ",
   "word_type": "verb"
 },
 {
@@ -3359,7 +3275,7 @@
   "greek_present": "απεργώ",
   "greek_past": "—",
   "greek_future": "—",
-  "georgian_translation": "ვიფიცავ (არ ვმუშაობ)",
+  "georgian_translation": "გავიფიცე (არ ვმუშაობ,გაფიცვა)",
   "word_type": "verb"
 },
 {
@@ -3375,7 +3291,7 @@
   "greek_present": "κυκλοφορώ",
   "greek_past": "—",
   "greek_future": "—",
-  "georgian_translation": "ვმოძრაობ,გადაადგილება",
+  "georgian_translation": "ვმოძრაობ (გადაადგილება)",
   "word_type": "verb"
 },
 {
@@ -3495,7 +3411,7 @@
   "greek_present": "τα πεθερικά",
   "greek_past": "—",
   "greek_future": "—",
-  "georgian_translation": "დედამთილი მამამთილი",
+  "georgian_translation": "დედამთილი,მამამთილი",
   "word_type": "noun"
 },
 {
@@ -3511,7 +3427,7 @@
   "greek_present": "ο πεθερός",
   "greek_past": "—",
   "greek_future": "—",
-  "georgian_translation": "მამამთილი / სიდედრი",
+  "georgian_translation": "მამამთილი,სიდედრი",
   "word_type": "noun"
 },
 {
@@ -3523,11 +3439,11 @@
   "word_type": "expression"
 },
 {
-  "greek_word": "συμφωνείτε;",
-  "greek_present": "συμφωνείτε;",
+  "greek_word": "συμφωνείτε",
+  "greek_present": "συμφωνείτε",
   "greek_past": "—",
   "greek_future": "—",
-  "georgian_translation": "ვეთანხმებით ერთმანეთს?",
+  "georgian_translation": "ეთანხმებით",
   "word_type": "question"
 },
 {
@@ -3543,7 +3459,7 @@
   "greek_present": "τέλος",
   "greek_past": "—",
   "greek_future": "—",
-  "georgian_translation": "დასასრული, საბოლოოდ",
+  "georgian_translation": "დასასრული,საბოლოოდ",
   "word_type": "noun"
 },
 {
@@ -3871,7 +3787,7 @@
   "greek_present": "στον",
   "greek_past": "—",
   "greek_future": "—",
-  "georgian_translation": "ში, იმ (კაცი)",
+  "georgian_translation": "ში(მამ)",
   "word_type": "preposition"
 },
 {
@@ -3879,7 +3795,7 @@
   "greek_present": "στην",
   "greek_past": "—",
   "greek_future": "—",
-  "georgian_translation": "ში, იმ (ქალი)",
+  "georgian_translation": "ში(მრდ)",
   "word_type": "preposition"
 },
 {
@@ -3887,7 +3803,7 @@
   "greek_present": "στο",
   "greek_past": "—",
   "greek_future": "—",
-  "georgian_translation": "ში, იმ (საშ.)",
+  "georgian_translation": "ში(საშ)",
   "word_type": "preposition"
 },
 {
@@ -3895,7 +3811,7 @@
   "greek_present": "ένας",
   "greek_past": "—",
   "greek_future": "—",
-  "georgian_translation": "ერთი (კაცი)",
+  "georgian_translation": "ერთი(მამ)",
   "word_type": "article"
 },
 {
@@ -3903,7 +3819,7 @@
   "greek_present": "έναν",
   "greek_past": "—",
   "greek_future": "—",
-  "georgian_translation": "ერთს (კაცი)",
+  "georgian_translation": "ერთს (მამ)",
   "word_type": "article"
 },
 {
@@ -3911,39 +3827,25 @@
   "greek_present": "μία",
   "greek_past": "—",
   "greek_future": "—",
-  "georgian_translation": "ერთი (ქალი nom.)",
+  "georgian_translation": "ერთი (მდ)",
   "word_type": "article"
 },
-{
-  "greek_word": "μια",
-  "greek_present": "μια",
-  "greek_past": "—",
-  "greek_future": "—",
-  "georgian_translation": "ერთი (ქალი acc.)",
-  "word_type": "article"
-},
+
 {
   "greek_word": "ένα",
   "greek_present": "ένα",
   "greek_past": "—",
   "greek_future": "—",
-  "georgian_translation": "ერთი (საშ. nom.)",
+  "georgian_translation": "ერთი (საშ)",
   "word_type": "article"
 },
-{
-  "greek_word": "ένα",
-  "greek_present": "ένα",
-  "greek_past": "—",
-  "greek_future": "—",
-  "georgian_translation": "ერთს (საშ. acc.)",
-  "word_type": "article"
-},
+
 {
   "greek_word": "σοβαρός",
   "greek_present": "σοβαρός",
   "greek_past": "—",
   "greek_future": "—",
-  "georgian_translation": "სერიოზული (კაცი)",
+  "georgian_translation": "სერიოზული (მამ)",
   "word_type": "adjective"
 },
 {
@@ -3951,7 +3853,7 @@
   "greek_present": "σοβαρή",
   "greek_past": "—",
   "greek_future": "—",
-  "georgian_translation": "სერიოზული (ქალი)",
+  "georgian_translation": "სერიოზული (მდ)",
   "word_type": "adjective"
 },
 {
@@ -3959,7 +3861,7 @@
   "greek_present": "σοβαρό",
   "greek_past": "—",
   "greek_future": "—",
-  "georgian_translation": "სერიოზულ",
+  "georgian_translation": "სერიოზული (საშ)",
   "word_type": "adjective"
 },
 {
@@ -3967,7 +3869,7 @@
   "greek_present": "αστείος",
   "greek_past": "—",
   "greek_future": "—",
-  "georgian_translation": "სასაცილო (კაცი)",
+  "georgian_translation": "სასაცილო (მამ)",
   "word_type": "adjective"
 },
 {
@@ -4063,7 +3965,7 @@
   "greek_present": null,
   "greek_past": null,
   "greek_future": null,
-  "georgian_translation": "მოვდივარ ორ წუთში",
+  "georgian_translation": "ორ წუთში",
   "word_type": "phrase"
 },
 {
@@ -4079,7 +3981,7 @@
   "greek_present": null,
   "greek_past": null,
   "greek_future": null,
-  "georgian_translation": "დამიცადე",
+  "georgian_translation": "დამელოდე",
   "word_type": "verb"
 },
 {
@@ -4106,22 +4008,8 @@
   "georgian_translation": "რომელი?",
   "word_type": "pronoun"
 },
-{
-  "greek_word": "τι",
-  "greek_present": null,
-  "greek_past": null,
-  "greek_future": null,
-  "georgian_translation": "რამდენი",
-  "word_type": "pronoun"
-},
-{
-  "greek_word": "μου",
-  "greek_present": null,
-  "greek_past": null,
-  "greek_future": null,
-  "georgian_translation": "ჩემი",
-  "word_type": "pronoun"
-},
+
+
 {
   "greek_word": "που",
   "greek_present": null,
@@ -4131,7 +4019,7 @@
   "word_type": "pronoun"
 },
 {
-  "greek_word": "πώς;",
+  "greek_word": "πώς",
   "greek_present": null,
   "greek_past": null,
   "greek_future": null,
@@ -4143,7 +4031,7 @@
   "greek_present": null,
   "greek_past": null,
   "greek_future": null,
-  "georgian_translation": "რა კიარა",
+  "georgian_translation": "მაგრამ რა",
   "word_type": "phrase"
 },
 {
@@ -4151,7 +4039,7 @@
   "greek_present": null,
   "greek_past": null,
   "greek_future": null,
-  "georgian_translation": "ვისთან ერთად",
+  "georgian_translation": "ვისთან ერთად (მამ)",
   "word_type": "phrase"
 },
 {
@@ -4162,14 +4050,7 @@
   "georgian_translation": "ვისთვის (ზედსართავი)",
   "word_type": "preposition"
 },
-{
-  "greek_word": "με",
-  "greek_present": null,
-  "greek_past": null,
-  "greek_future": null,
-  "georgian_translation": "თან (თანა)",
-  "word_type": "preposition"
-},
+
 {
   "greek_word": "μέσα",
   "greek_present": null,
@@ -4183,7 +4064,7 @@
   "greek_present": null,
   "greek_past": null,
   "greek_future": null,
-  "georgian_translation": "რით მიდიხარ სეირნად",
+  "georgian_translation": "რით მიდიხარ სასეირნოდ?",
   "word_type": "phrase"
 },
 {
@@ -4207,7 +4088,7 @@
   "greek_present": null,
   "greek_past": null,
   "greek_future": null,
-  "georgian_translation": "ეს (ქალი)",
+  "georgian_translation": "ეს (მდ)",
   "word_type": "pronoun"
 },
 {
@@ -4247,7 +4128,7 @@
   "greek_present": "πιώ",
   "greek_past": "ήπια",
   "greek_future": "θα πιω",
-  "georgian_translation": "დავასვამ",
+  "georgian_translation": "დავლევ",
   "word_type": "verb"
 },
 {
@@ -4255,7 +4136,7 @@
   "greek_present": null,
   "greek_past": null,
   "greek_future": null,
-  "georgian_translation": "ახალი",
+  "georgian_translation": "ახალი (ახლები)",
   "word_type": "adjective"
 },
 {
@@ -4263,7 +4144,7 @@
   "greek_present": null,
   "greek_past": null,
   "greek_future": null,
-  "georgian_translation": "მიგცა",
+  "georgian_translation": "მოგცა",
   "word_type": "phrase"
 },
 {
@@ -4271,7 +4152,7 @@
   "greek_present": "είσαι",
   "greek_past": null,
   "greek_future": null,
-  "georgian_translation": "იყო",
+  "georgian_translation": "იყოს",
   "word_type": "verb"
 },
 {
@@ -4279,7 +4160,7 @@
   "greek_present": null,
   "greek_past": null,
   "greek_future": null,
-  "georgian_translation": "ამიტომ",
+  "georgian_translation": "ამისთვის",
   "word_type": "phrase"
 },
 {
@@ -4319,7 +4200,7 @@
   "greek_present": "τρώει",
   "greek_past": null,
   "greek_future": null,
-  "georgian_translation": "ჭამას",
+  "georgian_translation": "ჭამოს",
   "word_type": "verb"
 },
 {
@@ -4351,7 +4232,7 @@
   "greek_present": null,
   "greek_past": null,
   "greek_future": null,
-  "georgian_translation": "თამაში, თამაში",
+  "georgian_translation": "თამაში",
   "word_type": "noun"
 },
 {
@@ -4359,7 +4240,7 @@
   "greek_present": "μαθαίνει",
   "greek_past": null,
   "greek_future": null,
-  "georgian_translation": "ისწავლ",
+  "georgian_translation": "ისწავლოს",
   "word_type": "verb"
 },
 {
@@ -4487,7 +4368,7 @@
   "greek_present": null,
   "greek_past": null,
   "greek_future": null,
-  "georgian_translation": "",
+  "georgian_translation": "ალუჩა",
   "word_type": "noun"
 },
 {
@@ -4503,7 +4384,7 @@
   "greek_present": null,
   "greek_past": null,
   "greek_future": null,
-  "georgian_translation": "რამდენი ღირს?",
+  "georgian_translation": "რა ღირს?",
   "word_type": "phrase"
 },
 {
@@ -4535,7 +4416,7 @@
   "greek_present": null,
   "greek_past": null,
   "greek_future": null,
-  "georgian_translation": "რომ",
+  "georgian_translation": "რომ,უნდა",
   "word_type": "conjunction"
 },
 {
@@ -4551,7 +4432,7 @@
   "greek_present": null,
   "greek_past": null,
   "greek_future": null,
-  "georgian_translation": "მიყვარს",
+  "georgian_translation": "მომწონს",
   "word_type": "phrase"
 },
 {
@@ -4559,7 +4440,7 @@
   "greek_present": null,
   "greek_past": null,
   "greek_future": null,
-  "georgian_translation": "და შენ",
+  "georgian_translation": "შენც",
   "word_type": "phrase"
 },
 {
@@ -4567,7 +4448,7 @@
   "greek_present": null,
   "greek_past": null,
   "greek_future": null,
-  "georgian_translation": "და მე",
+  "georgian_translation": "მეც",
   "word_type": "phrase"
 },
 {
@@ -4688,7 +4569,7 @@
   "greek_present": "υπάρχουν",
   "greek_past": "υπήρχαν",
   "greek_future": "θα υπάρξουν",
-  "georgian_translation": "არსებობენ (there are)",
+  "georgian_translation": "არსებობენ",
   "word_type": "verb"
 },
 {
@@ -4712,7 +4593,7 @@
   "greek_present": "άνετες",
   "greek_past": "—",
   "greek_future": "—",
-  "georgian_translation": "მარტივი, მოსახერხებელი (ქა)",
+  "georgian_translation": "მარტივი, მოსახერხებელი (მდ)",
   "word_type": "adjective"
 },
 {
@@ -4739,20 +4620,13 @@
   "georgian_translation": "ფასდაკლება",
   "word_type": "noun"
 },
-{
-  "greek_word": "σου Μαξι",
-  "greek_present": "σου Μαξι",
-  "greek_past": "—",
-  "greek_future": "—",
-  "georgian_translation": "გილოცო",
-  "word_type": "expression"
-},
+
 {
   "greek_word": "λευκό",
   "greek_present": "λευκό",
   "greek_past": "—",
   "greek_future": "—",
-  "georgian_translation": "თეთრი ფერი, თეთრი ღვინო",
+  "georgian_translation": "თეთრი",
   "word_type": "adjective"
 },
 {
@@ -4776,7 +4650,7 @@
   "greek_present": "το ταμείο",
   "greek_past": "—",
   "greek_future": "—",
-  "georgian_translation": "კასა",
+  "georgian_translation": "სალარო",
   "word_type": "noun"
 },
 {
@@ -4851,14 +4725,7 @@
   "georgian_translation": "თოვს",
   "word_type": "verb"
 },
-{
-  "greek_word": "ο ήλιος",
-  "greek_present": "ο ήλιος",
-  "greek_past": "—",
-  "greek_future": "—",
-  "georgian_translation": "მზე",
-  "word_type": "noun"
-},
+
 {
   "greek_word": "έχει ήλιο",
   "greek_present": "έχει ήλιο",
@@ -4907,21 +4774,14 @@
   "georgian_translation": "ცხელა",
   "word_type": "expression"
 },
-{
-  "greek_word": "ο αέρας",
-  "greek_present": "ο αέρας",
-  "greek_past": "—",
-  "greek_future": "—",
-  "georgian_translation": "ჰაერი, ქარი",
-  "word_type": "noun"
-},
+
 
 {
   "greek_word": "ανάβω",
   "greek_present": "ανάβω",
   "greek_past": "άναψα",
   "greek_future": "θα ανάψω",
-  "georgian_translation": "ანთება",
+  "georgian_translation": "ვანთებ",
   "word_type": "verb"
 },
 {
@@ -4929,7 +4789,7 @@
   "greek_present": "γυρίζω",
   "greek_past": "γύρισα",
   "greek_future": "θα γυρίσω",
-  "georgian_translation": "ბრუნვა",
+  "georgian_translation": "ვბრუნდები",
   "word_type": "verb"
 },
 {
@@ -4985,7 +4845,7 @@
   "greek_present": null,
   "greek_past": null,
   "greek_future": null,
-  "georgian_translation": "ჩემი (მომხმარ.)",
+  "georgian_translation": "ჩემი",
   "word_type": "pronoun"
 },
 {
@@ -5005,14 +4865,7 @@
   "word_type": "verb"
 },
 
-{
-  "greek_word": "άδειος",
-  "greek_present": null,
-  "greek_past": null,
-  "greek_future": null,
-  "georgian_translation": "ცარიელი",
-  "word_type": "adjective"
-},
+
 {
   "greek_word": "η συζήτηση",
   "greek_present": null,
@@ -5037,14 +4890,7 @@
   "georgian_translation": "ელექტრონული",
   "word_type": "adjective"
 },
-{
-  "greek_word": "τηλεοπτικός",
-  "greek_present": null,
-  "greek_past": null,
-  "greek_future": null,
-  "georgian_translation": "ტელევიზიური",
-  "word_type": "adjective"
-},
+
 {
   "greek_word": "άρρωστος",
   "greek_present": null,
@@ -5130,7 +4976,7 @@
   "greek_present": null,
   "greek_past": null,
   "greek_future": null,
-  "georgian_translation": "ანთე სინათლე",
+  "georgian_translation": "აანთე სინათლე",
   "word_type": "phrase"
 },
 {
@@ -5138,24 +4984,16 @@
   "greek_present": null,
   "greek_past": null,
   "greek_future": null,
-  "georgian_translation": "ჩააქრო სინათლე",
+  "georgian_translation": "ჩააქრე სინათლე",
   "word_type": "phrase"
 },
 
-{
-  "greek_word": "βρίσκεται",
-  "greek_present": "βρίσκεται",
-  "greek_past": null,
-  "greek_future": null,
-  "georgian_translation": "მდებარეობს, იმყოფება",
-  "word_type": "verb"
-},
 {
   "greek_word": "παιδική εκπομπή",
   "greek_present": null,
   "greek_past": null,
   "greek_future": null,
-  "georgian_translation": "ბავშვთა გადაცემა",
+  "georgian_translation": "საბავშვო გადაცემა",
   "word_type": "noun"
 },
 {
@@ -5187,7 +5025,7 @@
   "greek_present": "πεινάω",
   "greek_past": null,
   "greek_future": null,
-  "georgian_translation": "ძალიან მშივა",
+  "georgian_translation": "ძალიან მშია",
   "word_type": "phrase"
 },
 {
@@ -5422,14 +5260,7 @@
   "georgian_translation": "კომპიუტერი",
   "word_type": "noun"
 },
-{
-  "greek_word": "το στυρί",
-  "greek_present": "το στυρί",
-  "greek_past": "—",
-  "greek_future": "—",
-  "georgian_translation": "ყველი",
-  "word_type": "noun"
-},
+
 {
   "greek_word": "φεύγουν",
   "greek_present": "φεύγουν",
@@ -5443,7 +5274,7 @@
   "greek_present": "η αγγελία",
   "greek_past": "—",
   "greek_future": "—",
-  "georgian_translation": "გამოცხადება",
+  "georgian_translation": "გამოფენა,განცხადება",
   "word_type": "noun"
 },
 {
@@ -5606,20 +5437,13 @@
   "georgian_translation": "ხორცი",
   "word_type": "noun"
 },
-{
-  "greek_word": "το ψάρι",
-  "greek_present": "το ψάρι",
-  "greek_past": "—",
-  "greek_future": "—",
-  "georgian_translation": "თევზი",
-  "word_type": "noun"
-},
+
 {
   "greek_word": "οι ελιές",
   "greek_present": "οι ελιές",
   "greek_past": "—",
   "greek_future": "—",
-  "georgian_translation": "ზეთოვანი ზეთისხილი",
+  "georgian_translation": "ზეთისხილი",
   "word_type": "noun"
 },
 {
@@ -5747,7 +5571,7 @@
   "greek_present": null,
   "greek_past": null,
   "greek_future": null,
-  "georgian_translation": "სქელი",
+  "georgian_translation": "მსუქანი",
   "word_type": "adjective"
 },
 {
@@ -5775,14 +5599,7 @@
   "georgian_translation": "ვიღებ",
   "word_type": "verb"
 },
-{
-  "greek_word": "φέρνω",
-  "greek_present": "φέρνω",
-  "greek_past": null,
-  "greek_future": null,
-  "georgian_translation": "ვიტან",
-  "word_type": "verb"
-},
+
 {
   "greek_word": "σου δίνω",
   "greek_present": "δίνω",
@@ -5799,22 +5616,7 @@
   "georgian_translation": "თამბაქო",
   "word_type": "noun"
 },
-{
-  "greek_word": "το τυρί",
-  "greek_present": null,
-  "greek_past": null,
-  "greek_future": null,
-  "georgian_translation": "საძინებლები",
-  "word_type": "noun"
-},
-{
-  "greek_word": "η αγγελία",
-  "greek_present": null,
-  "greek_past": null,
-  "greek_future": null,
-  "georgian_translation": "განცხადება",
-  "word_type": "noun"
-},
+
 {
   "greek_word": "ενδιαφέρομαι",
   "greek_present": "ενδιαφέρομαι",
@@ -5828,7 +5630,7 @@
   "greek_present": null,
   "greek_past": null,
   "greek_future": null,
-  "georgian_translation": "ორმცხოვრები",
+  "georgian_translation": "ოროთახიანი",
   "word_type": "noun"
 },
 {
@@ -5844,7 +5646,7 @@
   "greek_present": null,
   "greek_past": null,
   "greek_future": null,
-  "georgian_translation": "ავეჯით furnished",
+  "georgian_translation": "კეთილმოწყობილი",
   "word_type": "adjective"
 },
 {
@@ -5956,7 +5758,7 @@
   "greek_present": "φεύγω",
   "greek_past": null,
   "greek_future": null,
-  "georgian_translation": "დასვენება, მშვიდად ყოფნა",
+  "georgian_translation": "დასვენება, მშვიდად ყოფნა,(გავდივარ)",
   "word_type": "verb"
 },
 {
@@ -5971,7 +5773,7 @@
   "greek_word": "μέλλοντα",
   "greek_present": null,
   "greek_past": null,
-  "greek_future": "θα (μέλλοντα)",
+  "greek_future": "θα μέλλοντα",
   "georgian_translation": "მომავალი",
   "word_type": "noun"
 },
@@ -6031,14 +5833,7 @@
   "georgian_translation": "ვიხდი",
   "word_type": "verb"
 },
-{
-  "greek_word": "χορεύω",
-  "greek_present": "χορεύω",
-  "greek_past": null,
-  "greek_future": null,
-  "georgian_translation": "ვცეკვავ",
-  "word_type": "verb"
-},
+
 {
   "greek_word": "γελώ",
   "greek_present": "γελώ",
@@ -6100,7 +5895,7 @@
   "greek_present": "πλένομαι",
   "greek_past": null,
   "greek_future": null,
-  "georgian_translation": "ვიბან",
+  "georgian_translation": "ვბანაობ",
   "word_type": "verb"
 },
 {
@@ -6183,20 +5978,13 @@
   "georgian_translation": "ვგრძნობ",
   "word_type": "verb"
 },
-{
-  "greek_word": "κοιμάμαι",
-  "greek_present": "κοιμάμαι",
-  "greek_past": null,
-  "greek_future": null,
-  "georgian_translation": "დავიძინე",
-  "word_type": "verb"
-},
+
 {
   "greek_word": "χτυπάμε",
   "greek_present": "χτυπάμε",
   "greek_past": null,
   "greek_future": null,
-  "georgian_translation": "ვცემდები",
+  "georgian_translation": "ვარტყავთ",
   "word_type": "verb"
 },
 {
@@ -6212,7 +6000,7 @@
   "greek_present": null,
   "greek_past": null,
   "greek_future": null,
-  "georgian_translation": "რაღაც",
+  "georgian_translation": "რაღაცა,რაღაც",
   "word_type": "pronoun"
 },
 {
@@ -6244,7 +6032,7 @@
   "greek_present": null,
   "greek_past": null,
   "greek_future": null,
-  "georgian_translation": "ჭამისთვის",
+  "georgian_translation": "საჭმლისთვის",
   "word_type": "phrase"
 },
 {
@@ -6252,7 +6040,7 @@
   "greek_present": null,
   "greek_past": null,
   "greek_future": null,
-  "georgian_translation": "გასასეირნებლად",
+  "georgian_translation": "სასეირნოდ",
   "word_type": "phrase"
 },
 {
@@ -6308,7 +6096,7 @@
     "greek_present": "το αφρόλουτρο",
     "greek_past": "—",
     "greek_future": "—",
-    "georgian_translation": "გელ-ბანიო",
+    "georgian_translation": "შხაპის გელი",
     "word_type": "noun"
   },
   {
@@ -6356,7 +6144,7 @@
     "greek_present": "το γιαούρτι",
     "greek_past": "—",
     "greek_future": "—",
-    "georgian_translation": "მაწონი",
+    "georgian_translation": "იოგურტი",
     "word_type": "noun"
   },
   {
@@ -6367,14 +6155,7 @@
     "georgian_translation": "ხორცპროდუქტები",
     "word_type": "noun"
   },
-  {
-    "greek_word": "το ζαμπόν",
-    "greek_present": "το ζαμπόν",
-    "greek_past": "—",
-    "greek_future": "—",
-    "georgian_translation": "ზამბონი",
-    "word_type": "noun"
-  },
+ 
   {
     "greek_word": "το μπέικον",
     "greek_present": "το μπέικον",
@@ -6384,7 +6165,7 @@
     "word_type": "noun"
   },
   {
-    "greek_word": "ροφήματα",
+    "greek_word": "τα ροφήματα",
     "greek_present": "ροφήματα",
     "greek_past": "—",
     "greek_future": "—",
@@ -6468,7 +6249,7 @@
     "greek_present": "το κρεοπωλείο",
     "greek_past": "—",
     "greek_future": "—",
-    "georgian_translation": "მარკეტი / butcher",
+    "georgian_translation": "ხორცის მაღაზია",
     "word_type": "noun"
   },
   {
@@ -6548,7 +6329,7 @@
     "greek_present": "καθισμένος",
     "greek_past": "—",
     "greek_future": "—",
-    "georgian_translation": "ჯდება",
+    "georgian_translation": "მჯდომარე (მამ)",
     "word_type": "adjective"
   },
   {
@@ -6556,7 +6337,7 @@
     "greek_present": "χλιαρός",
     "greek_past": "—",
     "greek_future": "—",
-    "georgian_translation": "თბილი",
+    "georgian_translation": "ნელთბილი (მამ)",
     "word_type": "adjective"
   },
   {
@@ -6588,7 +6369,7 @@
     "greek_present": "ο καιρός",
     "greek_past": "—",
     "greek_future": "—",
-    "georgian_translation": "ამინდი, vreme",
+    "georgian_translation": "ამინდი (მამ)",
     "word_type": "noun"
   },
   {
@@ -6596,15 +6377,15 @@
     "greek_present": "κρύος",
     "greek_past": "—",
     "greek_future": "—",
-    "georgian_translation": "ცივი",
+    "georgian_translation": "ცივი (მამ)",
     "word_type": "adjective"
   },
   {
-    "greek_word": "δικός μου (δικό)",
-    "greek_present": "δικός μου (δικό)",
+    "greek_word": "δικός μου",
+    "greek_present": "δικός μου",
     "greek_past": "—",
     "greek_future": "—",
-    "georgian_translation": "ჩემი (კაცი)",
+    "georgian_translation": "ჩემი (მამ)",
     "word_type": "adjective"
   },
   {
@@ -6612,7 +6393,7 @@
     "greek_present": "δική μου",
     "greek_past": "—",
     "greek_future": "—",
-    "georgian_translation": "ჩემი (ქალი)",
+    "georgian_translation": "ჩემი (მდ)",
     "word_type": "adjective"
   },
   {
@@ -6636,7 +6417,7 @@
     "greek_present": "ανεβαίνω",
     "greek_past": "ανέβηκα",
     "greek_future": "ανέβω",
-    "georgian_translation": "აღმავალი",
+    "georgian_translation": "ავდივარ",
     "word_type": "verb"
   },
   {
@@ -6644,7 +6425,7 @@
     "greek_present": "κατεβαίνω",
     "greek_past": "κατέβηκα",
     "greek_future": "κατέβω",
-    "georgian_translation": "დაღმავალი",
+    "georgian_translation": "ჩავდივარ",
     "word_type": "verb"
   },
   {
@@ -6652,7 +6433,7 @@
     "greek_present": "πλένω",
     "greek_past": "έπλυνα",
     "greek_future": "πλύνω",
-    "georgian_translation": "ვბანავ, ვრეცხავ",
+    "georgian_translation": "ვიბან, ვრეცხავ",
     "word_type": "verb"
   },
   {
@@ -6700,7 +6481,7 @@
     "greek_present": "καθόλου",
     "greek_past": "—",
     "greek_future": "—",
-    "georgian_translation": "სულაც",
+    "georgian_translation": "საერთოდ",
     "word_type": "adverb"
   },
    {
@@ -6780,7 +6561,7 @@
     "greek_present": null,
     "greek_past": null,
     "greek_future": null,
-    "georgian_translation": "ჩაცმა",
+    "georgian_translation": "ჩავიცვა",
     "word_type": "verb-infinitive"
   },
   {
@@ -6788,7 +6569,7 @@
     "greek_present": null,
     "greek_past": null,
     "greek_future": null,
-    "georgian_translation": "ლაპარაკი",
+    "georgian_translation": "გესაუბრო",
     "word_type": "verb-infinitive"
   },
   {
@@ -6846,7 +6627,7 @@
     "greek_present": null,
     "greek_past": null,
     "greek_future": null,
-    "georgian_translation": "ღია (მრავლ)",
+    "georgian_translation": "ღია (მრ)",
     "word_type": "adjective"
   },
   {
@@ -6865,14 +6646,7 @@
     "georgian_translation": "დაბალი (მცირე)",
     "word_type": "adjective"
   },
-  {
-    "greek_word": "κοντός",
-    "greek_present": null,
-    "greek_past": null,
-    "greek_future": null,
-    "georgian_translation": "დაბალი, დაბლა",
-    "word_type": "adjective"
-  },
+ 
   {
     "greek_word": "Ποιος έχει δίκιο;",
     "greek_present": null,
@@ -6886,7 +6660,7 @@
     "greek_present": null,
     "greek_past": null,
     "greek_future": null,
-    "georgian_translation": "მეცით წიგნი",
+    "georgian_translation": "მომეცით წიგნი",
     "word_type": "command"
   },
   {
@@ -6913,14 +6687,7 @@
     "georgian_translation": "კვირაში",
     "word_type": "phrase"
   },
-  {
-    "greek_word": "Μένω",
-    "greek_present": "μένω",
-    "greek_past": null,
-    "greek_future": null,
-    "georgian_translation": "ვცხოვრობ",
-    "word_type": "verb"
-  },
+
   {
     "greek_word": "Θα μείνω",
     "greek_present": null,
@@ -6949,7 +6716,7 @@
     "greek_word": "Παραγγέλνω",
     "greek_present": "παραγγέλνω",
     "greek_past": null,
-    "greek_future": null,
+    "greek_future": "θα παραγγείλω",
     "georgian_translation": "ვუკვეთავ",
     "word_type": "verb"
   },
@@ -6965,7 +6732,7 @@
     "greek_word": "Πλένω",
     "greek_present": "πλένω",
     "greek_past": null,
-    "greek_future": null,
+    "greek_future": "Θα πλύνω",
     "georgian_translation": "ვრეცხავ",
     "word_type": "verb"
   },
@@ -6973,7 +6740,7 @@
     "greek_word": "Θα πλύνω",
     "greek_present": null,
     "greek_past": null,
-    "greek_future": "θα πλύνω",
+    "greek_future": null,
     "georgian_translation": "გავრეცხავ",
     "word_type": "verb-future"
   },
@@ -6990,14 +6757,14 @@
     "greek_present": null,
     "greek_past": null,
     "greek_future": "θα φύγω",
-    "georgian_translation": "წავალ",
+    "georgian_translation": "გავალ",
     "word_type": "verb-future"
   },
   {
     "greek_word": "παίρνω",
     "greek_present": "παίρνω",
     "greek_past": null,
-    "greek_future": null,
+    "greek_future": "θα πάρω",
     "georgian_translation": "ვიღებ",
     "word_type": "verb"
   },
@@ -7013,7 +6780,7 @@
     "greek_word": "φαίρνω",
     "greek_present": "φαίρνω",
     "greek_past": null,
-    "greek_future": null,
+    "greek_future": "θα φέρω",
     "georgian_translation": "მომაქვს",
     "word_type": "verb"
   },
@@ -7029,7 +6796,7 @@
     "greek_word": "δίνω",
     "greek_present": "δίνω",
     "greek_past": null,
-    "greek_future": null,
+    "greek_future": "θα δώσω",
     "georgian_translation": "ვაძლევ",
     "word_type": "verb"
   },
@@ -7045,7 +6812,7 @@
     "greek_word": "βάζω",
     "greek_present": "βάζω",
     "greek_past": null,
-    "greek_future": null,
+    "greek_future": "θα βάλω",
     "georgian_translation": "ვდებ",
     "word_type": "verb"
   },
@@ -7061,7 +6828,7 @@
     "greek_word": "βγάζω",
     "greek_present": "βγάζω",
     "greek_past": null,
-    "greek_future": null,
+    "greek_future": "θα βγάλω",
     "georgian_translation": "გამომაქვს",
     "word_type": "verb"
   },
@@ -7077,7 +6844,7 @@
     "greek_word": "πέφτω",
     "greek_present": "πέφτω",
     "greek_past": null,
-    "greek_future": null,
+    "greek_future": "θα πέσω",
     "georgian_translation": "ვვარდები",
     "word_type": "verb"
   },
@@ -7093,7 +6860,7 @@
     "greek_word": "πεθαίνω",
     "greek_present": "πεθαίνω",
     "greek_past": null,
-    "greek_future": null,
+    "greek_future": "θα πεθανω",
     "georgian_translation": "ვკვდები",
     "word_type": "verb"
   },
@@ -7109,7 +6876,7 @@
     "greek_word": "παθαίνω",
     "greek_present": "παθαίνω",
     "greek_past": null,
-    "greek_future": null,
+    "greek_future": "θα παθω",
     "georgian_translation": "მემართება რაღაც",
     "word_type": "verb"
   },
@@ -7125,7 +6892,7 @@
     "greek_word": "καταλαβαίνω",
     "greek_present": "καταλαβαίνω",
     "greek_past": null,
-    "greek_future": null,
+    "greek_future": "θα καταλάβω",
     "georgian_translation": "ვიგებ, მესმის",
     "word_type": "verb"
   },
@@ -7141,7 +6908,7 @@
     "greek_word": "μαθαίνω",
     "greek_present": "μαθαίνω",
     "greek_past": null,
-    "greek_future": null,
+    "greek_future": "θα μάθω",
     "georgian_translation": "ვსწავლობ",
     "word_type": "verb"
   },
@@ -7157,7 +6924,7 @@
     "greek_word": "βγαίνω",
     "greek_present": "βγαίνω",
     "greek_past": null,
-    "greek_future": null,
+    "greek_future": "θα βγώ",
     "georgian_translation": "გავდივარ",
     "word_type": "verb"
   },
@@ -7173,7 +6940,7 @@
     "greek_word": "μπαίνω",
     "greek_present": "μπαίνω",
     "greek_past": null,
-    "greek_future": null,
+    "greek_future": "θα μπω",
     "georgian_translation": "შევდივარ",
     "word_type": "verb"
   },
@@ -7189,7 +6956,7 @@
     "greek_word": "ανεβαίνω",
     "greek_present": "ανεβαίνω",
     "greek_past": null,
-    "greek_future": null,
+    "greek_future": "θα ανέβω",
     "georgian_translation": "ავდივარ",
     "word_type": "verb"
   },
@@ -7201,14 +6968,7 @@
     "georgian_translation": "ავალ",
     "word_type": "verb-future"
   },
-  {
-    "greek_word": "κατεβαίνω",
-    "greek_present": "κατεβαίνω",
-    "greek_past": null,
-    "greek_future": null,
-    "georgian_translation": "ჩავდივარ",
-    "word_type": "verb"
-  },
+
   {
     "greek_word": "θα κατέβω",
     "greek_present": null,
@@ -7221,7 +6981,7 @@
     "greek_word": "λεω",
     "greek_present": "λέω",
     "greek_past": null,
-    "greek_future": null,
+    "greek_future": "θα πω",
     "georgian_translation": "ვამბობ",
     "word_type": "verb"
   },
@@ -7237,7 +6997,7 @@
     "greek_word": "πινω",
     "greek_present": "πίνω",
     "greek_past": null,
-    "greek_future": null,
+    "greek_future": "θα πιω",
     "georgian_translation": "ვსვამ",
     "word_type": "verb"
   },
@@ -7270,7 +7030,7 @@
     "greek_word": "πηγαίνω",
     "greek_present": "πηγαίνω",
     "greek_past": null,
-    "greek_future": null,
+    "greek_future": "θα παω",
     "georgian_translation": "მივდივარ",
     "word_type": "verb"
   },
@@ -7286,7 +7046,7 @@
     "greek_word": "τρώω",
     "greek_present": "τρώω",
     "greek_past": null,
-    "greek_future": null,
+    "greek_future": "θα φάω",
     "georgian_translation": "ვჭამ",
     "word_type": "verb"
   },
@@ -7302,7 +7062,7 @@
     "greek_word": "φτάω",
     "greek_present": "φτάνω",
     "greek_past": null,
-    "greek_future": null,
+    "greek_future": "θα φταίξω",
     "georgian_translation": "დამნაშავე ვარ",
     "word_type": "verb"
   },
@@ -7318,7 +7078,7 @@
     "greek_word": "καίω",
     "greek_present": "καίω",
     "greek_past": null,
-    "greek_future": null,
+    "greek_future": "θα κλάψω",
     "georgian_translation": "ვიწვი",
     "word_type": "verb"
   },
@@ -7334,7 +7094,7 @@
     "greek_word": "ακούω",
     "greek_present": "ακούω",
     "greek_past": null,
-    "greek_future": null,
+    "greek_future": "θα ακούσω",
     "georgian_translation": "მესმის",
     "word_type": "verb"
   },
@@ -7346,16 +7106,9 @@
     "georgian_translation": "გავიგონებ",
     "word_type": "verb-future"
   },
+ 
   {
-    "greek_word": "κοιμαμαι",
-    "greek_present": "κοιμάμαι",
-    "greek_past": null,
-    "greek_future": null,
-    "georgian_translation": "მძინავს",
-    "word_type": "verb"
-  },
-  {
-    "greek_word": "θα κοιμηθω",
+    "greek_word": "κοιμηθω",
     "greek_present": "κοιμάμαι",
     "greek_past": "κοιμήθηκα",
     "greek_future": "θα κοιμηθώ",
@@ -7382,7 +7135,7 @@
     "greek_word": "πήγαινε",
     "greek_present": "πηγαίνω",
     "greek_past": "πήγα",
-    "greek_future": "θα πάω",
+    "greek_future": "θα πάσ",
     "georgian_translation": "წადი",
     "word_type": "verb"
   },
@@ -7523,14 +7276,7 @@
     "georgian_translation": "დროშა",
     "word_type": "noun"
   },
-  {
-    "greek_word": "αpό εκεί",
-    "greek_present": "—",
-    "greek_past": "—",
-    "greek_future": "—",
-    "georgian_translation": "აქედან",
-    "word_type": "phrase"
-  },
+ 
   {
     "greek_word": "ότι",
     "greek_present": "—",
@@ -7795,14 +7541,7 @@
     "georgian_translation": "რას დალევთ",
     "word_type": "verb"
   },
-  {
-    "greek_word": "εφυγα",
-    "greek_present": "φεύγω",
-    "greek_past": "έφυγα",
-    "greek_future": "θα φύγω",
-    "georgian_translation": "წავედი",
-    "word_type": "verb"
-  },
+
   {
     "greek_word": "πάρτε",
     "greek_present": "παίρνω",
@@ -8115,6 +7854,573 @@
     "greek_future": "θα πουλήσω",
     "georgian_translation": "გავყიდე",
     "word_type": "verb"
+  },{
+    "greek_word": "πουλάω",
+    "greek_present": "πουλάω",
+    "greek_past": "πούλησα",
+    "greek_future": "θα πουλήσω",
+    "georgian_translation": "ვყიდი",
+    "word_type": "verb"
+  },
+  {
+    "greek_word": "χαλάω",
+    "greek_present": "χαλάω",
+    "greek_past": "χάλασα",
+    "greek_future": "θα χαλάσω",
+    "georgian_translation": "ვაფუჭებ",
+    "word_type": "verb"
+  },
+  {
+    "greek_word": "χάλασε",
+    "greek_present": "χαλάω",
+    "greek_past": "χάλασε",
+    "greek_future": "θα χαλάσει",
+    "georgian_translation": "გააფუჭე, დაშალე",
+    "word_type": "verb"
+  },
+  {
+    "greek_word": "τραγούδησα",
+    "greek_present": "τραγουδάω",
+    "greek_past": "τραγούδησα",
+    "greek_future": "θα τραγουδήσω",
+    "georgian_translation": "ვიმღერე",
+    "word_type": "verb"
+  },
+  {
+    "greek_word": "πέρασε",
+    "greek_present": "περνάω",
+    "greek_past": "πέρασε",
+    "greek_future": "θα περάσει",
+    "georgian_translation": "გაიარე",
+    "word_type": "verb"
+  },
+  {
+    "greek_word": "ζήτησε",
+    "greek_present": "ζητάω",
+    "greek_past": "ζήτησα",
+    "greek_future": "θα ζητήσω",
+    "georgian_translation": "ითხოვე,მოთხოვე",
+    "word_type": "verb"
+  },
+  {
+    "greek_word": "πούλησε",
+    "greek_present": "πουλάω",
+    "greek_past": "πούλησε",
+    "greek_future": "θα πουλήσει",
+    "georgian_translation": "გაყიდე",
+    "word_type": "verb"
+  },
+  {
+    "greek_word": "περνάω την ώρα μου",
+    "greek_present": "περνάω την ώρα μου",
+    "greek_past": "",
+    "greek_future": "",
+    "georgian_translation": "დრო გამყავს",
+    "word_type": "expression"
+  },
+  {
+    "greek_word": "θέλω να παίζω",
+    "greek_present": "",
+    "greek_past": "",
+    "greek_future": "",
+    "georgian_translation": "მინდა ვითამაშო",
+    "word_type": "expression"
+  },
+  {
+    "greek_word": "τι κρίμα",
+    "greek_present": "",
+    "greek_past": "",
+    "greek_future": "",
+    "georgian_translation": "რა ცუდია, რა ცოდოა",
+    "word_type": "expression"
+  },
+  {
+    "greek_word": "κάποτε",
+    "greek_present": "",
+    "greek_past": "",
+    "greek_future": "",
+    "georgian_translation": "ოდესღაც",
+    "word_type": "adverb"
+  },
+  {
+    "greek_word": "μόλις",
+    "greek_present": "",
+    "greek_past": "",
+    "greek_future": "",
+    "georgian_translation": "ახლა (ხდება მოქმედება)",
+    "word_type": "adverb"
+  },
+  {
+    "greek_word": "η προφορά",
+    "greek_present": "",
+    "greek_past": "",
+    "greek_future": "",
+    "georgian_translation": "გამოთქმა",
+    "word_type": "noun"
+  },
+  {
+    "greek_word": "το σπίρτο",
+    "greek_present": "",
+    "greek_past": "",
+    "greek_future": "",
+    "georgian_translation": "ასანთი",
+    "word_type": "noun"
+  },
+  {
+    "greek_word": "το μυθιστόρημα",
+    "greek_present": "",
+    "greek_past": "",
+    "greek_future": "",
+    "georgian_translation": "რომანი",
+    "word_type": "noun"
+  },
+  {
+    "greek_word": "το πράγμα",
+    "greek_present": "",
+    "greek_past": "",
+    "greek_future": "",
+    "georgian_translation": "ნივთი",
+    "word_type": "noun"
+  },
+  {
+    "greek_word": "το διήγημα",
+    "greek_present": "",
+    "greek_past": "",
+    "greek_future": "",
+    "georgian_translation": "მოთხრობა",
+    "word_type": "noun"
+  },
+  {
+    "greek_word": "υγρό",
+    "greek_present": "",
+    "greek_past": "",
+    "greek_future": "",
+    "georgian_translation": "ნესტიანი",
+    "word_type": "adjective"
+  },
+  {
+    "greek_word": "ο καναπές",
+    "greek_present": "",
+    "greek_past": "",
+    "greek_future": "",
+    "georgian_translation": "ტახტი, დივანი",
+    "word_type": "noun"
+  },
+  {
+    "greek_word": "η πολυθρόνα",
+    "greek_present": "",
+    "greek_past": "",
+    "greek_future": "",
+    "georgian_translation": "სავარძელი",
+    "word_type": "noun"
+  },
+  {
+    "greek_word": "το γραφείο",
+    "greek_present": "",
+    "greek_past": "",
+    "greek_future": "",
+    "georgian_translation": "საწერი მაგიდა",
+    "word_type": "noun"
+  },
+  {
+    "greek_word": "το τραπεζάκι",
+    "greek_present": "",
+    "greek_past": "",
+    "greek_future": "",
+    "georgian_translation": "პატარა მაგიდა",
+    "word_type": "noun"
+  },
+  {
+    "greek_word": "το ράφι",
+    "greek_present": "",
+    "greek_past": "",
+    "greek_future": "",
+    "georgian_translation": "თარო",
+    "word_type": "noun"
+  },
+  {
+    "greek_word": "οι πίνακες",
+    "greek_present": "",
+    "greek_past": "",
+    "greek_future": "",
+    "georgian_translation": "დაფები, სურათები",
+    "word_type": "noun"
+  },
+  {
+    "greek_word": "το ρωτιστικό",
+    "greek_present": "",
+    "greek_past": "",
+    "greek_future": "",
+    "georgian_translation": "ჭაღი",
+    "word_type": "noun"
+  },
+  {
+    "greek_word": "η κουρτίνα",
+    "greek_present": "",
+    "greek_past": "",
+    "greek_future": "",
+    "georgian_translation": "ფარდა",
+    "word_type": "noun"
+  },
+  {
+    "greek_word": "το χαλί",
+    "greek_present": "",
+    "greek_past": "",
+    "greek_future": "",
+    "georgian_translation": "ხალიჩა",
+    "word_type": "noun"
+  },
+  {
+    "greek_word": "το κρεβάτι",
+    "greek_present": "",
+    "greek_past": "",
+    "greek_future": "",
+    "georgian_translation": "საწოლი",
+    "word_type": "noun"
+  },
+  {
+    "greek_word": "η ντουλάπα",
+    "greek_present": "",
+    "greek_past": "",
+    "greek_future": "",
+    "georgian_translation": "კარადა",
+    "word_type": "noun"
+  },
+  {
+    "greek_word": "το κομοδίνο",
+    "greek_present": "",
+    "greek_past": "",
+    "greek_future": "",
+    "georgian_translation": "კომოდი",
+    "word_type": "noun"
+  },
+  {
+    "greek_word": "η συρταριέρα",
+    "greek_present": "",
+    "greek_past": "",
+    "greek_future": "",
+    "georgian_translation": "უჯრა",
+    "word_type": "noun"
+  },
+  {
+    "greek_word": "ο καθρέφτης",
+    "greek_present": "",
+    "greek_past": "",
+    "greek_future": "",
+    "georgian_translation": "სარკე",
+    "word_type": "noun"
+  },
+  {
+    "greek_word": "το σεντόνι",
+    "greek_present": "",
+    "greek_past": "",
+    "greek_future": "",
+    "georgian_translation": "ზეწარი",
+    "word_type": "noun"
+  },
+  {
+    "greek_word": "το μαξιλάρι",
+    "greek_present": "",
+    "greek_past": "",
+    "greek_future": "",
+    "georgian_translation": "ბალიში",
+    "word_type": "noun"
+  },
+  {
+    "greek_word": "η μπανιέρα",
+    "greek_present": "",
+    "greek_past": "",
+    "greek_future": "",
+    "georgian_translation": "აბაზანა",
+    "word_type": "noun"
+  },
+  {
+    "greek_word": "η ντουζιέρα",
+    "greek_present": "",
+    "greek_past": "",
+    "greek_future": "",
+    "georgian_translation": "დუშკაბინა",
+    "word_type": "noun"
+  },{
+    "greek_word": "η λεκάνη",
+    "greek_present": "",
+    "greek_past": "",
+    "greek_future": "",
+    "georgian_translation": "ტაშტი",
+    "word_type": "noun"
+  },
+  {
+    "greek_word": "ο νιπτήρας",
+    "greek_present": "",
+    "greek_past": "",
+    "greek_future": "",
+    "georgian_translation": "ნიჟარა",
+    "word_type": "noun"
+  },
+  {
+    "greek_word": "το χαρτί υγείας",
+    "greek_present": "",
+    "greek_past": "",
+    "greek_future": "",
+    "georgian_translation": "ტუალეტის ქაღალდი",
+    "word_type": "noun"
+  },
+  {
+    "greek_word": "το ρολό τουαλέτας",
+    "greek_present": "",
+    "greek_past": "",
+    "greek_future": "",
+    "georgian_translation": "ტუალეტის ქაღალდი",
+    "word_type": "noun"
+  },
+  {
+    "greek_word": "η κουρτίνα του μπάνιου",
+    "greek_present": "",
+    "greek_past": "",
+    "greek_future": "",
+    "georgian_translation": "აბაზანის ფარდა",
+    "word_type": "noun"
+  },
+  {
+    "greek_word": "ο νεροχύτης",
+    "greek_present": "",
+    "greek_past": "",
+    "greek_future": "",
+    "georgian_translation": "სამზარეულოს ნიჟარა",
+    "word_type": "noun"
+  },
+  {
+    "greek_word": "το ντουλάπι",
+    "greek_present": "",
+    "greek_past": "",
+    "greek_future": "",
+    "georgian_translation": "კარადა",
+    "word_type": "noun"
+  },
+ 
+  {
+    "greek_word": "το ποτήρι",
+    "greek_present": "",
+    "greek_past": "",
+    "greek_future": "",
+    "georgian_translation": "ჭიქა",
+    "word_type": "noun"
+  },
+  {
+    "greek_word": "τα μαχαιροπίρουνα",
+    "greek_present": "",
+    "greek_past": "",
+    "greek_future": "",
+    "georgian_translation": "დანა-ჩანგალი",
+    "word_type": "noun"
+  },
+  {
+    "greek_word": "η κατσαρόλα",
+    "greek_present": "",
+    "greek_past": "",
+    "greek_future": "",
+    "georgian_translation": "ქვაბი",
+    "word_type": "noun"
+  },
+  {
+    "greek_word": "το τηγάνι",
+    "greek_present": "",
+    "greek_past": "",
+    "greek_future": "",
+    "georgian_translation": "ტაფა",
+    "word_type": "noun"
+  },
+  {
+    "greek_word": "δείξε",
+    "greek_present": "δείχνω",
+    "greek_past": "έδειξα",
+    "greek_future": "θα δείξω",
+    "georgian_translation": "შეხედე / აჩვენე",
+    "word_type": "verb"
+  },
+  {
+    "greek_word": "συνέχισε",
+    "greek_present": "συνεχίζω",
+    "greek_past": "συνέχισα",
+    "greek_future": "θα συνεχίσω",
+    "georgian_translation": "გააგრძელე",
+    "word_type": "verb"
+  },
+  {
+    "greek_word": "το φανάρι",
+    "greek_present": "",
+    "greek_past": "",
+    "greek_future": "",
+    "georgian_translation": "შუქნიშანი",
+    "word_type": "noun"
+  },
+  {
+    "greek_word": "το σκάφος",
+    "greek_present": "",
+    "greek_past": "",
+    "greek_future": "",
+    "georgian_translation": "ნავი",
+    "word_type": "noun"
+  },
+  {
+    "greek_word": "ο νέος",
+    "greek_present": "",
+    "greek_past": "",
+    "greek_future": "",
+    "georgian_translation": "ახალი",
+    "word_type": "adjective"
+  },
+  {
+    "greek_word": "στρίβω",
+    "greek_present": "στρίβω",
+    "greek_past": "έστριψα",
+    "greek_future": "θα στρίψω",
+    "georgian_translation": "ვუხვევ",
+    "word_type": "verb"
+  },
+  {
+    "greek_word": "ελεύθερος",
+    "greek_present": "",
+    "greek_past": "",
+    "greek_future": "",
+    "georgian_translation": "თავისუფალი",
+    "word_type": "adjective"
+  },
+  {
+    "greek_word": "η αλήθεια",
+    "greek_present": "",
+    "greek_past": "",
+    "greek_future": "",
+    "georgian_translation": "სიმართლე",
+    "word_type": "noun"
+  },
+  {
+    "greek_word": "το δικαστήριο",
+    "greek_present": "",
+    "greek_past": "",
+    "greek_future": "",
+    "georgian_translation": "სასამართლო",
+    "word_type": "noun"
+  },
+  {
+    "greek_word": "παντού",
+    "greek_present": "",
+    "greek_past": "",
+    "greek_future": "",
+    "georgian_translation": "ყველგან",
+    "word_type": "adverb"
+  },
+  {
+    "greek_word": "τηλεφωνικοί θάλαμοι",
+    "greek_present": "",
+    "greek_past": "",
+    "greek_future": "",
+    "georgian_translation": "სატელეფონო ჯიხურები",
+    "word_type": "noun"
+  },
+  {
+    "greek_word": "το κατοστάρικο",
+    "greek_present": "",
+    "greek_past": "",
+    "greek_future": "",
+    "georgian_translation": "100 ევროიანი",
+    "word_type": "noun"
+  },
+  {
+    "greek_word": "το δώρο",
+    "greek_present": "",
+    "greek_past": "",
+    "greek_future": "",
+    "georgian_translation": "საჩუქარი",
+    "word_type": "noun"
+  },
+  {
+    "greek_word": "σου χάρισα",
+    "greek_present": "χαρίζω",
+    "greek_past": "χάρισα",
+    "greek_future": "θα χαρίσω",
+    "georgian_translation": "გაგახარე, გაჩუქე",
+    "word_type": "verb"
+  },
+  {
+    "greek_word": "το τασάκι",
+    "greek_present": "",
+    "greek_past": "",
+    "greek_future": "",
+    "georgian_translation": "საფერფლე",
+    "word_type": "noun"
+  },
+  {
+    "greek_word": "το σταχτοδοχείο",
+    "greek_present": "",
+    "greek_past": "",
+    "greek_future": "",
+    "georgian_translation": "საფერფლე",
+    "word_type": "noun"
+  },
+  {
+    "greek_word": "κέρδισες",
+    "greek_present": "κερδίζω",
+    "greek_past": "κέρδισα",
+    "greek_future": "θα κερδίσω",
+    "georgian_translation": "მოიგე",
+    "word_type": "verb"
+  },
+  {
+    "greek_word": "μας κάλεσαν",
+    "greek_present": "καλώ",
+    "greek_past": "κάλεσα",
+    "greek_future": "θα καλέσω",
+    "georgian_translation": "დაგვპატიჟეს",
+    "word_type": "verb"
+  },
+  {
+    "greek_word": "αν",
+    "greek_present": "",
+    "greek_past": "",
+    "greek_future": "",
+    "georgian_translation": "თუ",
+    "word_type": "conjunction"
+  },
+  {
+    "greek_word": "ανέβα",
+    "greek_present": "ανεβαίνω",
+    "greek_past": "ανέβηκα",
+    "greek_future": "θα ανεβώ",
+    "georgian_translation": "ადი",
+    "word_type": "verb"
+  },
+  {
+    "greek_word": "κατέβα",
+    "greek_present": "κατεβαίνω",
+    "greek_past": "κατέβηκα",
+    "greek_future": "θα κατεβώ",
+    "georgian_translation": "ჩადი",
+    "word_type": "verb"
+  },
+  {
+    "greek_word": "βρίσκεται",
+    "greek_present": "βρίσκομαι",
+    "greek_past": "βρέθηκα",
+    "greek_future": "θα βρεθώ",
+    "georgian_translation": "იმყოფება",
+    "word_type": "verb"
+  },
+  {
+    "greek_word": "ο ουρανός",
+    "greek_present": "",
+    "greek_past": "",
+    "greek_future": "",
+    "georgian_translation": "ცა",
+    "word_type": "noun"
+  },
+  {
+    "greek_word": "περασμένο",
+    "greek_present": "",
+    "greek_past": "",
+    "greek_future": "",
+    "georgian_translation": "გასული, განვლილი",
+    "word_type": "adjective"
   }
   
 ]
