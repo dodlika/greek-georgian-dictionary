@@ -14,6 +14,9 @@ class WordList extends Component
 {
     use WithPagination;
 
+ public int|null $expandedWordId = null;
+
+
     public $search = '';
     public $type = '';
     public $starts_with = '';
@@ -100,6 +103,11 @@ public function toggleFavorite($wordId)
         $user->favoriteWords()->attach($wordId);
     }
 }
+
+    public function toggleExpand($wordId)
+    {
+        $this->expandedWordId = $this->expandedWordId === $wordId ? null : $wordId;
+    }
 
 public function isFavorited($wordId)
 {

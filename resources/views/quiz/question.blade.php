@@ -29,14 +29,19 @@
                             $badgeClass = 'bg-info';
                         } else {
                             $verbTenseType = $quizData['verb_tense_type'] ?? 'mixed';
-                            if ($verbTenseType === 'past') {
-                                $badgeText = 'Verb Tense: Past Only';
+                            $verbPersonType = $quizData['verb_person_type'] ?? 'mixed';
+                            
+                            if ($verbTenseType === 'present') {
+                                $badgeText = 'Verb Conjugation: Present Tense';
+                                $badgeClass = 'bg-primary';
+                            } elseif ($verbTenseType === 'past') {
+                                $badgeText = 'Verb Conjugation: Past Tense';
                                 $badgeClass = 'bg-warning';
                             } elseif ($verbTenseType === 'future') {
-                                $badgeText = 'Verb Tense: Future Only';
+                                $badgeText = 'Verb Conjugation: Future Tense';
                                 $badgeClass = 'bg-success';
                             } else {
-                                $badgeText = 'Verb Tense: Mixed';
+                                $badgeText = 'Verb Conjugation: Mixed Tenses';
                                 $badgeClass = 'bg-purple';
                             }
                         }
@@ -79,19 +84,46 @@
                             </button>
                         </form>
                     @else
-                        {{-- Verb Tense Quiz Question --}}
+                        {{-- Verb Conjugation Quiz Question --}}
                         @php
-                            $verbTenseType = $quizData['verb_tense_type'] ?? 'mixed';
+                            $tenseToTest = $quizData['current_tense'];
+                            $personToTest = $quizData['current_person'];
                             
-                            // Determine which tense to test for this question
-                            if ($verbTenseType === 'mixed') {
-                                $tenseToTest = rand(0, 1) ? 'past' : 'future';
-                            } else {
-                                $tenseToTest = $verbTenseType;
-                            }
+                            // Get tense and person labels
+                            $tenseLabels = [
+                                'present' => 'Present Tense',
+                                'past' => 'Past Tense', 
+                                'future' => 'Future Tense'
+                            ];
                             
-                            $tenseLabel = $tenseToTest === 'past' ? 'Past Tense' : 'Future Tense';
-                            $tenseColor = $tenseToTest === 'past' ? 'text-warning' : 'text-success';
+                            $personLabels = [
+                                '1st_singular' => '1st person singular (I)',
+                                '2nd_singular' => '2nd person singular (you)',
+                                '3rd_singular' => '3rd person singular (he/she)',
+                                '1st_plural' => '1st plural (we)',
+                                '2nd_plural' => '2nd plural (you)',
+                                '3rd_plural' => '3rd plural (they)'
+                            ];
+                            
+                            $greekPersonPronouns = [
+                                '1st_singular' => 'εγώ',
+                                '2nd_singular' => 'εσύ', 
+                                '3rd_singular' => 'αυτός/αυτή',
+                                '1st_plural' => 'εμείς',
+                                '2nd_plural' => 'εσείς',
+                                '3rd_plural' => 'αυτοί/αυτές'
+                            ];
+                            
+                            $tenseLabel = $tenseLabels[$tenseToTest];
+                            $personLabel = $personLabels[$personToTest];
+                            $greekPronoun = $greekPersonPronouns[$personToTest];
+                            
+                            $tenseColors = [
+                                'present' => 'text-primary',
+                                'past' => 'text-warning',
+                                'future' => 'text-success'
+                            ];
+                            $tenseColor = $tenseColors[$tenseToTest];
                         @endphp
                         
                         <div class="text-center mb-4">
@@ -100,20 +132,37 @@
                                 {{ $currentWord['greek_word'] }}
                             </h2>
                             
-                            {{-- Show Georgian translation for context --}}
-                            <p class="text-muted mb-2">
-                                <em>({{ $currentWord['georgian_translation'] ?? '' }})</em>
-                            </p>
-                            
-                            {{-- Tense instruction --}}
+                            {{-- Show Georgian and English translations for context --}}
                             <div class="mb-3">
-                                <span class="badge bg-light text-dark fs-6 px-3 py-2">
-                                    Fill in the <strong class="{{ $tenseColor }}">{{ $tenseLabel }}</strong>
-                                </span>
+                                <p class="text-muted mb-1">
+                                    <em>{{ $currentWord['georgian_translation'] ?? '' }}</em>
+                                </p>
+                                @if(isset($currentWord['english_translation']))
+                                <p class="text-muted small">
+                                    <em>({{ $currentWord['english_translation'] }})</em>
+                                </p>
+                                @endif
+                            </div>
+                            
+                            {{-- Conjugation instruction --}}
+                            <div class="mb-4">
+                                <div class="card bg-light border-0 d-inline-block px-4 py-3">
+                                    <div class="mb-2">
+                                        <span class="badge bg-light text-dark fs-6 px-3 py-2">
+                                            Conjugate to: <strong class="{{ $tenseColor }}">{{ $tenseLabel }}</strong>
+                                        </span>
+                                    </div>
+                                    <div>
+                                        <span class="text-muted">{{ $personLabel }}</span><br>
+                                        <span class="text-dark" style="font-family: 'Times New Roman', serif;">
+                                            <strong>{{ $greekPronoun }}</strong> + ?
+                                        </span>
+                                    </div>
+                                </div>
                             </div>
                             
                             <p class="text-muted">
-                                Enter the {{ strtolower($tenseLabel) }} form of this verb:
+                                Enter the correct conjugated form:
                             </p>
                         </div>
 
@@ -125,7 +174,7 @@
                                     type="text" 
                                     name="answer" 
                                     class="form-control form-control-lg text-center" 
-                                    placeholder="Enter {{ strtolower($tenseLabel) }} form..."
+                                    placeholder="Enter conjugated form..."
                                     required 
                                     autofocus
                                     autocomplete="off"

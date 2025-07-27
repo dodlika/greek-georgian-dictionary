@@ -68,11 +68,11 @@
                                                 <div class="form-check">
                                                     <input class="form-check-input" type="radio" name="quiz_type" id="verb_tense_quiz" value="verb_tense" onchange="updateQuizOptions()">
                                                     <label class="form-check-label" for="verb_tense_quiz">
-                                                        <strong>Verb Tense Quiz</strong>
+                                                        <strong>Verb Conjugation Quiz</strong>
                                                     </label>
                                                 </div>
                                                 <p class="small text-muted mt-2 mb-0">
-                                                    Practice Greek verb conjugations! Fill in past and future tenses.
+                                                    Practice Greek verb conjugations! Fill in correct forms for different tenses and persons.
                                                 </p>
                                                 <p class="small text-muted">
                                                     <strong>Available verbs: {{ $totalVerbs }}</strong>
@@ -113,14 +113,17 @@
                             {{-- Verb Tense Quiz Options --}}
                             <div id="verb-tense-options" style="display: none;">
                                 <div class="mb-4">
-                                    <label class="form-label fw-bold">Tense Type</label>
+                                    <label class="form-label fw-bold">Tense Selection</label>
+                                    <p class="small text-muted mb-3">
+                                        You'll see the <strong>present tense (1st person singular)</strong> form and need to provide the corresponding form in the selected tense.
+                                    </p>
                                     <div class="row">
                                         <div class="col-md-4 mb-2">
                                             <div class="form-check">
                                                 <input class="form-check-input" type="radio" name="verb_tense_type" id="past_tense" value="past">
                                                 <label class="form-check-label" for="past_tense">
                                                     <strong>Past Tense Only</strong>
-                                                    <small class="d-block text-muted">Fill in past tense forms</small>
+                                                    <small class="d-block text-muted">Present → Past (I did)</small>
                                                 </label>
                                             </div>
                                         </div>
@@ -129,7 +132,7 @@
                                                 <input class="form-check-input" type="radio" name="verb_tense_type" id="future_tense" value="future">
                                                 <label class="form-check-label" for="future_tense">
                                                     <strong>Future Tense Only</strong>
-                                                    <small class="d-block text-muted">Fill in future tense forms</small>
+                                                    <small class="d-block text-muted">Present → Future (I will do)</small>
                                                 </label>
                                             </div>
                                         </div>
@@ -190,6 +193,12 @@
         </div>
     </div>
 </div>
+
+<style>
+    .text-purple {
+        color: #6f42c1 !important;
+    }
+</style>
 
 <script>
     function updateQuizOptions() {

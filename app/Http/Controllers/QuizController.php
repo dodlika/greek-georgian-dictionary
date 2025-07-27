@@ -23,15 +23,9 @@ class QuizController extends Controller
         
         // Count available verbs for verb tense quiz
         $totalVerbs = Word::where('word_type', 'verb')
-            ->where(function($query) {
-                $query->where('greek_word', 'not like', 'θα%');
-            })
-            ->whereNotNull('greek_past')
-            ->whereNotNull('greek_future')
-            ->where('greek_past', '!=', '')
-            ->where('greek_future', '!=', '')
-            ->whereRaw('greek_word != greek_past')
-            ->whereRaw('greek_word != greek_future')
+            ->whereNotNull('present_tense')
+            ->whereNotNull('past_tense')
+            ->whereNotNull('future_tense')
             ->count();
         
         return view('quiz.index', compact('user', 'totalWords', 'totalVerbs'));
@@ -44,15 +38,9 @@ class QuizController extends Controller
 
         if ($quizType === 'verb_tense') {
             $query = Word::where('word_type', 'verb')
-                ->where(function($q) {
-                    $q->where('greek_word', 'not like', 'θα%');
-                })
-                ->whereNotNull('greek_past')
-                ->whereNotNull('greek_future')
-                ->where('greek_past', '!=', '')
-                ->where('greek_future', '!=', '')
-                ->whereRaw('greek_word != greek_past')
-                ->whereRaw('greek_word != greek_future');
+                ->whereNotNull('present_tense')
+                ->whereNotNull('past_tense')
+                ->whereNotNull('future_tense');
 
             if ($addedAfter) {
                 $query->whereDate('created_at', '>=', $addedAfter);
@@ -76,6 +64,7 @@ class QuizController extends Controller
         $quizDirection = $request->input('quiz_direction', 'greek_to_georgian');
         $quizType = $request->input('quiz_type', 'vocabulary');
         $verbTenseType = $request->input('verb_tense_type', 'mixed');
+        $verbPersonType = $request->input('verb_person_type', 'mixed');
 
         if ($quizType === 'verb_tense') {
             $request->validate([
@@ -83,20 +72,15 @@ class QuizController extends Controller
             ]);
 
             $query = Word::where('word_type', 'verb')
-                ->where(function($q) {
-                    $q->where('greek_word', 'not like', 'θα%');
-                })
-                ->whereNotNull('greek_past')
-                ->whereNotNull('greek_future')
-                ->where('greek_past', '!=', '')
-                ->where('greek_future', '!=', '')
-                ->whereRaw('greek_word != greek_past')
-                ->whereRaw('greek_word != greek_future');
+                ->whereNotNull('present_tense')
+                ->whereNotNull('past_tense')
+                ->whereNotNull('future_tense');
 
             if ($addedAfter) {
                 $query->whereDate('created_at', '>=', $addedAfter);
                 $words = $query->inRandomOrder()->get([
-                    'id', 'greek_word', 'greek_past', 'greek_future', 'georgian_translation'
+                    'id', 'greek_word', 'georgian_translation', 'english_translation', 
+                    'present_tense', 'past_tense', 'future_tense'
                 ]);
 
                 if ($words->count() < 5 && !$forceStart) {
@@ -112,7 +96,8 @@ class QuizController extends Controller
 
                 $wordCount = $request->input('word_count');
                 $words = $query->inRandomOrder()->limit($wordCount)->get([
-                    'id', 'greek_word', 'greek_past', 'greek_future', 'georgian_translation'
+                    'id', 'greek_word', 'georgian_translation', 'english_translation',
+                    'present_tense', 'past_tense', 'future_tense'
                 ]);
             }
 
@@ -188,6 +173,27 @@ class QuizController extends Controller
         $currentWord = $quizData['words'][$currentQuestion];
         $progress = (($currentQuestion + 1) / $quizData['total_questions']) * 100;
 
+        // For verb tense quiz, determine which tense to test
+        if (($quizData['quiz_type'] ?? 'vocabulary') === 'verb_tense') {
+            $verbTenseType = $quizData['verb_tense_type'] ?? 'mixed';
+            
+            // Determine tense to test (always 1st person singular)
+            if ($verbTenseType === 'mixed') {
+                $tenseOptions = ['past', 'future'];
+                $tenseToTest = $tenseOptions[array_rand($tenseOptions)];
+            } else {
+                $tenseToTest = $verbTenseType;
+            }
+            
+            // Always use 1st person singular
+            $personToTest = '1st_singular';
+            
+            // Store what we're testing for this question
+            $quizData['current_tense'] = $tenseToTest;
+            $quizData['current_person'] = $personToTest;
+            Session::put('quiz_data', $quizData);
+        }
+
         return view('quiz.question', compact('currentWord', 'quizData', 'progress'));
     }
 
@@ -213,39 +219,35 @@ class QuizController extends Controller
 
         if ($quizType === 'verb_tense') {
             // Handle verb tense quiz
-            $verbTenseType = $quizData['verb_tense_type'] ?? 'mixed';
+            $tenseToTest = $quizData['current_tense'];
+            $personToTest = $quizData['current_person'];
             
-            // Determine which tense to test for this question
-            if ($verbTenseType === 'mixed') {
-                $tenseToTest = rand(0, 1) ? 'past' : 'future';
-            } else {
-                $tenseToTest = $verbTenseType;
-            }
+           $tenseField = $currentWord[$tenseToTest . '_tense'];
+$tenseData = is_string($tenseField) ? json_decode($tenseField, true) : $tenseField;
 
-            $correctAnswerField = $tenseToTest === 'past' ? $currentWord['greek_past'] : $currentWord['greek_future'];
-            $questionField = $currentWord['greek_word'];
+            $correctAnswerData = $tenseData[$personToTest];
+            $correctGreekForm = $correctAnswerData['greek'];
             
-            // Store which tense was tested for this question
+            // Check if user answer matches the correct Greek form
+            if (strtolower(trim($correctGreekForm)) === $userAnswer) {
+                $isCorrect = true;
+            }
+            
+            // Store answer data
             $quizData['user_answers'][$currentQuestion] = [
                 'user_answer' => $request->input('answer'),
-                'correct_answer' => $correctAnswerField,
-                'is_correct' => false, // Will be updated below
-                'question_word' => $questionField,
+                'correct_answer' => $correctGreekForm,
+                'correct_georgian' => $correctAnswerData['georgian'],
+                'correct_english' => $correctAnswerData['english'],
+                'is_correct' => $isCorrect,
+                'question_word' => $currentWord['greek_word'],
                 'quiz_type' => 'verb_tense',
                 'tense_tested' => $tenseToTest,
-                'georgian_translation' => $currentWord['georgian_translation'] ?? ''
+                'person_tested' => $personToTest,
+                'georgian_translation' => $currentWord['georgian_translation'] ?? '',
+          'present_form' => $currentWord['present_tense']['1st_singular']['greek']
+
             ];
-
-            // Check answer for verb tense
-            $correctAnswers = array_map('trim', explode(',', $correctAnswerField));
-            $correctAnswers = array_map('strtolower', $correctAnswers);
-
-            foreach ($correctAnswers as $correctAnswer) {
-                if ($userAnswer === $correctAnswer) {
-                    $isCorrect = true;
-                    break;
-                }
-            }
         } else {
             // Original vocabulary quiz logic
             $quizDirection = $quizData['quiz_direction'] ?? 'greek_to_georgian';
@@ -297,8 +299,7 @@ class QuizController extends Controller
             ];
         }
 
-        // Update correctness and score
-        $quizData['user_answers'][$currentQuestion]['is_correct'] = $isCorrect;
+        // Update score
         if ($isCorrect) {
             $quizData['score']++;
         }

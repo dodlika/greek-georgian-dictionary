@@ -12,36 +12,35 @@ class WordController extends Controller
 {
 
     public function checkDuplicate(Request $request)
-{
-    $greekWord = $request->input('greek_word');
+    {
+        $greekWord = $request->input('greek_word');
 
-    if (!$greekWord) {
-        return response()->json(['exists' => false]);
+        if (!$greekWord) {
+            return response()->json(['exists' => false]);
+        }
+
+        $exists = Word::where('greek_word', $greekWord)->exists();
+
+        return response()->json(['exists' => $exists]);
     }
-
-    $exists = Word::where('greek_word', $greekWord)->exists();
-
-    return response()->json(['exists' => $exists]);
-}
-
 
     public function autocomplete(Request $request)
-{
-    $search = $request->input('query');
+    {
+        $search = $request->input('query');
 
-    if (!$search || strlen($search) < 2) {
-        return response()->json([]);
+        if (!$search || strlen($search) < 2) {
+            return response()->json([]);
+        }
+
+        // Basic autocomplete + fuzzy matching
+        $words = Word::where('greek_word', 'LIKE', "{$search}%")
+            ->orWhere('greek_word', 'LIKE', "%{$search}%")
+            ->orderBy('greek_word')
+            ->limit(10)
+            ->pluck('greek_word');
+
+        return response()->json($words);
     }
-
-    // Basic autocomplete + fuzzy matching
-    $words = Word::where('greek_word', 'LIKE', "{$search}%")
-        ->orWhere('greek_word', 'LIKE', "%{$search}%")
-        ->orderBy('greek_word')
-        ->limit(10)
-        ->pluck('greek_word');
-
-    return response()->json($words);
-}
 
     public function index(Request $request)
     {
@@ -62,11 +61,14 @@ class WordController extends Controller
         $types = Word::select('word_type')->distinct()->orderBy('word_type')->pluck('word_type')->toArray();
 
         $query = Word::select('words.*')
-    ->whereIn('id', function ($sub) {
-        $sub->selectRaw('MIN(id)')
-            ->from('words')
-            ->groupBy('greek_word');
-    });
+            ->whereIn('id', function ($sub) {
+                $sub->selectRaw('MIN(id)')
+                    ->from('words')
+                    ->groupBy('greek_word');
+            });
+
+        // Remove the verb exclusion since we want to show all words now
+        // ->where('word_type', '!=', 'verb');  // Exclude verbs here
 
         // Search by Georgian text (assuming you have a searchGeorgian scope)
         if ($request->filled('search')) {
@@ -78,24 +80,16 @@ class WordController extends Controller
         if ($request->filled('starts_with')) {
             $startsWith = $request->get('starts_with');
 
-            // Try both uppercase and lowercase variants for filtering
-            $query->where(function ($q) use ($startsWith, $greekAlphabetUpper, $greekAlphabetLower) {
+            $query->where(function ($q) use ($startsWith) {
                 $upper = mb_strtoupper($startsWith);
                 $lower = mb_strtolower($startsWith);
 
-                // Also safeguard if user enters something outside Greek alphabets
-                if (in_array($upper, $greekAlphabetUpper) || in_array($lower, $greekAlphabetLower)) {
-                    $q->where('greek_word', 'LIKE', $upper . '%')
-                      ->orWhere('greek_word', 'LIKE', $lower . '%');
-                } else {
-                    // fallback if letter not Greek, just use raw input as uppercase and lowercase
-                    $q->where('greek_word', 'LIKE', $upper . '%')
-                      ->orWhere('greek_word', 'LIKE', $lower . '%');
-                }
+                $q->where('greek_word', 'LIKE', $upper . '%')
+                  ->orWhere('greek_word', 'LIKE', $lower . '%');
             });
         }
 
-        // Filter by word_type
+        // Filter by word_type if specified
         if ($request->filled('type')) {
             $query->where('word_type', $request->get('type'));
         }
@@ -103,7 +97,20 @@ class WordController extends Controller
         $query->orderBy('greek_word', 'asc');
 
         $words = $query->paginate(20);
-        
+
+   $words->getCollection()->transform(function ($word) {
+    if ($word->word_type === 'verb') {
+        // Only decode if it's a string
+        foreach (['present_tense', 'past_tense', 'future_tense'] as $tense) {
+            if (is_string($word->$tense)) {
+                $word->$tense = json_decode($word->$tense, true);
+            }
+        }
+    }
+    return $word;
+});
+
+
         return view('words.index', compact(
             'words',
             'greekAlphabetUpper',
@@ -123,30 +130,57 @@ class WordController extends Controller
 
         // $types = Word::select('word_type')->distinct()->orderBy('word_type')->pluck('word_type')->toArray();
         $types = cache()->remember('word_types', 3600, function () {
-    return Word::select('word_type')->distinct()->orderBy('word_type')->pluck('word_type')->toArray();
-});
+            return Word::select('word_type')->distinct()->orderBy('word_type')->pluck('word_type')->toArray();
+    });
 
         return view('words.create', compact('types'));
     }
 
     public function store(StoreUpdateWordRequest $request)
-    {
-        // Check if user is authenticated and can manage words - DIRECT PROPERTY ACCESS
-        if (!Auth::check() || !Auth::user()->can_manage_words) {
-            return redirect()->route('words.index')
-                ->with('error', 'You do not have permission to create words.');
-        }
+{
+    // Check if user is authenticated and can manage words - DIRECT PROPERTY ACCESS
+    if (!Auth::check() || !Auth::user()->can_manage_words) {
+        return redirect()->route('words.index')
+            ->with('error', 'You do not have permission to create words.');
+    }
 
-         $exists = Word::where('greek_word', $request->greek_word)->exists();
+    $exists = Word::where('greek_word', $request->greek_word)->exists();
     if ($exists) {
         return redirect()->back()->withInput()->with('error', 'This Greek word already exists.');
     }
 
-        Word::create($request->all());
+    $data = $request->all();
 
-        return redirect()->route('words.index')
-            ->with('success', 'Word added successfully!');
+    // If it's a verb, encode the tense arrays as JSON
+    if ($request->word_type === 'verb') {
+        if ($request->has('present_tense')) {
+            $data['present_tense'] = json_encode($request->present_tense);
+        }
+        if ($request->has('past_tense')) {
+            $data['past_tense'] = json_encode($request->past_tense);
+        }
+        if ($request->has('future_tense')) {
+            $data['future_tense'] = json_encode($request->future_tense);
+        }
+        
+        // Clear the simple tense fields for verbs
+        $data['greek_present'] = null;
+        $data['greek_past'] = null;
+        $data['greek_future'] = null;
+    } else {
+        // For non-verbs, clear the complex tense fields
+        $data['present_tense'] = null;
+        $data['past_tense'] = null;
+        $data['future_tense'] = null;
+        $data['english_translation'] = null;
     }
+
+    Word::create($data);
+
+    return redirect()->route('words.index')
+        ->with('success', 'Word added successfully!');
+}
+
 
     public function edit(Word $word)
     {
@@ -171,8 +205,34 @@ class WordController extends Controller
     // Save original values before update
     $originalWord = $word->getOriginal();
 
+    $data = $request->all();
+
+    // If it's a verb, encode the tense arrays as JSON
+    if ($request->word_type === 'verb') {
+        if ($request->has('present_tense')) {
+            $data['present_tense'] = json_encode($request->present_tense);
+        }
+        if ($request->has('past_tense')) {
+            $data['past_tense'] = json_encode($request->past_tense);
+        }
+        if ($request->has('future_tense')) {
+            $data['future_tense'] = json_encode($request->future_tense);
+        }
+        
+        // Clear the simple tense fields for verbs
+        $data['greek_present'] = null;
+        $data['greek_past'] = null;
+        $data['greek_future'] = null;
+    } else {
+        // For non-verbs, clear the complex tense fields
+        $data['present_tense'] = null;
+        $data['past_tense'] = null;
+        $data['future_tense'] = null;
+        $data['english_translation'] = null;
+    }
+
     // Update the word with new data
-    $word->update($request->all());
+    $word->update($data);
 
     // Check if important fields changed
     $changed = false;
@@ -195,8 +255,6 @@ class WordController extends Controller
 
     return redirect()->route('words.index')->with('success', 'Word updated successfully!');
 }
-
-
 
     public function destroy(Word $word)
     {

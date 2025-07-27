@@ -15,14 +15,23 @@ class Word extends Model
         'greek_past',
         'greek_future',
         'georgian_translation',
-        'word_type'
+        'english_translation',       // ADD THIS
+        'word_type',
+        'present_tense',             // ADD THIS
+        'past_tense',                // ADD THIS
+        'future_tense'               // ADD THIS
+    ];
+
+    protected $casts = [
+        'present_tense' => 'array',  // CAST JSON fields to arrays
+        'past_tense' => 'array',
+        'future_tense' => 'array',
     ];
 
     public function favoritedByUsers()
-{
-    return $this->belongsToMany(User::class, 'favorites')->withTimestamps();
-}
-
+    {
+        return $this->belongsToMany(User::class, 'favorites')->withTimestamps();
+    }
 
     public function scopeSearchGeorgian($query, $search)
     {
