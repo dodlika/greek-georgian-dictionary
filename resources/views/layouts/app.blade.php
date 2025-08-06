@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 </head>
 <body>
-    <div class="container  mt-4" style="position: relative">
+    <div class="container mt-3 mt-md-4" style="position: relative">
    @include('includes.header')
 
         @yield('content')

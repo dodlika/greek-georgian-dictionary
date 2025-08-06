@@ -143,12 +143,98 @@
 /* Mobile responsiveness */
 @media (max-width: 768px) {
     .table-responsive {
+        font-size: 0.85em;
+        border-radius: 8px;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    .search-input {
+        font-size: 16px; /* Prevents zoom on iOS */
+        padding: 12px 16px;
+        border-radius: 12px;
+        border: 2px solid #e9ecef;
+    }
+    
+    /* Mobile table improvements */
+    .table {
+        min-width: 600px; /* Ensures table doesn't get too cramped */
+    }
+    
+    .table th, .table td {
+        padding: 8px 6px;
+        white-space: nowrap;
+        font-size: 0.8em;
+    }
+    
+    .table th:first-child, .table td:first-child {
+        padding-left: 12px;
+    }
+    
+    .table th:last-child, .table td:last-child {
+        padding-right: 12px;
+    }
+    
+    /* Hide less important columns on small screens */
+    .table th:nth-child(2), 
+    .table td:nth-child(2),
+    .table th:nth-child(3), 
+    .table td:nth-child(3),
+    .table th:nth-child(4), 
+    .table td:nth-child(4) {
+        display: none;
+    }
+    
+    /* Make main columns wider */
+    .table th:first-child, 
+    .table td:first-child,
+    .table th:nth-child(5), 
+    .table td:nth-child(5) {
+        min-width: 120px;
+    }
+    
+    .word-search-component {
+        margin-bottom: 1rem;
+        padding: 0 8px;
+    }
+    
+    /* Scrolling indicator */
+    .table-responsive::after {
+        content: "← Scroll for more columns →";
+        position: absolute;
+        bottom: -25px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 0.7em;
+        color: #6c757d;
+        text-align: center;
+        white-space: nowrap;
+    }
+    
+    .table-responsive {
+        position: relative;
+        padding-bottom: 30px;
+    }
+}
+
+/* Tablet responsiveness */
+@media (max-width: 991px) and (min-width: 769px) {
+    .table th, .table td {
+        padding: 10px 8px;
         font-size: 0.9em;
     }
     
     .search-input {
-        font-size: 1em;
-        padding: 10px 12px;
+        font-size: 1.05em;
+        padding: 12px 16px;
+    }
+    
+    /* Show present tense but hide past/future on tablet */
+    .table th:nth-child(3), 
+    .table td:nth-child(3),
+    .table th:nth-child(4), 
+    .table td:nth-child(4) {
+        display: none;
     }
 }
 </style>

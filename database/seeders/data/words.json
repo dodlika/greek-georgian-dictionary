@@ -223,22 +223,22 @@
   "present_tense": {
     "1st_singular": {
       "greek": "ευχαριστώ",
-      "georgian": "მადლობას ვწირავ",
+      "georgian": "მადლობა",
       "english": "I thank"
     },
     "2nd_singular": {
       "greek": "ευχαριστείς",
-      "georgian": "მადლობას სწირავ",
+      "georgian": "მადლობელი ხარ",
       "english": "you thank"
     },
     "3rd_singular": {
       "greek": "ευχαριστεί",
-      "georgian": "მადლობას წირავს",
+      "georgian": "მადლობელია",
       "english": "he/she/it thanks"
     },
     "1st_plural": {
       "greek": "ευχαριστούμε",
-      "georgian": "მადლობას ვწირავთ",
+      "georgian": "მადლობა თქვენ",
       "english": "we thank"
     },
     "2nd_plural": {
@@ -799,7 +799,7 @@
   "present_tense": {
     "1st_singular": {
       "greek": "πάω / πηγαίνω",
-      "georgian": "ვწვები / მივდივარ",
+      "georgian": "მივდივარ",
       "english": "I go"
     },
     "2nd_singular": {
@@ -951,7 +951,7 @@
     },
     "3rd_plural": {
       "greek": "πιστεύουν(ε)",
-      "georgian": "ჯერიათ",
+      "georgian": "ჯერათ",
       "english": "they believe"
     }
   },
@@ -990,22 +990,22 @@
   "future_tense": {
     "1st_singular": {
       "greek": "θα πιστέψω",
-      "georgian": "დამიჯერე / მჯეროდეს",
+      "georgian": "დავიჯერე",
       "english": "I will believe"
     },
     "2nd_singular": {
       "greek": "θα πιστέψεις",
-      "georgian": "დამიჯერებ",
+      "georgian": "დაიჯერებ",
       "english": "you will believe"
     },
     "3rd_singular": {
       "greek": "θα πιστέψει",
-      "georgian": "დაგიჯერებს",
+      "georgian": "დაგჯერებს",
       "english": "he/she/it will believe"
     },
     "1st_plural": {
       "greek": "θα πιστέψουμε",
-      "georgian": "დაგვიჯერებენ",
+      "georgian": "დაგვიჯერებ",
       "english": "we will believe"
     },
     "2nd_plural": {
@@ -1109,7 +1109,7 @@
   "future_tense": {
     "1st_singular": {
       "greek": "θα μείνω",
-      "georgian": "წავრჩები / ვიცხოვრებ",
+      "georgian": "დავრჩები / ვიცხოვრებ",
       "english": "I will stay / I will live"
     },
     "2nd_singular": {
@@ -1435,7 +1435,7 @@
   "past_tense": {
     "1st_singular": {
       "greek": "είχα",
-      "georgian": "მქონდა / მენახვა",
+      "georgian": "მქონდა",
       "english": "I had"
     },
     "2nd_singular": {
@@ -1492,7 +1492,7 @@
     },
     "3rd_plural": {
       "greek": "θα έχουν(ε)",
-      "georgian": "ჰექნებათ",
+      "georgian": "ექნებათ",
       "english": "they will have"
     }
   }
@@ -1684,7 +1684,7 @@
     },
     "3rd_singular": {
       "greek": "θα θέλει",
-      "georgian": "უნდოდა ექნება / ენდომება",
+      "georgian": "ექნება / ენდომება",
       "english": "he/she/it will want"
     },
     "1st_plural": {
@@ -1699,7 +1699,7 @@
     },
     "3rd_plural": {
       "greek": "θα θέλουν(ε)",
-      "georgian": "უნდოდათ ექნებათ / ენდომებათ",
+      "georgian": "ექნებათ / ენდომებათ",
       "english": "they will want"
     }
   }
@@ -1777,12 +1777,12 @@
   "future_tense": {
     "1st_singular": {
       "greek": "θα ξέρω",
-      "georgian": "ვეცოდინება",
+      "georgian": "მეცოდინება",
       "english": "I will know"
     },
     "2nd_singular": {
       "greek": "θα ξέρεις",
-      "georgian": "ეცოდინება",
+      "georgian": "გეცოდინება",
       "english": "you will know"
     },
     "3rd_singular": {
@@ -1792,12 +1792,12 @@
     },
     "1st_plural": {
       "greek": "θα ξέρουμε",
-      "georgian": "ვეცოდინება",
+      "georgian": "გვეცოდინება",
       "english": "we will know"
     },
     "2nd_plural": {
       "greek": "θα ξέρετε",
-      "georgian": "ეცოდინება",
+      "georgian": "გეცოდინებათ",
       "english": "you (plural) will know"
     },
     "3rd_plural": {

@@ -3,9 +3,9 @@
     <div class="card mb-4">
         <div class="card-body">
             <!-- Search & Type Filters -->
-            <div class="row mb-3">
+            <div class="row mb-3 g-2 g-md-3">
                 <!-- Search -->
-                <div class="col-md-6">
+                <div class="col-12 col-md-6">
                     <label for="search" class="form-label">Search Words</label>
                     <div class="input-group">
                         <input 
@@ -22,6 +22,7 @@
                                 wire:click="clearSearch" 
                                 class="btn btn-outline-secondary"
                                 title="Clear search"
+                                style="min-width: 44px;"
                             >
                                 ✕
                             </button>
@@ -30,7 +31,7 @@
                 </div>
 
                 <!-- Type Filter -->
-                <div class="col-md-4">
+                <div class="col-12 col-sm-8 col-md-4">
                     <label for="type-filter" class="form-label">Word Type</label>
                     <div class="input-group">
                         <select wire:model.live="type" class="form-select" id="type-filter">
@@ -45,6 +46,7 @@
                                 wire:click="clearType" 
                                 class="btn btn-outline-secondary"
                                 title="Clear type filter"
+                                style="min-width: 44px;"
                             >
                                 ✕
                             </button>
@@ -53,12 +55,13 @@
                 </div>
 
                 <!-- Clear All Button -->
-                <div class="col-md-2 d-flex align-items-end">
+                <div class="col-12 col-sm-4 col-md-2 d-flex align-items-end">
                     @if($search || $type || $starts_with)
                         <button 
                             type="button" 
                             wire:click="clearAllFilters" 
                             class="btn btn-warning w-100"
+                            style="min-height: 44px;"
                         >
                             Clear All
                         </button>
@@ -467,7 +470,7 @@
         /* Mobile Responsiveness */
         @media (max-width: 768px) {
             .greek-alphabet-filter {
-                max-height: 80px;
+                max-height: 220px;
             }
 
             .btn-sm {

@@ -2,18 +2,18 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container py-5">
+<div class="container py-3 py-md-5">
     <div class="row justify-content-center">
-        <div class="col-lg-8">
+        <div class="col-lg-8 col-md-10 col-12">
             <div class="card shadow-sm">
-                <div class="card-body">
+                <div class="card-body p-3 p-md-4">
                     {{-- Progress Bar --}}
-                    <div class="mb-4">
-                        <div class="d-flex justify-content-between align-items-center mb-2">
-                            <span class="text-muted">Question {{ $quizData['current_question'] + 1 }} of {{ $quizData['total_questions'] }}</span>
-                            <span class="text-muted">Score: {{ $quizData['score'] }}/{{ $quizData['current_question'] }}</span>
+                    <div class="mb-3 mb-md-4">
+                        <div class="d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-center mb-2 gap-1">
+                            <span class="text-muted small">Question {{ $quizData['current_question'] + 1 }} of {{ $quizData['total_questions'] }}</span>
+                            <span class="text-muted small">Score: {{ $quizData['score'] }}/{{ $quizData['current_question'] }}</span>
                         </div>
-                        <div class="progress">
+                        <div class="progress" style="height: 8px;">
                             <div class="progress-bar" role="progressbar" style="width: {{ $progress }}%" aria-valuenow="{{ $progress }}" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
                     </div>
@@ -56,8 +56,8 @@
                     {{-- Question Content --}}
                     @if($quizType === 'vocabulary')
                         {{-- Vocabulary Quiz Question --}}
-                        <div class="text-center mb-4">
-                            <h2 class="display-4 mb-3" style="font-family: 'Times New Roman', serif;">
+                        <div class="text-center mb-3 mb-md-4">
+                            <h2 class="display-6 display-md-4 mb-3" style="font-family: 'Times New Roman', serif;">
                                 {{ $isGreekToGeorgian ? $currentWord['greek_word'] : $currentWord['georgian_translation'] }}
                             </h2>
                             <p class="text-muted">
@@ -68,7 +68,7 @@
                         {{-- Answer Form --}}
                         <form action="{{ route('quiz.answer') }}" method="POST" class="text-center">
                             @csrf
-                            <div class="mb-4">
+                            <div class="mb-3 mb-md-4">
                                 <input 
                                     type="text" 
                                     name="answer" 
@@ -77,9 +77,10 @@
                                     required 
                                     autofocus
                                     autocomplete="off"
+                                    style="font-size: 1.1rem;"
                                 >
                             </div>
-                            <button type="submit" class="btn btn-primary btn-lg px-5">
+                            <button type="submit" class="btn btn-primary btn-lg px-4 px-md-5" style="min-height: 48px;">
                                 Submit Answer
                             </button>
                         </form>
@@ -126,9 +127,9 @@
                             $tenseColor = $tenseColors[$tenseToTest];
                         @endphp
                         
-                        <div class="text-center mb-4">
+                        <div class="text-center mb-3 mb-md-4">
                             {{-- Present the base verb --}}
-                            <h2 class="display-4 mb-3" style="font-family: 'Times New Roman', serif;">
+                            <h2 class="display-6 display-md-4 mb-3" style="font-family: 'Times New Roman', serif;">
                                 {{ $currentWord['greek_word'] }}
                             </h2>
                             
@@ -145,23 +146,25 @@
                             </div>
                             
                             {{-- Conjugation instruction --}}
-                            <div class="mb-4">
-                                <div class="card bg-light border-0 d-inline-block px-4 py-3">
-                                    <div class="mb-2">
-                                        <span class="badge bg-light text-dark fs-6 px-3 py-2">
-                                            Conjugate to: <strong class="{{ $tenseColor }}">{{ $tenseLabel }}</strong>
-                                        </span>
-                                    </div>
-                                    <div>
-                                        <span class="text-muted">{{ $personLabel }}</span><br>
-                                        <span class="text-dark" style="font-family: 'Times New Roman', serif;">
-                                            <strong>{{ $greekPronoun }}</strong> + ?
-                                        </span>
+                            <div class="mb-3 mb-md-4">
+                                <div class="card bg-light border-0 mx-auto" style="max-width: 320px;">
+                                    <div class="card-body p-3">
+                                        <div class="mb-2">
+                                            <span class="badge bg-light text-dark px-2 py-1 d-block d-sm-inline">
+                                                Conjugate to: <strong class="{{ $tenseColor }}">{{ $tenseLabel }}</strong>
+                                            </span>
+                                        </div>
+                                        <div>
+                                            <span class="text-muted small d-block">{{ $personLabel }}</span>
+                                            <span class="text-dark mt-1 d-block" style="font-family: 'Times New Roman', serif; font-size: 1.1rem;">
+                                                <strong>{{ $greekPronoun }}</strong> + ?
+                                            </span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                             
-                            <p class="text-muted">
+                            <p class="text-muted small">
                                 Enter the correct conjugated form:
                             </p>
                         </div>
@@ -169,7 +172,7 @@
                         {{-- Answer Form --}}
                         <form action="{{ route('quiz.answer') }}" method="POST" class="text-center">
                             @csrf
-                            <div class="mb-4">
+                            <div class="mb-3 mb-md-4">
                                 <input 
                                     type="text" 
                                     name="answer" 
@@ -178,10 +181,10 @@
                                     required 
                                     autofocus
                                     autocomplete="off"
-                                    style="font-family: 'Times New Roman', serif;"
+                                    style="font-family: 'Times New Roman', serif; font-size: 1.1rem;"
                                 >
                             </div>
-                            <button type="submit" class="btn btn-primary btn-lg px-5">
+                            <button type="submit" class="btn btn-primary btn-lg px-4 px-md-5" style="min-height: 48px;">
                                 Submit Answer
                             </button>
                         </form>

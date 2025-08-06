@@ -1,13 +1,17 @@
-<div class="container py-5">
+<div class="container py-3 py-md-5">
     <div class="mx-auto" style="max-width: 768px;">
-        <div class="d-flex justify-content-between align-items-center mb-4">
-            <h1 class="h2 fw-bold text-primary">My Favorite Words</h1>
-            <a href="{{ route('words.index') }}" class="btn btn-primary">
-                Browse Words
-            </a>
-             <a href="{{ route('favorites.flashcards') }}" class="btn btn-outline-primary">
-            Take Quiz
-        </a>
+        <div class="mb-3 mb-md-4">
+            <div class="d-flex flex-column flex-sm-row gap-2 justify-content-between align-items-start align-items-sm-center mb-3">
+                <h1 class="h3 h-sm-2 fw-bold text-primary mb-0">My Favorite Words</h1>
+                <div class="d-flex flex-row flex-sm-row gap-2">
+                    <a href="{{ route('words.index') }}" class="btn btn-primary btn-sm" style="min-height: 44px; padding: 8px 12px;">
+                        Browse Words
+                    </a>
+                    <a href="{{ route('favorites.flashcards') }}" class="btn btn-outline-primary btn-sm" style="min-height: 44px; padding: 8px 12px;">
+                        Take Quiz
+                    </a>
+                </div>
+            </div>
         </div>
 
         @if(session('success'))
@@ -27,54 +31,59 @@
                 </div>
             </div>
 
-            <div class="row g-4 mb-4">
+            <div class="row g-3 g-md-4 mb-4">
                 @foreach($favoriteWords as $word)
                     <div class="col-12">
                         <div class="card shadow-sm border-0 hover-shadow">
-                            <div class="card-body d-flex justify-content-between align-items-start">
-                                <div class="flex-grow-1">
-                                    <h3 class="card-title text-primary fw-bold mb-2">{{ $word->greek_word }}</h3>
-
-                                    <p class="card-text mb-2">
-                                        <strong>Georgian:</strong> {{ $word->georgian_translation }}
-                                    </p>
-
-                                    <div class="mb-3 d-flex flex-wrap gap-3 text-muted small">
-                                        <div>
-                                            <strong>Type:</strong>
-                                            <span class="badge bg-secondary">{{ $word->word_type }}</span>
+                            <div class="card-body p-3 p-md-4">
+                                <div class="d-flex flex-column flex-sm-row justify-content-between align-items-start gap-3">
+                                    <div class="flex-grow-1 w-100">
+                                        <div class="d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-center mb-2 gap-2">
+                                            <h3 class="card-title text-primary fw-bold mb-0 greek-text">{{ $word->greek_word }}</h3>
+                                            <button 
+                                                wire:click="removeFromFavorites({{ $word->id }})"
+                                                wire:confirm="Are you sure you want to remove this word from favorites?"
+                                                class="btn btn-outline-danger btn-sm align-self-end align-self-sm-center"
+                                                title="Remove from favorites"
+                                                style="min-width: 44px; min-height: 44px;"
+                                            >
+                                                <i class="bi bi-trash"></i>
+                                            </button>
                                         </div>
 
-                                        @if($word->pronunciation)
-                                            <div>
-                                                <strong>Pronunciation:</strong>
-                                                <em>{{ $word->pronunciation }}</em>
+                                        <p class="card-text mb-2 georgian-text">
+                                            <strong>Georgian:</strong> {{ $word->georgian_translation }}
+                                        </p>
+
+                                        <div class="mb-3 d-flex flex-column flex-sm-row flex-wrap gap-2 gap-sm-3 text-muted small">
+                                            <div class="d-flex align-items-center gap-1">
+                                                <strong>Type:</strong>
+                                                <span class="badge bg-secondary">{{ $word->word_type }}</span>
+                                            </div>
+
+                                            @if($word->pronunciation)
+                                                <div>
+                                                    <strong>Pronunciation:</strong>
+                                                    <em>{{ $word->pronunciation }}</em>
+                                                </div>
+                                            @endif
+                                        </div>
+
+                                        @if($word->example_sentence)
+                                            <div class="card-text text-muted mb-2 p-2 bg-light rounded">
+                                                <strong class="d-block mb-1">Example:</strong>
+                                                <em>{{ $word->example_sentence }}</em>
+                                            </div>
+                                        @endif
+
+                                        @if($word->notes)
+                                            <div class="card-text text-muted p-2 bg-light rounded">
+                                                <strong class="d-block mb-1">Notes:</strong>
+                                                {{ $word->notes }}
                                             </div>
                                         @endif
                                     </div>
-
-                                    @if($word->example_sentence)
-                                        <p class="card-text text-muted mb-2">
-                                            <strong>Example:</strong>
-                                            <em>{{ $word->example_sentence }}</em>
-                                        </p>
-                                    @endif
-
-                                    @if($word->notes)
-                                        <p class="card-text text-muted">
-                                            <strong>Notes:</strong> {{ $word->notes }}
-                                        </p>
-                                    @endif
                                 </div>
-
-                                <button 
-                                    wire:click="removeFromFavorites({{ $word->id }})"
-                                    wire:confirm="Are you sure you want to remove this word from favorites?"
-                                    class="btn btn-outline-danger btn-sm ms-3"
-                                    title="Remove from favorites"
-                                >
-                                    <i class="bi bi-trash"></i>
-                                </button>
                             </div>
                         </div>
                     </div>
