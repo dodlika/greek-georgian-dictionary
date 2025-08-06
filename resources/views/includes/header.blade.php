@@ -7,10 +7,10 @@
         </a>
 
         @auth
-            <a href="{{ route('quiz.index') }}" class="btn btn-success btn-sm btn-md-normal" style="max-height: 44px; padding: 8px 12px;">
+            <a href="{{ route('quiz.index') }}" class="btn btn-success btn-sm btn-md-normal" style="max-height: 39px; padding: 8px 12px;">
                 <span class="d-none d-sm-inline">Quiz</span><span class="d-inline d-sm-none">📝</span>
             </a>
-            <a href="{{ route('favorites') }}" class="btn btn-success btn-sm btn-md-normal text-nowrap" style="max-height: 44px; padding: 8px 12px;">
+            <a href="{{ route('favorites') }}" class="btn btn-success btn-sm btn-md-normal text-nowrap" style="max-height: 39px; padding: 8px 12px;">
                 ★ <span class="d-none d-sm-inline">Favorites</span><span class="d-inline d-sm-none">Fav</span>
             </a>
         @endauth
@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', function () {
     <div class="d-flex align-items-center gap-2 gap-md-3 flex-wrap justify-content-center justify-md-end w-100 w-md-auto">
 
         @auth
-            <div class="d-flex align-items-center gap-2 gap-md-3 flex-wrap justify-content-center justify-md-end">
+            <div class="d-flex align-items-center gap-2 gap-md-3  justify-content-end justify-md-end w-100">
 
                 @if(Auth::user()->can_manage_words)
                     <span class="text-muted small d-flex align-items-center gap-1 d-none d-md-flex">
@@ -94,7 +94,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     </span>
                 @endif
 
-                <span class="text-muted small text-center text-md-start order-first order-md-0 w-100 w-md-auto mb-2 mb-md-0">
+                <span class="text-muted small text-center text-md-start order-first order-md-0  w-md-auto mb-2 mb-md-0">
                     Welcome, {{ Auth::user()->name }}
                 </span>
 
