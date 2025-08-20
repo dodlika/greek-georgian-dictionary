@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     </div>
 
-    {{-- Right side user/auth section --}}
+    {{-- Right side user/auth section sds--}}
     <div class="d-flex align-items-center gap-2 gap-md-3 flex-wrap justify-content-center justify-md-end w-100 w-md-auto">
 
         @auth
