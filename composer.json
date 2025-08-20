@@ -35,7 +35,6 @@
     },
     "scripts": {
         "post-install-cmd": [
-      "@php artisan key:generate --ansi",
       "@php artisan config:cache",
       "@php artisan route:cache"
     ],
