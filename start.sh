@@ -76,5 +76,5 @@ App\Models\User::all(['name', 'email'])->each(function(\$user) {
 });
 "
 
-echo "=== Starting Apache ==="
-exec apache2-foreground
+# Apache not needed - Railway uses Procfile
+echo "=== Setup Complete - Railway will start via Procfile ==="
