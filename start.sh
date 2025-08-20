@@ -28,11 +28,7 @@ php artisan route:clear
 php artisan view:clear
 php artisan cache:clear
 
-# Generate key if needed
-if [ -z "$APP_KEY" ]; then
-    echo "Generating APP_KEY..."
-    php artisan key:generate --force
-fi
+# APP_KEY is set via Railway environment variables
 
 # Run migrations
 echo "Running migrations..."
