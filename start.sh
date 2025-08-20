@@ -67,13 +67,25 @@ echo "Checking and running seeders..."
 
 # Check if words table has any data
 WORD_COUNT=$(php artisan tinker --execute="echo App\Models\Word::count();" 2>/dev/null || echo "0")
+USER_COUNT=$(php artisan tinker --execute="echo App\Models\User::where('email', '!=', 'admin@example.com')->count();" 2>/dev/null || echo "0")
 
-if [ "$WORD_COUNT" = "0" ]; then
-    echo "No words found, running seeders..."
-    php artisan db:seed --force
+if [ "$WORD_COUNT" = "0" ] || [ "$USER_COUNT" = "0" ]; then
+    echo "Running seeders..."
+    echo "Words: $WORD_COUNT, Users (non-admin): $USER_COUNT"
+    
+    if [ "$USER_COUNT" = "0" ]; then
+        echo "Seeding users..."
+        php artisan db:seed --class=UserSeeder --force
+    fi
+    
+    if [ "$WORD_COUNT" = "0" ]; then
+        echo "Seeding words..."
+        php artisan db:seed --class=WordSeeder --force
+    fi
+    
     echo "Seeding completed!"
 else
-    echo "Words already exist ($WORD_COUNT), skipping seeders"
+    echo "Data already exists - Words: $WORD_COUNT, Users: $USER_COUNT - skipping seeders"
 fi
 
 
