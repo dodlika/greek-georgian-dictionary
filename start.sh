@@ -77,5 +77,5 @@ App\Models\User::all(['name', 'email'])->each(function(\$user) {
 });
 "
 
-echo "=== Starting PHP Server on Port $PORT ==="
-exec php artisan serve --host=0.0.0.0 --port=$PORT
+echo "=== Starting PHP Server on Port ${PORT:-8080} ==="
+exec php artisan serve --host=0.0.0.0 --port=${PORT:-8080}
