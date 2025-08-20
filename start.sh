@@ -26,7 +26,8 @@ echo "Clearing caches..."
 php artisan config:clear
 php artisan route:clear
 php artisan view:clear
-php artisan cache:clear
+# Skip cache:clear due to permission issues in Railway
+echo "Skipping cache:clear due to Railway permissions"
 
 # APP_KEY is set via Railway environment variables
 
@@ -76,5 +77,5 @@ App\Models\User::all(['name', 'email'])->each(function(\$user) {
 });
 "
 
-# Apache not needed - Railway uses Procfile
-echo "=== Setup Complete - Railway will start via Procfile ==="
+echo "=== Starting PHP Server ==="
+exec php artisan serve --host=0.0.0.0 --port=$PORT
